@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SalesQuest — L'app qui transforme les commerciaux en champions</title>
+  <meta name="description" content="Coach IA, Arsenal de techniques de vente, système de progression gamifié. Devenez le meilleur vendeur de votre équipe." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0d0b14;
+      --bg2:       #120f1e;
+      --gold:      #ffd700;
+      --gold-dim:  #ffd70088;
+      --violet:    #7c3aed;
+      --violet2:   #9d5cf5;
+      --text:      #f0eaf8;
+      --muted:     #8878a0;
+      --border:    rgba(255,255,255,0.08);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Utils ── */
+    .cinzel { font-family: 'Cinzel', serif; }
+    .gold   { color: var(--gold); }
+    .violet { color: var(--violet2); }
+
+    /* ── Ambient glow layers ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 10%, rgba(124,58,237,0.12), transparent),
+        radial-gradient(ellipse 50% 35% at 85% 80%, rgba(255,215,0,0.06), transparent);
+    }
+
+    section, header, footer { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════
+       HEADER
+    ══════════════════════════════════ */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 48px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,11,20,0.85);
+    }
+
+    .logo {
+      font-family: 'Cinzel', serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-shadow: 0 0 28px rgba(255,215,0,0.5);
+      text-decoration: none;
+    }
+
+    .tagline {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: linear-gradient(90deg, var(--violet), #9d5cf5);
+      border: none;
+      border-radius: 10px;
+      color: #fff;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(124,58,237,0.4);
+    }
+    .header-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 32px rgba(124,58,237,0.6);
+    }
+
+    /* ══════════════════════════════════
+       HERO
+    ══════════════════════════════════ */
+    #hero {
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 100px;
+      overflow: hidden;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 14px;
+      border: 1px solid rgba(255,215,0,0.3);
+      border-radius: 99px;
+      background: rgba(255,215,0,0.06);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 32px;
+      animation: fadeDown 0.6s ease both;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(36px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      animation: fadeDown 0.6s 0.1s ease both;
+    }
+
+    .hero-title .line2 {
+      background: linear-gradient(90deg, var(--gold), #ff9f43, var(--violet2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      max-width: 560px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 44px;
+      animation: fadeDown 0.6s 0.2s ease both;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeDown 0.6s 0.3s ease both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 34px;
+      background: linear-gradient(90deg, var(--gold), #ffaa00);
+      border: none;
+      border-radius: 14px;
+      color: #0d0b14;
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 32px rgba(255,215,0,0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 52px rgba(255,215,0,0.55);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 28px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      color: var(--text);
+      font-family: 'Cinzel', serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    /* Hero decorative orbs */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      animation: pulse 8s ease-in-out infinite;
+    }
+    .orb-1 {
+      width: 500px; height: 500px;
+      background: rgba(124,58,237,0.12);
+      top: -100px; left: -150px;
+      animation-delay: 0s;
+    }
+    .orb-2 {
+      width: 400px; height: 400px;
+      background: rgba(255,215,0,0.07);
+      bottom: -80px; right: -120px;
+      animation-delay: 4s;
+    }
+
+    /* ── Stats strip ── */
+    .stats-strip {
+      display: flex;
+      gap: 0;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 72px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      max-width: 680px;
+      width: 100%;
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      padding: 22px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-value {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 0 20px rgba(255,215,0,0.4);
+      line-height: 1;
+      margin-bottom: 5px;
+    }
+    .stat-label {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ══════════════════════════════════
+       SECTION COMMON
+    ══════════════════════════════════ */
+    .section {
+      padding: 96px 48px;
+    }
+
+    .section-label {
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--violet2);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(24px, 4vw, 42px);
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ══════════════════════════════════
+       FEATURES
+    ══════════════════════════════════ */
+    #features {
+      background: linear-gradient(180deg, transparent, rgba(124,58,237,0.04), transparent);
+    }
+
+    .features-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(124,58,237,0.04) 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(124,58,237,0.35);
+      box-shadow: 0 20px 60px rgba(124,58,237,0.15);
+    }
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 22px;
+    }
+    .icon-coach  { background: linear-gradient(135deg, #7c3aed22, #9d5cf511); border: 1px solid #7c3aed44; }
+    .icon-arsenal{ background: linear-gradient(135deg, #ffd70022, #ff9f4311); border: 1px solid #ffd70044; }
+    .icon-xp     { background: linear-gradient(135deg, #4ade8022, #22d3ee11); border: 1px solid #4ade8044; }
+
+    .feature-title {
+      font-family: 'Cinzel', serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .feature-desc {
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .feature-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 99px;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .tag-violet { background: rgba(124,58,237,0.15); color: #9d5cf5; border: 1px solid rgba(124,58,237,0.2); }
+    .tag-gold   { background: rgba(255,215,0,0.1);   color: #ffd700;  border: 1px solid rgba(255,215,0,0.2); }
+    .tag-green  { background: rgba(74,222,128,0.1);  color: #4ade80;  border: 1px solid rgba(74,222,128,0.2); }
+
+    /* ══════════════════════════════════
+       SCREENSHOTS
+    ══════════════════════════════════ */
+    #screenshots {
+      padding: 96px 48px;
+      overflow: hidden;
+    }
+
+    .screenshots-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .screenshots-row {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .screen-wrap {
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+    .screen-wrap:hover { transform: translateY(-10px) scale(1.02); }
+
+    .screen-wrap.center { transform: scale(1.08); }
+    .screen-wrap.center:hover { transform: scale(1.08) translateY(-10px); }
+
+    .phone-frame {
+      width: 200px;
+      height: 380px;
+      border-radius: 32px;
+      border: 2px solid rgba(255,255,255,0.1);
+      background: linear-gradient(165deg, #1a1530 0%, #0d0b14 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+    .screen-wrap.center .phone-frame {
+      width: 220px;
+      height: 420px;
+      border-color: rgba(255,215,0,0.25);
+      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 60px rgba(255,215,0,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
+    }
+
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 12px; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 5px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 99px;
+    }
+
+    .phone-screen-icon { font-size: 36px; opacity: 0.4; }
+    .phone-screen-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .screen-badge {
+      position: absolute;
+      bottom: -12px;
+      left: 50%; transform: translateX(-50%);
+      padding: 5px 14px;
+      border-radius: 99px;
+      font-family: 'Cinzel', serif;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+    .badge-violet { background: rgba(124,58,237,0.9); color: #fff; }
+    .badge-gold   { background: linear-gradient(90deg,#ffd700,#ffaa00); color: #0d0b14; }
+    .badge-blue   { background: rgba(34,211,238,0.9); color: #0d0b14; }
+
+    /* ══════════════════════════════════
+       TROPHÉES
+    ══════════════════════════════════ */
+    #trophees {
+      padding: 96px 48px;
+      background: linear-gradient(180deg, transparent, rgba(255,215,0,0.02), transparent);
+    }
+
+    .trophees-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .trophees-text .section-desc { max-width: 420px; }
+
+    .trophy-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .trophy-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 18px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.02);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .trophy-item:hover {
+      border-color: rgba(255,215,0,0.2);
+      background: rgba(255,215,0,0.03);
+    }
+
+    .trophy-icon {
+      font-size: 22px;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px;
+      background: rgba(255,215,0,0.08);
+      border: 1px solid rgba(255,215,0,0.15);
+      flex-shrink: 0;
+    }
+
+    .trophy-info { flex: 1; }
+    .trophy-name {
+      font-family: 'Cinzel', serif;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.06em;
+      margin-bottom: 3px;
+    }
+    .trophy-cond {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .trophy-xp {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      color: var(--violet2);
+      font-weight: 700;
+    }
+
+    /* Trophées grid (right side) */
+    .trophees-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .t-card {
+      aspect-ratio: 1;
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(255,215,0,0.04), rgba(124,58,237,0.06));
+      border: 1px solid rgba(255,215,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: default;
+    }
+    .t-card:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 12px 40px rgba(255,215,0,0.1);
+      border-color: rgba(255,215,0,0.25);
+    }
+    .t-card.locked {
+      opacity: 0.3;
+      filter: grayscale(0.8);
+    }
+    .t-card-icon { font-size: 28px; }
+    .t-card-name {
+      font-family: 'Cinzel', serif;
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 8px;
+    }
+
+    /* ══════════════════════════════════
+       CTA BAND
+    ══════════════════════════════════ */
+    #cta {
+      padding: 96px 48px;
+    }
+
+    .cta-box {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      border: 1px solid rgba(255,215,0,0.15);
+      border-radius: 28px;
+      padding: 72px 48px;
+      background: linear-gradient(145deg, rgba(255,215,0,0.03) 0%, rgba(124,58,237,0.05) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
+    }
+
+    .cta-box .section-title { margin-bottom: 20px; }
+    .cta-box .section-desc { margin: 0 auto 44px; text-align: center; }
+
+    .store-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 28px;
+      background: #1a1f38;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .store-badge:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .store-badge svg { width: 28px; height: 28px; flex-shrink: 0; }
+    .store-badge-text { text-align: left; }
+    .store-sub   { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
+    .store-main  { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; }
+
+    /* ══════════════════════════════════
+       FOOTER
+    ══════════════════════════════════ */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      opacity: 0.8;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      font-size: 11px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.04em;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ══════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════ */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1) translate(0, 0); }
+      50%       { transform: scale(1.08) translate(20px, -20px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════ */
+    @media (max-width: 900px) {
+      header { padding: 18px 24px; }
+      .tagline { display: none; }
+
+      .section { padding: 64px 24px; }
+      #features, #screenshots, #trophees, #cta { padding: 64px 24px; }
+
+      .features-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      .trophees-inner { grid-template-columns: 1fr; gap: 48px; }
+      .trophees-grid  { grid-template-columns: repeat(3, 1fr); }
+
+      footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 600px) {
+      .hero-buttons { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 280px; justify-content: center; }
+      .stats-strip { flex-direction: column; }
+      .stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .screenshots-row { flex-direction: column; align-items: center; }
+      .screen-wrap.center { transform: scale(1); }
+      .screen-wrap.center:hover { transform: translateY(-10px); }
+      .trophees-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══════════════════════════════════════════════════ -->
+  <header>
+    <a href="#" class="logo">SALESQUEST</a>
+    <span class="tagline">L'app qui transforme les commerciaux en champions</span>
+    <a href="#cta" class="header-cta">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+      </svg>
+      Télécharger
+    </a>
+  </header>
+
+  <!-- ══ HERO ════════════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="hero-badge">
+      ⚔️ &nbsp;Disponible sur Android
+    </div>
+
+    <h1 class="hero-title">
+      Devenez le meilleur<br>
+      <span class="line2">vendeur de votre équipe</span>
+    </h1>
+
+    <p class="hero-desc">
+      Coach IA personnalisé, arsenal de 40+ techniques de vente,
+      système de trophées et progression gamifiée.
+      Chaque jour, une bataille de plus à gagner.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.39-1.32 2.76-2.53 3.99M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+        </svg>
+        Télécharger sur Android
+      </a>
+      <a href="#features" class="btn-secondary">
+        Découvrir les fonctionnalités →
+      </a>
+    </div>
+
+    <div class="stats-strip fade-in">
+      <div class="stat">
+        <div class="stat-value">40+</div>
+        <div class="stat-label">Techniques de vente</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Trophées à débloquer</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Modes de jeu</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURES ════════════════════════════════════════════════ -->
+  <section id="features" class="section">
+    <div class="features-header fade-in">
+      <div class="section-label">Fonctionnalités</div>
+      <h2 class="section-title">Tout ce qu'il vous faut<br>pour dominer</h2>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card fade-in">
+        <div class="feature-icon icon-coach">🤖</div>
+        <h3 class="feature-title">Coach IA</h3>
+        <p class="feature-desc">
+          Un coach commercial disponible 24h/24. Posez-lui vos situations réelles —
+          objections clients, relances, négociations — et obtenez des réponses calibrées
+          pour votre secteur.
+        </p>
+        <div class="feature-tags">
+          <span class="tag tag-violet">GPT-4</span>
+          <span class="tag tag-violet">Contexte vendeur</span>
+          <span class="tag tag-violet">Illimité</span>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in">
+        <div class="feature-icon icon-arsenal">⚔️</div>
+        <h3 class="feature-title">Arsenal de techniques</h3>
+        <p class="feature-desc">
+          40+ tactiques de vente classées par catégorie — Prospection, Closing,
+          Gestion des objections, Mindset. Chaque fiche détaille l'erreur fatale
+          et la bonne réplique.
+        </p>
+        <div class="feature-tags">
+          <span class="tag tag-gold">Prospection</span>
+          <span class="tag tag-gold">Closing</span>
+          <span class="tag tag-gold">Objections</span>
+          <span class="tag tag-gold">Mindset</span>
+        </div>
+      </div>
+
+      <div class="feature-card fade-in">
+        <div class="feature-icon icon-xp">🏆</div>
+        <h3 class="feature-title">Système de progression</h3>
+        <p class="feature-desc">
+          XP, niveaux, streaks quotidiens, Mode Forge et Boss de catégorie.
+          Chaque entraînement vous rapproche du rang de Champion. Les trophées
+          valident vos maîtrises réelles.
+        </p>
+        <div class="feature-tags">
+          <span class="tag tag-green">XP & Niveaux</span>
+          <span class="tag tag-green">Mode Forge</span>
+          <span class="tag tag-green">Boss Fights</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ SCREENSHOTS ═════════════════════════════════════════════ -->
+  <section id="screenshots">
+    <div class="screenshots-header fade-in">
+      <div class="section-label">Aperçu</div>
+      <h2 class="section-title">L'application</h2>
+    </div>
+
+    <div class="screenshots-row fade-in">
+
+      <div class="screen-wrap">
+        <div class="phone-frame">
+          <div class="phone-screen-icon">⚔️</div>
+          <div class="phone-screen-label">L'Arsenal</div>
+        </div>
+        <div class="screen-badge badge-violet">Arsenal</div>
+      </div>
+
+      <div class="screen-wrap center">
+        <div class="phone-frame">
+          <div class="phone-screen-icon">🏠</div>
+          <div class="phone-screen-label">Dashboard</div>
+        </div>
+        <div class="screen-badge badge-gold">Accueil</div>
+      </div>
+
+      <div class="screen-wrap">
+        <div class="phone-frame">
+          <div class="phone-screen-icon">🤖</div>
+          <div class="phone-screen-label">Coach IA</div>
+        </div>
+        <div class="screen-badge badge-blue">Coach</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ TROPHÉES ════════════════════════════════════════════════ -->
+  <section id="trophees">
+    <div class="trophees-inner">
+
+      <div class="trophees-text fade-in">
+        <div class="section-label">Progression</div>
+        <h2 class="section-title">Débloquez des trophées<br>en progressant</h2>
+        <p class="section-desc">
+          Chaque action compte. QCM quotidien, sessions Forge, boss vaincus,
+          streaks maintenus — chaque jalon débloque un trophée et valide
+          une maîtrise réelle.
+        </p>
+
+        <div class="trophy-list">
+          <div class="trophy-item">
+            <div class="trophy-icon">🔥</div>
+            <div class="trophy-info">
+              <div class="trophy-name">Série de Feu</div>
+              <div class="trophy-cond">7 jours de connexion consécutifs</div>
+            </div>
+            <div class="trophy-xp">+200 XP</div>
+          </div>
+          <div class="trophy-item">
+            <div class="trophy-icon">⚔️</div>
+            <div class="trophy-info">
+              <div class="trophy-name">Premier Sang</div>
+              <div class="trophy-cond">Vaincre votre premier Boss</div>
+            </div>
+            <div class="trophy-xp">+500 XP</div>
+          </div>
+          <div class="trophy-item">
+            <div class="trophy-icon">🧠</div>
+            <div class="trophy-info">
+              <div class="trophy-name">Maître de la Forge</div>
+              <div class="trophy-cond">Maîtriser 20 fiches Arsenal</div>
+            </div>
+            <div class="trophy-xp">+300 XP</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="trophees-grid fade-in">
+        <div class="t-card">
+          <div class="t-card-icon">🔥</div>
+          <div class="t-card-name">Série de Feu</div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">⚔️</div>
+          <div class="t-card-name">Premier Sang</div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🏆</div>
+          <div class="t-card-name">Champion</div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">🧠</div>
+          <div class="t-card-name">Maître Forge</div>
+        </div>
+        <div class="t-card">
+          <div class="t-card-icon">⚡</div>
+          <div class="t-card-name">Éclair</div>
+        </div>
+        <div class="t-card locked">
+          <div class="t-card-icon">👑</div>
+          <div class="t-card-name">Légende</div>
+        </div>
+        <div class="t-card locked">
+          <div class="t-card-icon">💎</div>
+          <div class="t-card-name">Diamant</div>
+        </div>
+        <div class="t-card locked">
+          <div class="t-card-icon">🌟</div>
+          <div class="t-card-name">Étoile</div>
+        </div>
+        <div class="t-card locked">
+          <div class="t-card-icon">🔮</div>
+          <div class="t-card-name">Oracle</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ CTA ═════════════════════════════════════════════════════ -->
+  <section id="cta">
+    <div class="cta-box fade-in">
+      <div class="section-label" style="margin-bottom:18px;">Rejoignez la communauté</div>
+      <h2 class="section-title" style="margin-bottom:18px;">
+        Prêt à devenir<br>
+        <span style="color:var(--gold);">le meilleur ?</span>
+      </h2>
+      <p class="section-desc" style="margin:0 auto 44px;">
+        Téléchargez SalesQuest et commencez votre première session de Forge aujourd'hui.
+        Gratuit, sans engagement.
+      </p>
+      <a href="#" class="store-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.523 15.3414C17.523 15.3414 19.356 13.8267 19.356 11.9999C19.356 10.1732 17.523 8.6585 17.523 8.6585L5.47311 2.12267C4.20978 1.31667 3.26978 1.74667 3.26978 3.2665V20.7333C3.26978 22.253 4.20978 22.6832 5.47311 21.877L17.523 15.3414Z"/>
+        </svg>
+        <div class="store-badge-text">
+          <div class="store-sub">Disponible sur</div>
+          <div class="store-main">Google Play</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══════════════════════════════════════════════════ -->
+  <footer>
+    <a href="#" class="footer-logo">SALESQUEST</a>
+    <span class="footer-copy">© 2026 SalesQuest. Tous droits réservés.</span>
+    <nav class="footer-links">
+      <a href="#">Mentions légales</a>
+      <a href="#">Confidentialité</a>
+      <a href="#">Contact</a>
+    </nav>
+  </footer>
+
+  <!-- ══ SCROLL ANIMATIONS ═══════════════════════════════════════ -->
+  <script>
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
