@@ -1,1042 +1,374 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SalesQuest — L'app qui transforme les commerciaux en champions</title>
-  <meta name="description" content="Coach IA, Arsenal de techniques de vente, système de progression gamifié. Devenez le meilleur vendeur de votre équipe." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:        #0d0b14;
-      --bg2:       #120f1e;
-      --gold:      #ffd700;
-      --gold-dim:  #ffd70088;
-      --violet:    #7c3aed;
-      --violet2:   #9d5cf5;
-      --text:      #f0eaf8;
-      --muted:     #8878a0;
-      --border:    rgba(255,255,255,0.08);
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── Utils ── */
-    .cinzel { font-family: 'Cinzel', serif; }
-    .gold   { color: var(--gold); }
-    .violet { color: var(--violet2); }
-
-    /* ── Ambient glow layers ── */
-    body::before {
-      content: '';
-      position: fixed; inset: 0; pointer-events: none; z-index: 0;
-      background:
-        radial-gradient(ellipse 60% 40% at 15% 10%, rgba(124,58,237,0.12), transparent),
-        radial-gradient(ellipse 50% 35% at 85% 80%, rgba(255,215,0,0.06), transparent);
-    }
-
-    section, header, footer { position: relative; z-index: 1; }
-
-    /* ══════════════════════════════════
-       HEADER
-    ══════════════════════════════════ */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 48px;
-      border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(12px);
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(13,11,20,0.85);
-    }
-
-    .logo {
-      font-family: 'Cinzel', serif;
-      font-size: 20px;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      text-shadow: 0 0 28px rgba(255,215,0,0.5);
-      text-decoration: none;
-    }
-
-    .tagline {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.06em;
-    }
-
-    .header-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 22px;
-      background: linear-gradient(90deg, var(--violet), #9d5cf5);
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 20px rgba(124,58,237,0.4);
-    }
-    .header-cta:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 32px rgba(124,58,237,0.6);
-    }
-
-    /* ══════════════════════════════════
-       HERO
-    ══════════════════════════════════ */
-    #hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 80px 24px 100px;
-      overflow: hidden;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 5px 14px;
-      border: 1px solid rgba(255,215,0,0.3);
-      border-radius: 99px;
-      background: rgba(255,215,0,0.06);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 32px;
-      animation: fadeDown 0.6s ease both;
-    }
-
-    .hero-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(36px, 7vw, 80px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: 0.04em;
-      margin-bottom: 24px;
-      animation: fadeDown 0.6s 0.1s ease both;
-    }
-
-    .hero-title .line2 {
-      background: linear-gradient(90deg, var(--gold), #ff9f43, var(--violet2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-desc {
-      max-width: 560px;
-      font-size: 16px;
-      line-height: 1.7;
-      color: var(--muted);
-      margin-bottom: 44px;
-      animation: fadeDown 0.6s 0.2s ease both;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeDown 0.6s 0.3s ease both;
-    }
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 34px;
-      background: linear-gradient(90deg, var(--gold), #ffaa00);
-      border: none;
-      border-radius: 14px;
-      color: #0d0b14;
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s;
-      box-shadow: 0 0 32px rgba(255,215,0,0.35);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 0 0 52px rgba(255,215,0,0.55);
-    }
-
-    .btn-secondary {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 16px 28px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      color: var(--text);
-      font-family: 'Cinzel', serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    /* Hero decorative orbs */
-    .orb {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(80px);
-      animation: pulse 8s ease-in-out infinite;
-    }
-    .orb-1 {
-      width: 500px; height: 500px;
-      background: rgba(124,58,237,0.12);
-      top: -100px; left: -150px;
-      animation-delay: 0s;
-    }
-    .orb-2 {
-      width: 400px; height: 400px;
-      background: rgba(255,215,0,0.07);
-      bottom: -80px; right: -120px;
-      animation-delay: 4s;
-    }
-
-    /* ── Stats strip ── */
-    .stats-strip {
-      display: flex;
-      gap: 0;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-top: 72px;
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      overflow: hidden;
-      max-width: 680px;
-      width: 100%;
-      animation: fadeUp 0.7s 0.5s ease both;
-    }
-
-    .stat {
-      flex: 1;
-      min-width: 140px;
-      padding: 22px 20px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-    }
-    .stat:last-child { border-right: none; }
-
-    .stat-value {
-      font-family: 'Cinzel', serif;
-      font-size: 28px;
-      font-weight: 900;
-      color: var(--gold);
-      text-shadow: 0 0 20px rgba(255,215,0,0.4);
-      line-height: 1;
-      margin-bottom: 5px;
-    }
-    .stat-label {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    /* ══════════════════════════════════
-       SECTION COMMON
-    ══════════════════════════════════ */
-    .section {
-      padding: 96px 48px;
-    }
-
-    .section-label {
-      font-family: 'Cinzel', serif;
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--violet2);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(24px, 4vw, 42px);
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-
-    .section-desc {
-      font-size: 15px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 520px;
-    }
-
-    /* ══════════════════════════════════
-       FEATURES
-    ══════════════════════════════════ */
-    #features {
-      background: linear-gradient(180deg, transparent, rgba(124,58,237,0.04), transparent);
-    }
-
-    .features-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-
-    .feature-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(124,58,237,0.04) 100%);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 36px 28px;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(124,58,237,0.35);
-      box-shadow: 0 20px 60px rgba(124,58,237,0.15);
-    }
-    .feature-card:hover::before { opacity: 1; }
-
-    .feature-icon {
-      width: 52px; height: 52px;
-      border-radius: 14px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 24px;
-      margin-bottom: 22px;
-    }
-    .icon-coach  { background: linear-gradient(135deg, #7c3aed22, #9d5cf511); border: 1px solid #7c3aed44; }
-    .icon-arsenal{ background: linear-gradient(135deg, #ffd70022, #ff9f4311); border: 1px solid #ffd70044; }
-    .icon-xp     { background: linear-gradient(135deg, #4ade8022, #22d3ee11); border: 1px solid #4ade8044; }
-
-    .feature-title {
-      font-family: 'Cinzel', serif;
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      margin-bottom: 12px;
-      color: var(--text);
-    }
-
-    .feature-desc {
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--muted);
-    }
-
-    .feature-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 20px;
-    }
-
-    .tag {
-      padding: 4px 10px;
-      border-radius: 99px;
-      font-size: 9px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-weight: 600;
-    }
-    .tag-violet { background: rgba(124,58,237,0.15); color: #9d5cf5; border: 1px solid rgba(124,58,237,0.2); }
-    .tag-gold   { background: rgba(255,215,0,0.1);   color: #ffd700;  border: 1px solid rgba(255,215,0,0.2); }
-    .tag-green  { background: rgba(74,222,128,0.1);  color: #4ade80;  border: 1px solid rgba(74,222,128,0.2); }
-
-    /* ══════════════════════════════════
-       SCREENSHOTS
-    ══════════════════════════════════ */
-    #screenshots {
-      padding: 96px 48px;
-      overflow: hidden;
-    }
-
-    .screenshots-header {
-      text-align: center;
-      margin-bottom: 64px;
-    }
-
-    .screenshots-row {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      align-items: flex-end;
-      flex-wrap: wrap;
-    }
-
-    .screen-wrap {
-      position: relative;
-      transition: transform 0.4s ease;
-    }
-    .screen-wrap:hover { transform: translateY(-10px) scale(1.02); }
-
-    .screen-wrap.center { transform: scale(1.08); }
-    .screen-wrap.center:hover { transform: scale(1.08) translateY(-10px); }
-
-    .phone-frame {
-      width: 200px;
-      height: 380px;
-      border-radius: 32px;
-      border: 2px solid rgba(255,255,255,0.1);
-      background: linear-gradient(165deg, #1a1530 0%, #0d0b14 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      position: relative;
-      overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-    .screen-wrap.center .phone-frame {
-      width: 220px;
-      height: 420px;
-      border-color: rgba(255,215,0,0.25);
-      box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 60px rgba(255,215,0,0.08), inset 0 1px 0 rgba(255,255,255,0.06);
-    }
-
-    .phone-frame::before {
-      content: '';
-      position: absolute;
-      top: 12px; left: 50%; transform: translateX(-50%);
-      width: 60px; height: 5px;
-      background: rgba(255,255,255,0.12);
-      border-radius: 99px;
-    }
-
-    .phone-screen-icon { font-size: 36px; opacity: 0.4; }
-    .phone-screen-label {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .screen-badge {
-      position: absolute;
-      bottom: -12px;
-      left: 50%; transform: translateX(-50%);
-      padding: 5px 14px;
-      border-radius: 99px;
-      font-family: 'Cinzel', serif;
-      font-size: 8px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      white-space: nowrap;
-    }
-    .badge-violet { background: rgba(124,58,237,0.9); color: #fff; }
-    .badge-gold   { background: linear-gradient(90deg,#ffd700,#ffaa00); color: #0d0b14; }
-    .badge-blue   { background: rgba(34,211,238,0.9); color: #0d0b14; }
-
-    /* ══════════════════════════════════
-       TROPHÉES
-    ══════════════════════════════════ */
-    #trophees {
-      padding: 96px 48px;
-      background: linear-gradient(180deg, transparent, rgba(255,215,0,0.02), transparent);
-    }
-
-    .trophees-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .trophees-text .section-desc { max-width: 420px; }
-
-    .trophy-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 36px;
-    }
-
-    .trophy-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px 18px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: rgba(255,255,255,0.02);
-      transition: border-color 0.3s, background 0.3s;
-    }
-    .trophy-item:hover {
-      border-color: rgba(255,215,0,0.2);
-      background: rgba(255,215,0,0.03);
-    }
-
-    .trophy-icon {
-      font-size: 22px;
-      width: 40px; height: 40px;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 10px;
-      background: rgba(255,215,0,0.08);
-      border: 1px solid rgba(255,215,0,0.15);
-      flex-shrink: 0;
-    }
-
-    .trophy-info { flex: 1; }
-    .trophy-name {
-      font-family: 'Cinzel', serif;
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 0.06em;
-      margin-bottom: 3px;
-    }
-    .trophy-cond {
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .trophy-xp {
-      font-family: 'Cinzel', serif;
-      font-size: 10px;
-      color: var(--violet2);
-      font-weight: 700;
-    }
-
-    /* Trophées grid (right side) */
-    .trophees-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-    }
-
-    .t-card {
-      aspect-ratio: 1;
-      border-radius: 18px;
-      background: linear-gradient(145deg, rgba(255,215,0,0.04), rgba(124,58,237,0.06));
-      border: 1px solid rgba(255,215,0,0.1);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: default;
-    }
-    .t-card:hover {
-      transform: translateY(-4px) scale(1.04);
-      box-shadow: 0 12px 40px rgba(255,215,0,0.1);
-      border-color: rgba(255,215,0,0.25);
-    }
-    .t-card.locked {
-      opacity: 0.3;
-      filter: grayscale(0.8);
-    }
-    .t-card-icon { font-size: 28px; }
-    .t-card-name {
-      font-family: 'Cinzel', serif;
-      font-size: 7px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      padding: 0 8px;
-    }
-
-    /* ══════════════════════════════════
-       CTA BAND
-    ══════════════════════════════════ */
-    #cta {
-      padding: 96px 48px;
-    }
-
-    .cta-box {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-      border: 1px solid rgba(255,215,0,0.15);
-      border-radius: 28px;
-      padding: 72px 48px;
-      background: linear-gradient(145deg, rgba(255,215,0,0.03) 0%, rgba(124,58,237,0.05) 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .cta-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 60%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.4), transparent);
-    }
-
-    .cta-box .section-title { margin-bottom: 20px; }
-    .cta-box .section-desc { margin: 0 auto 44px; text-align: center; }
-
-    .store-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 28px;
-      background: #1a1f38;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
-      text-decoration: none;
-      color: var(--text);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .store-badge:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
-    }
-    .store-badge svg { width: 28px; height: 28px; flex-shrink: 0; }
-    .store-badge-text { text-align: left; }
-    .store-sub   { font-size: 10px; color: var(--muted); letter-spacing: 0.06em; }
-    .store-main  { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; }
-
-    /* ══════════════════════════════════
-       FOOTER
-    ══════════════════════════════════ */
-    footer {
-      padding: 40px 48px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      font-family: 'Cinzel', serif;
-      font-size: 14px;
-      font-weight: 900;
-      letter-spacing: 0.2em;
-      color: var(--gold);
-      opacity: 0.8;
-      text-decoration: none;
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-    .footer-links a {
-      font-size: 11px;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-      letter-spacing: 0.04em;
-    }
-    .footer-links a:hover { color: var(--text); }
-
-    /* ══════════════════════════════════
-       ANIMATIONS
-    ══════════════════════════════════ */
-    @keyframes fadeDown {
-      from { opacity: 0; transform: translateY(-16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1) translate(0, 0); }
-      50%       { transform: scale(1.08) translate(20px, -20px); }
-    }
-    @keyframes shimmer {
-      0%   { background-position: -400px 0; }
-      100% { background-position: 400px 0; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-10px); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ══════════════════════════════════
-       RESPONSIVE
-    ══════════════════════════════════ */
-    @media (max-width: 900px) {
-      header { padding: 18px 24px; }
-      .tagline { display: none; }
-
-      .section { padding: 64px 24px; }
-      #features, #screenshots, #trophees, #cta { padding: 64px 24px; }
-
-      .features-grid { grid-template-columns: 1fr; gap: 16px; }
-
-      .trophees-inner { grid-template-columns: 1fr; gap: 48px; }
-      .trophees-grid  { grid-template-columns: repeat(3, 1fr); }
-
-      footer { flex-direction: column; text-align: center; padding: 32px 24px; }
-      .footer-links { justify-content: center; }
-    }
-
-    @media (max-width: 600px) {
-      .hero-buttons { flex-direction: column; align-items: center; }
-      .btn-primary, .btn-secondary { width: 280px; justify-content: center; }
-      .stats-strip { flex-direction: column; }
-      .stat { border-right: none; border-bottom: 1px solid var(--border); }
-      .stat:last-child { border-bottom: none; }
-      .screenshots-row { flex-direction: column; align-items: center; }
-      .screen-wrap.center { transform: scale(1); }
-      .screen-wrap.center:hover { transform: translateY(-10px); }
-      .trophees-grid { grid-template-columns: repeat(3, 1fr); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SalesQuest — Bêta privée</title>
+<meta name="description" content="Vous faites partie des premiers testeurs de SalesQuest : l'app d'entraînement commercial gamifiée avec Coach IA. Installation en 3 minutes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0a0710;
+    --ink-2:#120c1c;
+    --card:#181022;
+    --line:#2a1e3d;
+    --gold:#fbbf24;
+    --gold-deep:#f59e0b;
+    --violet:#7c3aed;
+    --violet-soft:#a78bfa;
+    --text:#f0ecf6;
+    --text-dim:#a99fc0;
+    --text-faint:#7a7091;
+    --danger:#ff6b6b;
+    --ok:#55bbab;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',system-ui,sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.05}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-family:'Oswald',sans-serif;font-weight:600;
+    text-transform:uppercase;letter-spacing:.22em;font-size:12px;
+    color:var(--gold);
+  }
+  a{color:inherit}
+
+  /* ===== TOP BAR ===== */
+  .topbar{
+    position:sticky;top:0;z-index:50;
+    background:rgba(10,7,16,.82);backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em}
+  .brand span{color:var(--gold)}
+  .badge-beta{
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--violet-soft);
+    border:1px solid var(--violet);border-radius:999px;padding:5px 12px;
+  }
+
+  /* ===== HERO ===== */
+  .hero{position:relative;padding:76px 0 60px;text-align:center;overflow:hidden}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(680px 340px at 50% -10%, rgba(124,58,237,.28), transparent 70%),
+      radial-gradient(520px 300px at 50% 120%, rgba(251,191,36,.10), transparent 70%);
+    pointer-events:none;
+  }
+  .hero .inner{position:relative}
+  .hero .eyebrow{margin-bottom:20px}
+  .hero h1{
+    font-size:clamp(40px,7.5vw,76px);
+    text-transform:uppercase;
+    margin:0 auto 22px;max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  }
+  .hero p.lead{
+    font-size:clamp(16px,2.2vw,20px);color:var(--text-dim);
+    max-width:56ch;margin:0 auto 38px;
+  }
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;
+    text-transform:uppercase;font-size:15px;text-decoration:none;
+    padding:16px 30px;border-radius:14px;border:1px solid transparent;
+    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;cursor:pointer;
+  }
+  .btn-primary{
+    color:#1a1205;
+    background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);
+    box-shadow:0 10px 34px rgba(251,191,36,.32),0 0 0 1px rgba(251,191,36,.4) inset;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(251,191,36,.44)}
+  .btn-ghost{color:var(--text);border-color:var(--line);background:var(--card)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--violet)}
+  .hero .platform-note{margin-top:18px;font-size:13px;color:var(--text-faint)}
+  .hero .platform-note b{color:var(--text-dim)}
+
+  /* ===== STAT STRIP ===== */
+  .stats{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+    margin:52px 0 0;
+  }
+  .stats .cell{background:var(--ink-2);padding:26px 18px;text-align:center}
+  .stats .num{font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:var(--gold)}
+  .stats .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-top:4px}
+
+  /* ===== SECTION ===== */
+  section.block{padding:66px 0}
+  .section-head{text-align:center;margin-bottom:44px}
+  .section-head h2{font-size:clamp(28px,4.4vw,42px);text-transform:uppercase;margin-top:12px}
+
+  /* ===== INSTALL (the important one) ===== */
+  .install{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .install .warn{
+    display:flex;gap:14px;align-items:flex-start;
+    background:rgba(124,58,237,.10);border:1px solid var(--violet);
+    border-radius:14px;padding:18px 20px;margin:0 auto 40px;max-width:760px;
+  }
+  .install .warn .ic{font-size:22px;line-height:1}
+  .install .warn p{font-size:15px;color:var(--text-dim);margin:0}
+  .install .warn b{color:var(--text)}
+  .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  .step{
+    display:flex;gap:18px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+  }
+  .step .n{
+    flex:0 0 auto;width:38px;height:38px;border-radius:10px;
+    display:grid;place-items:center;
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:17px;color:#1a1205;
+    background:linear-gradient(180deg,var(--gold),var(--gold-deep));
+  }
+  .step .body h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;margin-bottom:4px;letter-spacing:.01em}
+  .step .body p{font-size:14.5px;color:var(--text-dim);margin:0}
+  .step .body .hint{color:var(--text-faint);font-size:13px;margin-top:6px}
+  .install .dl-center{text-align:center;margin:40px 0 6px}
+  .install .help{text-align:center;font-size:14px;color:var(--text-faint);margin-top:22px}
+  .install .help b{color:var(--gold)}
+
+  /* ===== FEATURES ===== */
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .feat{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
+    transition:transform .15s ease,border-color .15s ease;
+  }
+  .feat:hover{transform:translateY(-3px);border-color:var(--violet)}
+  .feat .ic{font-size:30px;margin-bottom:16px}
+  .feat h3{font-size:20px;text-transform:uppercase;margin-bottom:10px}
+  .feat p{font-size:14.5px;color:var(--text-dim)}
+  .feat .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .feat .tag{
+    font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--violet-soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px;
+  }
+
+  /* ===== FEEDBACK ===== */
+  .feedback{text-align:center}
+  .feedback .card{
+    max-width:680px;margin:0 auto;
+    background:linear-gradient(180deg,rgba(124,58,237,.14),rgba(124,58,237,.04));
+    border:1px solid var(--violet);border-radius:18px;padding:44px 34px;
+  }
+  .feedback .gift{font-size:34px;margin-bottom:14px}
+  .feedback h2{font-size:clamp(26px,4vw,36px);text-transform:uppercase;margin-bottom:14px}
+  .feedback p{color:var(--text-dim);max-width:52ch;margin:0 auto 28px;font-size:15.5px}
+
+  /* ===== iOS ===== */
+  .ios{text-align:center}
+  .ios .card{
+    max-width:620px;margin:0 auto;background:var(--card);
+    border:1px dashed var(--line);border-radius:16px;padding:34px 28px;
+  }
+  .ios .ic{font-size:30px;margin-bottom:12px}
+  .ios h3{font-size:22px;text-transform:uppercase;margin-bottom:10px}
+  .ios p{color:var(--text-dim);font-size:15px;max-width:46ch;margin:0 auto}
+
+  /* ===== FOOTER ===== */
+  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center}
+  footer .brand{font-size:16px;margin-bottom:8px}
+  footer p{font-size:13px;color:var(--text-faint)}
+  footer .mini{margin-top:8px;font-size:12px;color:var(--text-faint)}
+
+  @media(max-width:760px){
+    .stats{grid-template-columns:1fr;gap:1px}
+    .feat-grid{grid-template-columns:1fr}
+    .hero{padding:56px 0 44px}
+    section.block{padding:52px 0}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{transition:none!important;scroll-behavior:auto}
+  }
+</style>
 </head>
 <body>
 
-  <!-- ══ HEADER ══════════════════════════════════════════════════ -->
-  <header>
-    <a href="#" class="logo">SALESQUEST</a>
-    <span class="tagline">L'app qui transforme les commerciaux en champions</span>
-    <a href="#cta" class="header-cta">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
-      </svg>
-      Télécharger
-    </a>
-  </header>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">SALES<span>QUEST</span></div>
+    <div class="badge-beta">Bêta privée</div>
+  </div>
+</header>
 
-  <!-- ══ HERO ════════════════════════════════════════════════════ -->
-  <section id="hero">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-
-    <div class="hero-badge">
-      ⚔️ &nbsp;Disponible sur Android
-    </div>
-
-    <h1 class="hero-title">
-      Devenez le meilleur<br>
-      <span class="line2">vendeur de votre équipe</span>
-    </h1>
-
-    <p class="hero-desc">
-      Coach IA personnalisé, arsenal de 40+ techniques de vente,
-      système de trophées et progression gamifiée.
-      Chaque jour, une bataille de plus à gagner.
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap inner">
+    <div class="eyebrow">Vous faites partie des premiers testeurs</div>
+    <h1>Entraînez-vous à vendre comme on <em>s'entraîne au combat</em></h1>
+    <p class="lead">
+      SalesQuest transforme la pratique commerciale en jeu : un Coach IA qui joue
+      vos scénarios difficiles, un arsenal de techniques, et une progression par rangs.
+      Vous avez été invité à le tester avant tout le monde.
     </p>
+    <div class="cta-row">
+      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Télécharger l'app (Android)</a>
+      <a href="#install" class="btn btn-ghost">Comment installer →</a>
+    </div>
+    <p class="platform-note">Bêta <b>Android uniquement</b> pour l'instant · Version iPhone à venir</p>
 
-    <div class="hero-buttons">
-      <a href="#" class="btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.4c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.39-1.32 2.76-2.53 3.99M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-        </svg>
-        Télécharger sur Android
-      </a>
-      <a href="#features" class="btn-secondary">
-        Découvrir les fonctionnalités →
-      </a>
+    <div class="stats">
+      <div class="cell"><div class="num">40+</div><div class="lab">Techniques de vente</div></div>
+      <div class="cell"><div class="num">50+</div><div class="lab">Trophées à débloquer</div></div>
+      <div class="cell"><div class="num">3</div><div class="lab">Profils de commercial</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section class="block install" id="install">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Installation — 3 minutes</div>
+      <h2>Installez l'app sur votre Android</h2>
     </div>
 
-    <div class="stats-strip fade-in">
-      <div class="stat">
-        <div class="stat-value">40+</div>
-        <div class="stat-label">Techniques de vente</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">50+</div>
-        <div class="stat-label">Trophées à débloquer</div>
-      </div>
-      <div class="stat">
-        <div class="stat-value">4</div>
-        <div class="stat-label">Modes de jeu</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ FEATURES ════════════════════════════════════════════════ -->
-  <section id="features" class="section">
-    <div class="features-header fade-in">
-      <div class="section-label">Fonctionnalités</div>
-      <h2 class="section-title">Tout ce qu'il vous faut<br>pour dominer</h2>
+    <div class="warn">
+      <div class="ic">⚠️</div>
+      <p><b>C'est normal qu'Android vous prévienne.</b> L'app n'est pas encore sur le Play Store
+      (c'est une bêta privée), donc votre téléphone demande une autorisation avant d'installer.
+      Rien d'inquiétant — voici les étapes.</p>
     </div>
 
-    <div class="features-grid">
-
-      <div class="feature-card fade-in">
-        <div class="feature-icon icon-coach">🤖</div>
-        <h3 class="feature-title">Coach IA</h3>
-        <p class="feature-desc">
-          Un coach commercial disponible 24h/24. Posez-lui vos situations réelles —
-          objections clients, relances, négociations — et obtenez des réponses calibrées
-          pour votre secteur.
-        </p>
-        <div class="feature-tags">
-          <span class="tag tag-violet">GPT-4</span>
-          <span class="tag tag-violet">Contexte vendeur</span>
-          <span class="tag tag-violet">Illimité</span>
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="body">
+          <h4>Téléchargez le fichier</h4>
+          <p>Appuyez sur « Télécharger l'app » — le fichier arrive dans vos Téléchargements.</p>
         </div>
       </div>
-
-      <div class="feature-card fade-in">
-        <div class="feature-icon icon-arsenal">⚔️</div>
-        <h3 class="feature-title">Arsenal de techniques</h3>
-        <p class="feature-desc">
-          40+ tactiques de vente classées par catégorie — Prospection, Closing,
-          Gestion des objections, Mindset. Chaque fiche détaille l'erreur fatale
-          et la bonne réplique.
-        </p>
-        <div class="feature-tags">
-          <span class="tag tag-gold">Prospection</span>
-          <span class="tag tag-gold">Closing</span>
-          <span class="tag tag-gold">Objections</span>
-          <span class="tag tag-gold">Mindset</span>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="body">
+          <h4>Ouvrez le fichier téléchargé</h4>
+          <p>Appuyez dessus dans vos Téléchargements (ou dans la notification de téléchargement).</p>
         </div>
       </div>
-
-      <div class="feature-card fade-in">
-        <div class="feature-icon icon-xp">🏆</div>
-        <h3 class="feature-title">Système de progression</h3>
-        <p class="feature-desc">
-          XP, niveaux, streaks quotidiens, Mode Forge et Boss de catégorie.
-          Chaque entraînement vous rapproche du rang de Champion. Les trophées
-          valident vos maîtrises réelles.
-        </p>
-        <div class="feature-tags">
-          <span class="tag tag-green">XP & Niveaux</span>
-          <span class="tag tag-green">Mode Forge</span>
-          <span class="tag tag-green">Boss Fights</span>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="body">
+          <h4>Autorisez l'installation</h4>
+          <p>Android affiche un message de sécurité. Appuyez sur <b>« Paramètres »</b>,
+          activez <b>« Autoriser depuis cette source »</b>, puis revenez en arrière.</p>
+          <p class="hint">Un écran peut proposer d'analyser l'app → vous pouvez « Installer quand même ».</p>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ══ SCREENSHOTS ═════════════════════════════════════════════ -->
-  <section id="screenshots">
-    <div class="screenshots-header fade-in">
-      <div class="section-label">Aperçu</div>
-      <h2 class="section-title">L'application</h2>
+      <div class="step">
+        <div class="n">4</div>
+        <div class="body">
+          <h4>Créez votre compte et choisissez votre profil</h4>
+          <p>Ouvrez SalesQuest, créez votre compte, puis choisissez votre profil :
+          <b>Chasseur</b> (prospection), <b>Éleveur</b> (comptes clients) ou <b>Manager</b>.
+          Tout le contenu s'adapte à votre choix.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="screenshots-row fade-in">
-
-      <div class="screen-wrap">
-        <div class="phone-frame">
-          <div class="phone-screen-icon">⚔️</div>
-          <div class="phone-screen-label">L'Arsenal</div>
-        </div>
-        <div class="screen-badge badge-violet">Arsenal</div>
-      </div>
-
-      <div class="screen-wrap center">
-        <div class="phone-frame">
-          <div class="phone-screen-icon">🏠</div>
-          <div class="phone-screen-label">Dashboard</div>
-        </div>
-        <div class="screen-badge badge-gold">Accueil</div>
-      </div>
-
-      <div class="screen-wrap">
-        <div class="phone-frame">
-          <div class="phone-screen-icon">🤖</div>
-          <div class="phone-screen-label">Coach IA</div>
-        </div>
-        <div class="screen-badge badge-blue">Coach</div>
-      </div>
-
+    <div class="dl-center">
+      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Télécharger l'app maintenant</a>
     </div>
-  </section>
+    <p class="help">Un souci à une étape ? <b>Envoyez-moi une capture d'écran</b>, je vous débloque en 2 minutes.</p>
+  </div>
+</section>
 
-  <!-- ══ TROPHÉES ════════════════════════════════════════════════ -->
-  <section id="trophees">
-    <div class="trophees-inner">
-
-      <div class="trophees-text fade-in">
-        <div class="section-label">Progression</div>
-        <h2 class="section-title">Débloquez des trophées<br>en progressant</h2>
-        <p class="section-desc">
-          Chaque action compte. QCM quotidien, sessions Forge, boss vaincus,
-          streaks maintenus — chaque jalon débloque un trophée et valide
-          une maîtrise réelle.
-        </p>
-
-        <div class="trophy-list">
-          <div class="trophy-item">
-            <div class="trophy-icon">🔥</div>
-            <div class="trophy-info">
-              <div class="trophy-name">Série de Feu</div>
-              <div class="trophy-cond">7 jours de connexion consécutifs</div>
-            </div>
-            <div class="trophy-xp">+200 XP</div>
-          </div>
-          <div class="trophy-item">
-            <div class="trophy-icon">⚔️</div>
-            <div class="trophy-info">
-              <div class="trophy-name">Premier Sang</div>
-              <div class="trophy-cond">Vaincre votre premier Boss</div>
-            </div>
-            <div class="trophy-xp">+500 XP</div>
-          </div>
-          <div class="trophy-item">
-            <div class="trophy-icon">🧠</div>
-            <div class="trophy-info">
-              <div class="trophy-name">Maître de la Forge</div>
-              <div class="trophy-cond">Maîtriser 20 fiches Arsenal</div>
-            </div>
-            <div class="trophy-xp">+300 XP</div>
-          </div>
+<!-- FEATURES -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ce que vous allez tester</div>
+      <h2>Trois choses à explorer</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic">🤖</div>
+        <h3>Le Coach IA</h3>
+        <p>Lancez un roleplay : l'IA joue votre interlocuteur — prospect coriace, client mécontent,
+        commercial à recadrer — et vous menez l'échange. À la fin, un verdict argumenté sur votre performance.</p>
+        <div class="tags">
+          <span class="tag">Roleplay</span>
+          <span class="tag">Adapté à votre secteur</span>
+          <span class="tag">Verdict IA</span>
         </div>
       </div>
-
-      <div class="trophees-grid fade-in">
-        <div class="t-card">
-          <div class="t-card-icon">🔥</div>
-          <div class="t-card-name">Série de Feu</div>
-        </div>
-        <div class="t-card">
-          <div class="t-card-icon">⚔️</div>
-          <div class="t-card-name">Premier Sang</div>
-        </div>
-        <div class="t-card">
-          <div class="t-card-icon">🏆</div>
-          <div class="t-card-name">Champion</div>
-        </div>
-        <div class="t-card">
-          <div class="t-card-icon">🧠</div>
-          <div class="t-card-name">Maître Forge</div>
-        </div>
-        <div class="t-card">
-          <div class="t-card-icon">⚡</div>
-          <div class="t-card-name">Éclair</div>
-        </div>
-        <div class="t-card locked">
-          <div class="t-card-icon">👑</div>
-          <div class="t-card-name">Légende</div>
-        </div>
-        <div class="t-card locked">
-          <div class="t-card-icon">💎</div>
-          <div class="t-card-name">Diamant</div>
-        </div>
-        <div class="t-card locked">
-          <div class="t-card-icon">🌟</div>
-          <div class="t-card-name">Étoile</div>
-        </div>
-        <div class="t-card locked">
-          <div class="t-card-icon">🔮</div>
-          <div class="t-card-name">Oracle</div>
+      <div class="feat">
+        <div class="ic">⚔️</div>
+        <h3>L'Arsenal</h3>
+        <p>40+ techniques classées par catégorie — Prospection, Closing, Objections, Mindset.
+        Chaque fiche pointe l'erreur fatale et la bonne réplique. Puis la Forge et les Boss pour ancrer.</p>
+        <div class="tags">
+          <span class="tag">Prospection</span>
+          <span class="tag">Closing</span>
+          <span class="tag">Objections</span>
+          <span class="tag">Mindset</span>
         </div>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ══ CTA ═════════════════════════════════════════════════════ -->
-  <section id="cta">
-    <div class="cta-box fade-in">
-      <div class="section-label" style="margin-bottom:18px;">Rejoignez la communauté</div>
-      <h2 class="section-title" style="margin-bottom:18px;">
-        Prêt à devenir<br>
-        <span style="color:var(--gold);">le meilleur ?</span>
-      </h2>
-      <p class="section-desc" style="margin:0 auto 44px;">
-        Téléchargez SalesQuest et commencez votre première session de Forge aujourd'hui.
-        Gratuit, sans engagement.
-      </p>
-      <a href="#" class="store-badge">
-        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-          <path d="M17.523 15.3414C17.523 15.3414 19.356 13.8267 19.356 11.9999C19.356 10.1732 17.523 8.6585 17.523 8.6585L5.47311 2.12267C4.20978 1.31667 3.26978 1.74667 3.26978 3.2665V20.7333C3.26978 22.253 4.20978 22.6832 5.47311 21.877L17.523 15.3414Z"/>
-        </svg>
-        <div class="store-badge-text">
-          <div class="store-sub">Disponible sur</div>
-          <div class="store-main">Google Play</div>
+      <div class="feat">
+        <div class="ic">🏆</div>
+        <h3>La progression</h3>
+        <p>QCM du jour, défis, séries, rangs et trophées. Revenez quelques jours d'affilée
+        et voyez si l'app vous donne envie de continuer — c'est ça, le vrai test.</p>
+        <div class="tags">
+          <span class="tag">XP & rangs</span>
+          <span class="tag">Séries</span>
+          <span class="tag">Trophées</span>
         </div>
-      </a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ══ FOOTER ══════════════════════════════════════════════════ -->
-  <footer>
-    <a href="#" class="footer-logo">SALESQUEST</a>
-    <span class="footer-copy">© 2026 SalesQuest. Tous droits réservés.</span>
-    <nav class="footer-links">
-      <a href="#">Mentions légales</a>
-      <a href="#">Confidentialité</a>
-      <a href="#">Contact</a>
-    </nav>
-  </footer>
+<!-- FEEDBACK -->
+<section class="block feedback">
+  <div class="wrap">
+    <div class="card">
+      <div class="gift">🎁</div>
+      <h2>Votre avis façonne l'app</h2>
+      <p>Après quelques jours d'utilisation, un court questionnaire (5 min) vous attend —
+      dans l'app via le bouton « Je donne mon avis », ou directement ici.
+      En remerciement : <b>30 jours de Premium offerts</b>.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCkD-g_PISBB4GQF-LWm874grGPuRAkwk6_Ao8WazUUQ0SjQ/viewform" class="btn btn-primary">Donner mon avis (5 min)</a>
+    </div>
+  </div>
+</section>
 
-  <!-- ══ SCROLL ANIMATIONS ═══════════════════════════════════════ -->
-  <script>
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  </script>
+<!-- iOS -->
+<section class="block ios">
+  <div class="wrap">
+    <div class="card">
+      <div class="ic">🍎</div>
+      <h3>Vous êtes sur iPhone ?</h3>
+      <p>La version iOS n'est pas encore prête — elle arrive plus tard. Dites-moi que vous êtes
+      intéressé, et je vous préviens dès qu'elle est disponible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="brand">SALES<span style="color:var(--gold)">QUEST</span></div>
+    <p>Coach IA propulsé par une IA de dernière génération (Claude, Anthropic).</p>
+    <p class="mini">© 2026 SalesQuest · Bêta privée · Merci de votre aide 🙏</p>
+  </div>
+</footer>
 
 </body>
 </html>
