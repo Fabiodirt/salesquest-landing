@@ -10,19 +10,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0a0710;
-    --ink-2:#120c1c;
-    --card:#181022;
-    --line:#2a1e3d;
+    --ink:#08050e;
+    --ink-2:#10091b;
+    --card:#160f24;
+    --line:#2e1f47;
     --gold:#fbbf24;
     --gold-deep:#f59e0b;
     --violet:#7c3aed;
     --violet-soft:#a78bfa;
-    --text:#f0ecf6;
-    --text-dim:#a99fc0;
-    --text-faint:#7a7091;
-    --danger:#ff6b6b;
-    --ok:#55bbab;
+    --violet-glow:rgba(124,58,237,0.35);
+    --text:#f3effa;
+    --text-dim:#aaa1be;
+    --text-faint:#7d7295;
+    --ok:#34d399;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -33,45 +33,44 @@
     line-height:1.6;
     overflow-x:hidden;
   }
-  h1,h2,h3,.display{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.05}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  h1,h2,h3,h4,.display{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.1}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
   .eyebrow{
     font-family:'Oswald',sans-serif;font-weight:600;
     text-transform:uppercase;letter-spacing:.22em;font-size:12px;
-    color:var(--gold);
+    color:var(--gold);margin-bottom:12px;
   }
-  a{color:inherit}
+  a{text-decoration:none;color:inherit}
 
   /* ===== TOP BAR ===== */
   .topbar{
     position:sticky;top:0;z-index:50;
-    background:rgba(10,7,16,.82);backdrop-filter:blur(12px);
+    background:rgba(8,5,14,.85);backdrop-filter:blur(16px);
     border-bottom:1px solid var(--line);
   }
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:22px;letter-spacing:.08em}
   .brand span{color:var(--gold)}
   .badge-beta{
-    font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;
+    font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:.15em;
     text-transform:uppercase;color:var(--violet-soft);
-    border:1px solid var(--violet);border-radius:999px;padding:5px 12px;
+    border:1px solid var(--violet);border-radius:999px;padding:6px 14px;
+    background:rgba(124,58,237,0.1);
   }
 
   /* ===== HERO ===== */
-  .hero{position:relative;padding:76px 0 60px;text-align:center;overflow:hidden}
+  .hero{position:relative;padding:100px 0 80px;text-align:center;overflow:hidden}
   .hero::before{
     content:"";position:absolute;inset:0;
     background:
-      radial-gradient(680px 340px at 50% -10%, rgba(124,58,237,.28), transparent 70%),
-      radial-gradient(520px 300px at 50% 120%, rgba(251,191,36,.10), transparent 70%);
+      radial-gradient(800px 400px at 50% -10%, var(--violet-glow), transparent 70%),
+      radial-gradient(600px 350px at 50% 110%, rgba(251,191,36,.08), transparent 70%);
     pointer-events:none;
   }
-  .hero .inner{position:relative}
-  .hero .eyebrow{margin-bottom:20px}
   .hero h1{
-    font-size:clamp(40px,7.5vw,76px);
+    font-size:clamp(38px,6.8vw,72px);
     text-transform:uppercase;
-    margin:0 auto 22px;max-width:14ch;
+    margin:0 auto 24px;max-width:20ch;
   }
   .hero h1 em{
     font-style:normal;
@@ -79,122 +78,231 @@
     -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
   }
   .hero p.lead{
-    font-size:clamp(16px,2.2vw,20px);color:var(--text-dim);
-    max-width:56ch;margin:0 auto 38px;
+    font-size:clamp(16px,2vw,20px);color:var(--text-dim);
+    max-width:60ch;margin:0 auto 40px;
   }
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
   .btn{
-    display:inline-flex;align-items:center;gap:10px;
+    display:inline-flex;align-items:center;gap:12px;
     font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;
-    text-transform:uppercase;font-size:15px;text-decoration:none;
-    padding:16px 30px;border-radius:14px;border:1px solid transparent;
-    transition:transform .15s ease,box-shadow .15s ease,background .15s ease;cursor:pointer;
+    text-transform:uppercase;font-size:15px;
+    padding:18px 34px;border-radius:14px;border:1px solid transparent;
+    transition:all .2s ease;cursor:pointer;
   }
   .btn-primary{
-    color:#1a1205;
+    color:#120902;
     background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);
-    box-shadow:0 10px 34px rgba(251,191,36,.32),0 0 0 1px rgba(251,191,36,.4) inset;
+    box-shadow:0 8px 30px rgba(251,191,36,.28), 0 0 0 1px rgba(251,191,36,.3) inset;
   }
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(251,191,36,.44)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 38px rgba(251,191,36,.42)}
   .btn-ghost{color:var(--text);border-color:var(--line);background:var(--card)}
-  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--violet)}
-  .hero .platform-note{margin-top:18px;font-size:13px;color:var(--text-faint)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--violet-soft);background:rgba(46,31,71,0.4)}
+  .hero .platform-note{margin-top:20px;font-size:13px;color:var(--text-faint)}
   .hero .platform-note b{color:var(--text-dim)}
 
   /* ===== STAT STRIP ===== */
   .stats{
     display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-    background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;
-    margin:52px 0 0;
+    background:var(--line);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    margin:60px 0 0;box-shadow:0 20px 40px rgba(0,0,0,0.4);
   }
-  .stats .cell{background:var(--ink-2);padding:26px 18px;text-align:center}
-  .stats .num{font-family:'Oswald',sans-serif;font-weight:700;font-size:34px;color:var(--gold)}
-  .stats .lab{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-faint);margin-top:4px}
+  .stats .cell{background:var(--ink-2);padding:28px 20px;text-align:center}
+  .stats .num{font-family:'Oswald',sans-serif;font-weight:700;font-size:38px;color:var(--gold);line-height:1}
+  .stats .lab{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-faint);margin-top:8px}
 
-  /* ===== SECTION ===== */
-  section.block{padding:66px 0}
-  .section-head{text-align:center;margin-bottom:44px}
-  .section-head h2{font-size:clamp(28px,4.4vw,42px);text-transform:uppercase;margin-top:12px}
+  /* ===== SECTIONS CONTAINER ===== */
+  section.block{padding:90px 0}
+  .section-head{text-align:center;margin-bottom:60px}
+  .section-head h2{font-size:clamp(28px,4vw,44px);text-transform:uppercase;margin-top:8px}
 
-  /* ===== INSTALL (the important one) ===== */
+  /* ===== FEATURES WITH INTEGRATED MOCKUPS ===== */
+  .split-row{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;
+    align-items:center;margin-bottom:100px;
+  }
+  .split-row:nth-child(even){grid-template-columns:0.9fr 1.1fr}
+  .split-row:nth-child(even) .feat-text{order:2}
+  .split-row:nth-child(even) .feat-visual{order:1}
+  
+  .feat-text h3{font-size:32px;text-transform:uppercase;margin-bottom:16px;color:var(--text)}
+  .feat-text p{font-size:16px;color:var(--text-dim);margin-bottom:24px}
+  .tags{display:flex;flex-wrap:wrap;gap:8px}
+  .tag{
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;
+    color:var(--violet-soft);border:1px solid var(--line);border-radius:999px;padding:6px 14px;
+    background:rgba(46,31,71,0.2);
+  }
+
+  /* UI MOCKUPS (CSS Native) */
+  .feat-visual{
+    position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:24px;padding:20px;aspect-ratio:4/3;
+    display:flex;flex-direction:column;justify-content:center;
+    box-shadow:0 30px 60px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+    overflow:hidden;
+  }
+  .feat-visual::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 20%, var(--violet-glow), transparent 60%);
+    pointer-events:none;
+  }
+
+  /* Mockup 1: Chat interface */
+  .ui-chat{gap:12px}
+  .chat-bubble{padding:12px 16px;border-radius:14px;max-width:85%;font-size:13.5px}
+  .chat-bubble.ia{background:var(--ink-2);border:1px solid var(--line);align-self:flex-start}
+  .chat-bubble.user{background:var(--violet);color:white;align-self:flex-end;border-bottom-right-radius:2px}
+  .ui-badge-score{
+    background:rgba(52,211,153,0.1);border:1px solid var(--ok);color:var(--ok);
+    padding:8px 12px;border-radius:10px;font-size:12px;font-weight:600;align-self:center;margin-top:4px;
+  }
+
+  /* Mockup 2: Card system */
+  .ui-forge{align-items:center}
+  .forge-card{
+    background:var(--ink-2);border:2px solid var(--line);border-radius:16px;
+    padding:24px;width:85%;position:relative;border-top-color:var(--gold);
+  }
+  .forge-card h4{font-size:18px;color:var(--gold);margin-bottom:8px;text-transform:uppercase}
+  .forge-card .bad-practice{color:var(--text-faint);text-decoration:line-through;font-size:13px;margin-bottom:6px}
+  .forge-card .good-practice{color:var(--text);font-size:14px;font-weight:500}
+
+  /* Mockup 3: Progression Cards */
+  .ui-progress{gap:16px;align-items:center}
+  .rank-badge{
+    font-family:'Oswald',sans-serif;font-size:24px;color:var(--gold);
+    border:2px dashed var(--gold);padding:8px 20px;border-radius:12px;background:rgba(251,191,36,0.05);
+  }
+  .xp-bar-container{width:80%;background:var(--ink-2);height:12px;border-radius:999px;border:1px solid var(--line);overflow:hidden}
+  .xp-bar-fill{
+    width:65%;height:100%;border-radius:999px;
+    background:linear-gradient(90deg, var(--violet), var(--violet-soft));
+    box-shadow:0 0 12px var(--violet);animation:pulse-grow 3s infinite ease-in-out;
+  }
+  .trophy-row{display:flex;gap:14px;font-size:24px;margin-top:4px}
+
+  /* ===== INSTALL & SUBMISSION ZONE ===== */
   .install{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .install .warn{
-    display:flex;gap:14px;align-items:flex-start;
-    background:rgba(124,58,237,.10);border:1px solid var(--violet);
-    border-radius:14px;padding:18px 20px;margin:0 auto 40px;max-width:760px;
+    display:flex;gap:16px;align-items:flex-start;
+    background:rgba(124,58,237,.08);border:1px solid var(--line);
+    border-radius:16px;padding:20px;margin:0 auto 48px;max-width:800px;
   }
-  .install .warn .ic{font-size:22px;line-height:1}
+  .install .warn .ic{font-size:24px;line-height:1}
   .install .warn p{font-size:15px;color:var(--text-dim);margin:0}
   .install .warn b{color:var(--text)}
-  .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+  
+  .steps{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
   .step{
-    display:flex;gap:18px;align-items:flex-start;
-    background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;
+    display:flex;gap:20px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;
   }
   .step .n{
-    flex:0 0 auto;width:38px;height:38px;border-radius:10px;
+    flex:0 0 auto;width:40px;height:40px;border-radius:12px;
     display:grid;place-items:center;
-    font-family:'Oswald',sans-serif;font-weight:700;font-size:17px;color:#1a1205;
+    font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;color:#120902;
     background:linear-gradient(180deg,var(--gold),var(--gold-deep));
   }
-  .step .body h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;margin-bottom:4px;letter-spacing:.01em}
-  .step .body p{font-size:14.5px;color:var(--text-dim);margin:0}
-  .step .body .hint{color:var(--text-faint);font-size:13px;margin-top:6px}
-  .install .dl-center{text-align:center;margin:40px 0 6px}
-  .install .help{text-align:center;font-size:14px;color:var(--text-faint);margin-top:22px}
-  .install .help b{color:var(--gold)}
-
-  /* ===== FEATURES ===== */
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .feat{
-    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;
-    transition:transform .15s ease,border-color .15s ease;
+  .step .body h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:18px;margin-bottom:6px;letter-spacing:.01em;text-transform:uppercase}
+  .step .body p{font-size:15px;color:var(--text-dim);margin:0}
+  .step .body .hint{color:var(--text-faint);font-size:13px;margin-top:8px}
+  .install .dl-center{text-align:center;margin:48px 0 12px}
+  
+  /* BOX ASSISTANCE & VERTEBRES DE RETOUR */
+  .install .feedback-box {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 32px;
+    background: linear-gradient(180deg, rgba(124,58,237,0.1), transparent);
+    border: 1px dashed var(--violet);
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .feat:hover{transform:translateY(-3px);border-color:var(--violet)}
-  .feat .ic{font-size:30px;margin-bottom:16px}
-  .feat h3{font-size:20px;text-transform:uppercase;margin-bottom:10px}
-  .feat p{font-size:14.5px;color:var(--text-dim)}
-  .feat .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
-  .feat .tag{
-    font-size:11px;letter-spacing:.06em;text-transform:uppercase;
-    color:var(--violet-soft);border:1px solid var(--line);border-radius:999px;padding:4px 10px;
+  .install .feedback-box p {
+    font-size: 16px;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .install .feedback-box b {
+    color: var(--gold);
+  }
+  .action-group {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .install .btn-mail {
+    font-size: 14.5px;
+    padding: 14px 24px;
+    border-radius: 12px;
+    background: var(--violet);
+    color: white;
+  }
+  .install .btn-mail:hover {
+    background: var(--violet-soft);
+    box-shadow: 0 0 20px var(--violet-glow);
+  }
+  .install .btn-copy {
+    font-size: 14.5px;
+    padding: 14px 20px;
+    border-radius: 12px;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+  }
+  .install .btn-copy:hover {
+    border-color: var(--text-faint);
+    color: var(--text);
   }
 
-  /* ===== FEEDBACK ===== */
+  /* ===== IN-APP INCENTIVE CARD ===== */
   .feedback{text-align:center}
   .feedback .card{
-    max-width:680px;margin:0 auto;
-    background:linear-gradient(180deg,rgba(124,58,237,.14),rgba(124,58,237,.04));
-    border:1px solid var(--violet);border-radius:18px;padding:44px 34px;
+    max-width:720px;margin:0 auto;
+    background:linear-gradient(180deg,rgba(124,58,237,.15),rgba(124,58,237,.02));
+    border:1px solid var(--violet);border-radius:24px;padding:50px 40px;
+    box-shadow: 0 20px 50px rgba(124,58,237,0.1);
   }
-  .feedback .gift{font-size:34px;margin-bottom:14px}
-  .feedback h2{font-size:clamp(26px,4vw,36px);text-transform:uppercase;margin-bottom:14px}
-  .feedback p{color:var(--text-dim);max-width:52ch;margin:0 auto 28px;font-size:15.5px}
+  .feedback .gift{font-size:38px;margin-bottom:16px}
+  .feedback h2{font-size:36px;text-transform:uppercase;margin-bottom:16px}
+  .feedback p{color:var(--text-dim);max-width:54ch;margin:0 auto 32px;font-size:16px}
 
-  /* ===== iOS ===== */
+  /* ===== iOS BLOCK ===== */
   .ios{text-align:center}
   .ios .card{
-    max-width:620px;margin:0 auto;background:var(--card);
-    border:1px dashed var(--line);border-radius:16px;padding:34px 28px;
+    max-width:660px;margin:0 auto;background:var(--card);
+    border:1px dashed var(--line);border-radius:20px;padding:40px 30px;
   }
-  .ios .ic{font-size:30px;margin-bottom:12px}
-  .ios h3{font-size:22px;text-transform:uppercase;margin-bottom:10px}
-  .ios p{color:var(--text-dim);font-size:15px;max-width:46ch;margin:0 auto}
+  .ios .ic{font-size:32px;margin-bottom:14px}
+  .ios h3{font-size:24px;text-transform:uppercase;margin-bottom:12px}
+  .ios p{color:var(--text-dim);font-size:15.5px;max-width:48ch;margin:0 auto}
 
   /* ===== FOOTER ===== */
-  footer{border-top:1px solid var(--line);padding:34px 0;text-align:center}
-  footer .brand{font-size:16px;margin-bottom:8px}
+  footer{border-top:1px solid var(--line);padding:40px 0;text-align:center}
+  footer .brand{font-size:18px;margin-bottom:10px}
   footer p{font-size:13px;color:var(--text-faint)}
-  footer .mini{margin-top:8px;font-size:12px;color:var(--text-faint)}
+  footer .mini{margin-top:10px;font-size:12px;color:var(--text-faint)}
 
-  @media(max-width:760px){
-    .stats{grid-template-columns:1fr;gap:1px}
-    .feat-grid{grid-template-columns:1fr}
-    .hero{padding:56px 0 44px}
-    section.block{padding:52px 0}
+  /* Animations */
+  @keyframes pulse-grow {
+    0%, 100% { transform: scaleX(1); opacity: 0.9; }
+    50% { transform: scaleX(1.02); opacity: 1; }
+  }
+
+  @media(max-width:860px){
+    .split-row, .split-row:nth-child(even){grid-template-columns:1fr; gap:30px}
+    .split-row:nth-child(even) .feat-text{order:1}
+    .split-row:nth-child(even) .feat-visual{order:2}
+    .feat-visual{aspect-ratio:16/10}
+    .stats{grid-template-columns:1fr}
+    .hero{padding:70px 0 50px}
+    section.block{padding:60px 0}
   }
   @media(prefers-reduced-motion:reduce){
-    *{transition:none!important;scroll-behavior:auto}
+    *{transition:none!important;scroll-behavior:auto;animation:none!important}
   }
 </style>
 </head>
@@ -212,23 +320,88 @@
 <section class="hero">
   <div class="wrap inner">
     <div class="eyebrow">Vous faites partie des premiers testeurs</div>
-    <h1>Entraînez-vous à vendre comme on <em>s'entraîne au combat</em></h1>
+    <h1>Débloquez vos compétences commerciales. <em>Rang après rang.</em></h1>
     <p class="lead">
-      SalesQuest transforme la pratique commerciale en jeu : un Coach IA qui joue
-      vos scénarios difficiles, un arsenal de techniques, et une progression par rangs.
-      Vous avez été invité à le tester avant tout le monde.
+      SalesQuest transforme la pratique de la vente en quête de progression : un Coach IA qui simule vos cas clients réels, un arsenal de techniques à maîtriser et des trophées à collectionner.
     </p>
     <div class="cta-row">
-      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Télécharger l'app (Android)</a>
-      <a href="#install" class="btn btn-ghost">Comment installer →</a>
+      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Télécharger la Bêta (Android .APK)</a>
+      <a href="#install" class="btn btn-ghost">Guide d'installation →</a>
     </div>
-    <p class="platform-note">Bêta <b>Android uniquement</b> pour l'instant · Version iPhone à venir</p>
+    <p class="platform-note">Bêta disponible sur <b>Android uniquement</b> · Version iPhone en cours</p>
 
     <div class="stats">
-      <div class="cell"><div class="num">40+</div><div class="lab">Techniques de vente</div></div>
-      <div class="cell"><div class="num">50+</div><div class="lab">Trophées à débloquer</div></div>
-      <div class="cell"><div class="num">3</div><div class="lab">Profils de commercial</div></div>
+      <div class="cell"><div class="num">40+</div><div class="lab">Techniques à débloquer</div></div>
+      <div class="cell"><div class="num">50+</div><div class="lab">Trophées & Badges</div></div>
+      <div class="cell"><div class="num">3</div><div class="lab">Rangs de spécialisation</div></div>
     </div>
+  </div>
+</section>
+
+<!-- SECTION VISUELS & FONCTIONNALITÉS -->
+<section class="block">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Aperçu exclusif</div>
+      <h2>Votre feuille de route de test</h2>
+    </div>
+
+    <!-- Feat 1 -->
+    <div class="split-row">
+      <div class="feat-text">
+        <div class="tag" style="color:var(--gold); border-color:var(--gold); margin-bottom:12px;">Entraînement actif</div>
+        <h3>Le Coach IA Interactif</h3>
+        <p>Lancez un scénario : l'IA incarne votre cible (prospect difficile, décideur pressé, client mécontent). Menez l'entretien de vive voix ou par écrit. À la fin, recevez un verdict chiffré et transparent sur votre performance commerciale.</p>
+        <div class="tags">
+          <span class="tag">Roleplay dynamique</span>
+          <span class="tag">Simulation réaliste</span>
+        </div>
+      </div>
+      <div class="feat-visual ui-chat">
+        <div class="chat-bubble ia"><b>Coach IA :</b> "Votre prix est beaucoup trop élevé pour notre budget cette année. Qu'est-ce qui justifie cet écart ?"</div>
+        <div class="chat-bubble user">"Je comprends votre posture. Si on met de côté le budget un instant, sur la valeur..."</div>
+        <div class="ui-badge-score">🎯 Analyse : +15 XP en Traitement des Objections</div>
+      </div>
+    </div>
+
+    <!-- Feat 2 -->
+    <div class="split-row">
+      <div class="feat-text">
+        <div class="tag" style="color:var(--violet-soft); border-color:var(--violet-soft); margin-bottom:12px;">Compétences</div>
+        <h3>L'Arsenal des Techniques</h3>
+        <p>Explorez plus de 40 fiches de compétences actionnables réparties en modules (Prospection, Objections, Closing, Mental). Apprenez à esquiver les erreurs fatales et découvrez les meilleures formulations à intégrer immédiatement.</p>
+        <div class="tags">
+          <span class="tag">Fiches Pratiques</span>
+          <span class="tag">La Forge & Boss</span>
+        </div>
+      </div>
+      <div class="feat-visual ui-forge">
+        <div class="forge-card">
+          <h4>Fiche #12 : L'Esquive du Prix</h4>
+          <div class="bad-practice">❌ "On peut faire un geste commercial si vous signez vite..."</div>
+          <div class="good-practice">✨ "Avant de parler chiffrement, validons que notre solution répond exactement à votre besoin."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feat 3 -->
+    <div class="split-row">
+      <div class="feat-text">
+        <div class="tag" style="color:var(--gold); border-color:var(--gold); margin-bottom:12px;">Gamification</div>
+        <h3>Progression & Récompenses</h3>
+        <p>Validez vos défis quotidiens, maintenez vos séries d'assiduité, gagnez des points d'expérience (XP) et montez en grade. Suivez l'évolution de vos statistiques et remplissez votre vitrine de trophées exclusifs.</p>
+        <div class="tags">
+          <span class="tag">Suivi de niveau</span>
+          <span class="tag">Badges de Bêta</span>
+        </div>
+      </div>
+      <div class="feat-visual ui-progress">
+        <div class="rank-badge">NIVEAU 4 : CHASSEUR</div>
+        <div class="xp-bar-container"><div class="xp-bar-fill"></div></div>
+        <div class="trophy-row">🏆 ⚔️ 💎 ⭐</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -236,100 +409,57 @@
 <section class="block install" id="install">
   <div class="wrap">
     <div class="section-head">
-      <div class="eyebrow">Installation — 3 minutes</div>
-      <h2>Installez l'app sur votre Android</h2>
+      <div class="eyebrow">Protocole d'accès</div>
+      <h2>Installez SalesQuest sur votre appareil</h2>
     </div>
 
     <div class="warn">
       <div class="ic">⚠️</div>
-      <p><b>C'est normal qu'Android vous prévienne.</b> L'app n'est pas encore sur le Play Store
-      (c'est une bêta privée), donc votre téléphone demande une autorisation avant d'installer.
-      Rien d'inquiétant — voici les étapes.</p>
+      <p><b>Le message d'alerte Android est tout à fait standard.</b> L'application étant actuellement en phase de test privé, elle n'est pas encore hébergée sur le Google Play Store. Votre système demande simplement une confirmation de confiance. L'installation est entièrement sécurisée.</p>
     </div>
 
     <div class="steps">
       <div class="step">
         <div class="n">1</div>
         <div class="body">
-          <h4>Téléchargez le fichier</h4>
-          <p>Appuyez sur « Télécharger l'app » — le fichier arrive dans vos Téléchargements.</p>
+          <h4>Récupérez le package (.apk)</h4>
+          <p>Cliquez sur le bouton de téléchargement. Le fichier s'enregistre instantanément dans le dossier Téléchargements de votre smartphone.</p>
         </div>
       </div>
       <div class="step">
         <div class="n">2</div>
         <div class="body">
-          <h4>Ouvrez le fichier téléchargé</h4>
-          <p>Appuyez dessus dans vos Téléchargements (ou dans la notification de téléchargement).</p>
+          <h4>Ouvrez l'élément</h4>
+          <p>Une fois le téléchargement terminé, cliquez sur le fichier depuis votre panneau de notifications ou via le gestionnaire de fichiers.</p>
         </div>
       </div>
       <div class="step">
         <div class="n">3</div>
         <div class="body">
-          <h4>Autorisez l'installation</h4>
-          <p>Android affiche un message de sécurité. Appuyez sur <b>« Paramètres »</b>,
-          activez <b>« Autoriser depuis cette source »</b>, puis revenez en arrière.</p>
-          <p class="hint">Un écran peut proposer d'analyser l'app → vous pouvez « Installer quand même ».</p>
+          <h4>Autorisez la source de test</h4>
+          <p>Si Android bloque l'action, cliquez sur <b>Paramètres</b> dans la fenêtre pop-up, cochez l'option <b>« Autoriser depuis cette source »</b>, puis validez l'installation.</p>
+          <p class="hint">Si l'outil Google Play Protect demande une analyse, vous pouvez sélectionner « Installer quand même ».</p>
         </div>
       </div>
       <div class="step">
         <div class="n">4</div>
         <div class="body">
-          <h4>Créez votre compte et choisissez votre profil</h4>
-          <p>Ouvrez SalesQuest, créez votre compte, puis choisissez votre profil :
-          <b>Chasseur</b> (prospection), <b>Éleveur</b> (comptes clients) ou <b>Manager</b>.
-          Tout le contenu s'adapte à votre choix.</p>
+          <h4>Initialisez votre profil RPG</h4>
+          <p>Lancez SalesQuest, créez vos identifiants d'accès, puis déterminez votre spécialisation : <b>Chasseur</b> (Prospection agressive), <b>Éleveur</b> (Fidélisation grand compte) ou <b>Manager</b>.</p>
         </div>
       </div>
     </div>
 
     <div class="dl-center">
-      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Télécharger l'app maintenant</a>
+      <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">⚔️ Lancer le téléchargement de l'APK</a>
     </div>
-    <p class="help">Un souci à une étape ? <b>Envoyez-moi une capture d'écran</b>, je vous débloque en 2 minutes.</p>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="block">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Ce que vous allez tester</div>
-      <h2>Trois choses à explorer</h2>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="ic">🤖</div>
-        <h3>Le Coach IA</h3>
-        <p>Lancez un roleplay : l'IA joue votre interlocuteur — prospect coriace, client mécontent,
-        commercial à recadrer — et vous menez l'échange. À la fin, un verdict argumenté sur votre performance.</p>
-        <div class="tags">
-          <span class="tag">Roleplay</span>
-          <span class="tag">Adapté à votre secteur</span>
-          <span class="tag">Verdict IA</span>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="ic">⚔️</div>
-        <h3>L'Arsenal</h3>
-        <p>40+ techniques classées par catégorie — Prospection, Closing, Objections, Mindset.
-        Chaque fiche pointe l'erreur fatale et la bonne réplique. Puis la Forge et les Boss pour ancrer.</p>
-        <div class="tags">
-          <span class="tag">Prospection</span>
-          <span class="tag">Closing</span>
-          <span class="tag">Objections</span>
-          <span class="tag">Mindset</span>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="ic">🏆</div>
-        <h3>La progression</h3>
-        <p>QCM du jour, défis, séries, rangs et trophées. Revenez quelques jours d'affilée
-        et voyez si l'app vous donne envie de continuer — c'est ça, le vrai test.</p>
-        <div class="tags">
-          <span class="tag">XP & rangs</span>
-          <span class="tag">Séries</span>
-          <span class="tag">Trophées</span>
-        </div>
+    
+    <!-- Zone de blocage & Retours optimisés -->
+    <div class="feedback-box">
+      <p>Un problème technique ou un comportement inattendu ? <b>Partagez-moi vos captures d'écran</b>, je traite vos retours manuellement en quelques minutes.</p>
+      <div class="action-group">
+        <a href="mailto:salesquestbeta@gmail.com?subject=SalesQuest%20Beta%20-%20Retour%20Bug&body=Bonjour,%20voici%20mes%20captures%20d'ecran%20ainsi%20que%20mes%20premiers%20retours%20sur%20l'application%20SalesQuest%20:" class="btn btn-mail">📩 Envoyer mes captures d'écran</a>
+        <button onclick="copyMail()" id="copyBtn" class="btn btn-copy">📋 Copier le mail de support</button>
       </div>
     </div>
   </div>
@@ -340,11 +470,9 @@
   <div class="wrap">
     <div class="card">
       <div class="gift">🎁</div>
-      <h2>Votre avis façonne l'app</h2>
-      <p>Après quelques jours d'utilisation, un court questionnaire (5 min) vous attend —
-      dans l'app via le bouton « Je donne mon avis », ou directement ici.
-      En remerciement : <b>30 jours de Premium offerts</b>.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCkD-g_PISBB4GQF-LWm874grGPuRAkwk6_Ao8WazUUQ0SjQ/viewform" class="btn btn-primary">Donner mon avis (5 min)</a>
+      <h2>Votre expertise forge le produit</h2>
+      <p>Après quelques sessions d'entraînement, complétez notre mini-formulaire de ressenti (5 minutes chrono). Pour vous remercier de votre aide précieuse, <b>un accès Premium de 30 jours</b> sera automatiquement rattaché à votre compte.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCkD-g_PISBB4GQF-LWm874grGPuRAkwk6_Ao8WazUUQ0SjQ/viewform" class="btn btn-primary">Remplir le questionnaire (5 min)</a>
     </div>
   </div>
 </section>
@@ -354,9 +482,8 @@
   <div class="wrap">
     <div class="card">
       <div class="ic">🍎</div>
-      <h3>Vous êtes sur iPhone ?</h3>
-      <p>La version iOS n'est pas encore prête — elle arrive plus tard. Dites-moi que vous êtes
-      intéressé, et je vous préviens dès qu'elle est disponible.</p>
+      <h3>Environnement Apple / iOS</h3>
+      <p>La déclinaison pour iPhone est actuellement en cours de développement. Si vous souhaitez être intégré à la prochaine vague de tests sur TestFlight, transmettez-moi simplement une notification d'intérêt.</p>
     </div>
   </div>
 </section>
@@ -364,11 +491,29 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    <div class="brand">SALES<span style="color:var(--gold)">QUEST</span></div>
-    <p>Coach IA propulsé par une IA de dernière génération (Claude, Anthropic).</p>
-    <p class="mini">© 2026 SalesQuest · Bêta privée · Merci de votre aide 🙏</p>
+    <div class="brand">SALES<span>QUEST</span></div>
+    <p>Intelligence Artificielle d'entraînement propulsée par les modèles LLM de dernière génération.</p>
+    <p class="mini">© 2026 SalesQuest · Programme de Bêta Privée · Merci pour votre contribution active 🙏</p>
   </div>
 </footer>
+
+<script>
+function copyMail() {
+  const mail = "salesquestbeta@gmail.com";
+  navigator.clipboard.writeText(mail).then(() => {
+    const btn = document.getElementById('copyBtn');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = "✅ Mail copié !";
+    btn.style.borderColor = "var(--ok)";
+    btn.style.color = "var(--ok)";
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.style.borderColor = "var(--line)";
+      btn.style.color = "var(--text-dim)";
+    }, 1500);
+  });
+}
+</script>
 
 </body>
 </html>
