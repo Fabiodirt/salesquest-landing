@@ -84,7 +84,14 @@
   .feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:transform .15s ease,border-color .15s ease}
   .feat:hover{transform:translateY(-3px);border-color:var(--violet)}
   .feat .ic{font-size:30px;margin-bottom:16px}
-  .feat .ic svg{width:48px;height:48px;display:block}
+  .feat .ic svg{width:48px;height:48px;display:block;transition:transform .35s cubic-bezier(.34,1.56,.64,1)}
+  /* Coach IA — la cible : le viseur tourne légèrement, le point central pulse au survol */
+  .feat:hover .ic svg [data-spin]{transform-origin:24px 24px;animation:spin 4s linear infinite}
+  .feat:hover .ic svg [data-pulse]{transform-origin:24px 24px;animation:pulse 1.2s ease-in-out infinite}
+  /* Arsenal — les épées : léger écartement au survol */
+  .feat:hover .ic svg{transform:scale(1.12)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
   .feat h3{font-size:20px;text-transform:uppercase;margin-bottom:10px}
   .feat p{font-size:14.5px;color:var(--text-dim)}
 
@@ -228,7 +235,7 @@
     </div>
     <div class="feat-grid">
       <div class="feat">
-        <div class="ic"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="19" stroke="var(--gold)" stroke-width="2.5"/><circle cx="24" cy="24" r="11" stroke="var(--gold)" stroke-width="2.5"/><circle cx="24" cy="24" r="3.5" fill="var(--gold)"/><path d="M24 2v8M24 38v8M2 24h8M38 24h8" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/></svg></div>
+        <div class="ic"><svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="24" cy="24" r="19" stroke="var(--gold)" stroke-width="2.5"/><g data-spin><circle cx="24" cy="24" r="11" stroke="var(--gold)" stroke-width="2.5"/><path d="M24 2v8M24 38v8M2 24h8M38 24h8" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/></g><circle data-pulse cx="24" cy="24" r="3.5" fill="var(--gold)"/></svg></div>
         <h3>Le Coach IA</h3>
         <p>Lancez un scénario : l'IA joue votre interlocuteur — prospect difficile, client mécontent,
         collaborateur à recadrer. Vous menez l'échange en conditions réelles, puis vous recevez un
