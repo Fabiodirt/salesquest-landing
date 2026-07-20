@@ -120,6 +120,7 @@
   .install{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .install .warn{display:flex;gap:14px;align-items:flex-start;background:rgba(124,58,237,.10);border:1px solid var(--violet);border-radius:14px;padding:18px 20px;margin:0 auto 40px;max-width:760px}
   .install .warn .ic{font-size:22px;line-height:1}
+  .install .warn .ic svg{width:30px;height:30px;display:block}
   .install .warn p{font-size:15px;color:var(--text-dim);margin:0}
   .install .warn b{color:var(--text)}
   .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
@@ -135,12 +136,14 @@
   .feedback{text-align:center}
   .feedback .card{max-width:680px;margin:0 auto;background:linear-gradient(180deg,rgba(124,58,237,.14),rgba(124,58,237,.04));border:1px solid var(--violet);border-radius:18px;padding:44px 34px}
   .feedback .gift{font-size:34px;margin-bottom:14px}
+  .feedback .gift svg{width:40px;height:40px;display:block;margin:0 auto}
   .feedback h2{font-size:clamp(26px,4vw,36px);text-transform:uppercase;margin-bottom:14px}
   .feedback p{color:var(--text-dim);max-width:52ch;margin:0 auto 28px;font-size:15.5px}
 
   .ios{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
   .ios .card{max-width:620px;margin:0 auto;background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:32px 28px}
   .ios .ic{font-size:28px;margin-bottom:12px}
+  .ios .ic svg{width:34px;height:34px;display:block;margin:0 auto}
   .ios h3{font-size:21px;text-transform:uppercase;margin-bottom:10px}
   .ios p{color:var(--text-dim);font-size:15px;max-width:46ch;margin:0 auto}
 
@@ -174,8 +177,8 @@
     <h1>Le terrain d'entraînement des <em>commerciaux</em></h1>
     <p class="lead">
       SalesQuest transforme les techniques de vente en réflexes. Affrontez <b>une IA qui joue vos
-      scénarios les plus durs</b>, travaillez votre technique chaque jour, et progressez comme un
-      athlète&nbsp;— un peu à la fois.
+      scénarios les plus durs</b>, travaillez votre technique chaque jour, jusqu'à ce qu'elle devienne
+      automatique.
     </p>
     <div class="cta-row">
       <a href="https://drive.google.com/uc?export=download&id=1K9b9-CU96RsSf60EnItHgjyLb6aBKR0s" class="btn btn-primary">Rejoindre la bêta (Android)</a>
@@ -206,11 +209,11 @@
     <h2>Savoir quoi dire ≠ savoir le dire sous pression</h2>
     <p>
       Vous avez lu les livres, suivi les formations, révisé les techniques. Mais entre
-      <b>connaître</b> la bonne réponse et la <b>sortir au bon moment</b>, face à un client qui
-      pousse, il y a un fossé. Et ce fossé, c'est là que les deals se perdent.
+      <b>connaître</b> la bonne réponse et la <b>sortir au bon moment</b>, dans le feu de l'échange,
+      il y a un monde. Et c'est là que les deals se perdent.
     </p>
     <p>
-      Ce qui comble ce fossé, ce n'est pas une formation de plus. C'est la <b>répétition</b>&nbsp;:
+      Ce qui comble cet écart, ce n'est pas une formation de plus. C'est la <b>répétition</b>&nbsp;:
       s'entraîner sur les situations difficiles jusqu'à ce que la bonne réponse devienne un réflexe.
     </p>
     <p class="punch">C'est exactement ce que fait SalesQuest.</p>
@@ -369,7 +372,7 @@
     </div>
 
     <div class="warn">
-      <div class="ic">⚠️</div>
+      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l13 23H3L16 4z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 13v7" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="24" r="1.4" fill="var(--violet-soft)"/></svg></div>
       <p><b>C'est normal qu'Android vous prévienne.</b> L'app n'est pas encore sur le Play Store
       (c'est une bêta privée), donc votre téléphone demande une autorisation avant d'installer. Rien
       d'inquiétant — voici les étapes.</p>
@@ -419,7 +422,7 @@
 <section class="block feedback">
   <div class="wrap">
     <div class="card">
-      <div class="gift">🎁</div>
+      <div class="gift"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="15" width="30" height="20" rx="2" stroke="var(--violet-soft)" stroke-width="2.4"/><path d="M3 15h34v6H3z" stroke="var(--violet-soft)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 15v20" stroke="var(--violet-soft)" stroke-width="2.4"/><path d="M20 15s-6-1-8-4c-1.5-2.2.5-5 3-4 2.5 1 5 8 5 8zM20 15s6-1 8-4c1.5-2.2-.5-5-3-4-2.5 1-5 8-5 8z" stroke="var(--violet-soft)" stroke-width="2.4" stroke-linejoin="round"/></svg></div>
       <h2>Votre avis façonne l'app</h2>
       <p>Vous êtes parmi les premiers à tester SalesQuest. Après quelques jours d'utilisation, un court
       questionnaire (5 min) vous attend — dans l'app via le bouton « Je donne mon avis », ou
@@ -432,7 +435,7 @@
 <section class="block ios">
   <div class="wrap">
     <div class="card">
-      <div class="ic">🍎</div>
+      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="14" height="26" rx="3" stroke="var(--text-dim)" stroke-width="2.2"/><path d="M14 25h4" stroke="var(--text-dim)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
       <h3>Vous êtes sur iPhone ?</h3>
       <p>La version iOS n'est pas encore prête — elle arrive plus tard. Faites-moi signe sur LinkedIn,
       je vous préviens dès qu'elle est disponible.</p>
