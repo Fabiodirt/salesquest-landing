@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+        
+    <!-- Defining the Golden Glow Filter -->
+    <filter id="goldGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <!-- Strong initial blur for a soft outer halo -->
+      <feGaussianBlur stdDeviation="15" result="blur1"/>
+      
+      <!-- Second, sharper blur for a core glow -->
+      <feGaussianBlur stdDeviation="6" result="blur2"/>
+
+      <!-- Color the glow effect (Deep Golden/Orange) -->
+      <feColorMatrix in="blur1" type="matrix" values="
+        0 0 0 0 1.0   
+        0 0 0 0 0.8   
+        0 0 0 0 0.3   
+        0 0 0 0.9 0" result="coloredBlur1"/>
+
+      <feColorMatrix in="blur2" type="matrix" values="
+        0 0 0 0 1.0   
+        0 0 0 0 0.9   
+        0 0 0 0 0.6   
+        0 0 0 1.0 0" result="coloredBlur2"/>
+
+      <!-- Composite the glows onto the original shape -->
+      <feMerge>
+        <feMergeNode in="coloredBlur1"/>
+        <feMergeNode in="coloredBlur2"/>
+        <feMergeNode in="SourceGraphic"/> <!-- Original shape on top -->
+      </feMerge>
+    </filter>
+
+    <!-- Defining the Gold Gradients for the Bolt -->
+    <linearGradient id="boltGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFEB3B"/> <!-- Brightest Yellow-Gold -->
+      <stop offset="50%" stop-color="#FFD700"/> <!-- Pure Gold -->
+      <stop offset="100%" stop-color="#E1AC1E"/> <!-- Deeper Amber-Gold -->
+    </linearGradient>
+
+    <linearGradient id="innerHatchGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+       <stop offset="0%" stop-color="#FF9800" stop-opacity="0.3"/> 
+       <stop offset="100%" stop-color="#FFEB3B" stop-opacity="0.7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Applying the background rectangle -->
+  <use href="#bg"/>
+
+  <!-- Centered container for the icon -->
+  <g transform="translate(256, 256)" filter="url(#goldGlow)">
+    
+    <!-- MAIN GEOMETRIC BOLT (Sharp RPG Arsenal Aesthetic) -->
+    <!-- Formed from multiple angular polygons, centered around the 0,0 origin of the <g> -->
+    <polygon points="
+      -10,-240    /* Top-most central point */
+      70,-220     /* Top far-right */
+      10,-120     /* Upper curve right */
+      110,-90     /* Far right point */
+      -10,30      /* Middle bend right */
+      70,120      /* Lower bend right */
+      -180,240    /* Very bottom point */
+      -30,110     /* Lower bend left */
+      -90,30      /* Middle bend left */
+      -10,-90     /* Upper curve left */
+      -110,-120   /* Far left point */
+      " fill="url(#boltGradient)" stroke="#FFFFFF" stroke-width="2" stroke-opacity="0.5"/>
+
+    <!-- INNER GEOMETRIC DETAILING (RPG Arsenal / Power Lines) -->
+    <!-- Internal cross-hatching and bevel lines following the flow -->
+    <g transform="translate(-15, -15)">
+        <polygon points="-80,-115 -10,-85 -10,25 -80,-5" fill="url(#innerHatchGradient)" stroke="#FFD700" stroke-width="1" stroke-opacity="0.6"/>
+        <polygon points="5,-115 65,-85 65,25 5,-5" fill="url(#innerHatchGradient)" stroke="#FFD700" stroke-width="1" stroke-opacity="0.6"/>
+    </g>
+
+    <!-- FLOATING GEOMETRIC ENERGY ACCENTS (Adding to RPG magic feel) -->
+    <polygon points="-160,-220 -140,-240 -120,-220" fill="#FFEB3B" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.7" filter="url(#goldGlow)" opacity="0.8"/>
+    <polygon points="120,200 140,220 160,200" fill="#FFEB3B" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.7" filter="url(#goldGlow)" opacity="0.8"/>
+    
+    <polygon points="-220,50 -200,60 -190,40" fill="#FFD700" filter="url(#goldGlow)" opacity="0.6"/>
+    <polygon points="190,-60 200,-50 220,-60" fill="#FFD700" filter="url(#goldGlow)" opacity="0.6"/>
+
+    <!-- Final Central Core Highlight -->
+    <polygon points="0,-230 50,-215 5,-120 95,-95 -5,15 65,100 -160,230 -20,105 -75,30 0,-85 -90,-115" fill="#FFFFFF" fill-opacity="0.3" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.8"/>
+  </g>
+</svg>

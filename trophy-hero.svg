@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <filter id="outerGlow">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.25; }
+      50% { opacity: 0.55; }
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0.4); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    @keyframes gemGlow {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; filter: drop-shadow(0 0 6px #c64ee3); }
+    }
+    .trophy-body { animation: floatY 4s ease-in-out infinite; transform-origin: 256px 300px; }
+    .ring1 { animation: pulse 3s ease-in-out infinite; }
+    .ring2 { animation: pulse 3s ease-in-out infinite 0.6s; }
+    .sp1 { animation: sparkle 2s ease-in-out infinite 0s; transform-origin: 60px 80px; }
+    .sp2 { animation: sparkle 2s ease-in-out infinite 0.5s; transform-origin: 450px 100px; }
+    .sp3 { animation: sparkle 2s ease-in-out infinite 1s; transform-origin: 40px 350px; }
+    .sp4 { animation: sparkle 2s ease-in-out infinite 1.5s; transform-origin: 460px 370px; }
+    .sp5 { animation: sparkle 2s ease-in-out infinite 0.8s; transform-origin: 256px 30px; }
+    .gem-center { animation: gemGlow 2.5s ease-in-out infinite; }
+  </style>
+
+  
+
+  <circle class="ring1" cx="256" cy="280" r="200" fill="none" stroke="#7c3aed" stroke-width="1.5" stroke-opacity="0.5"/>
+  <circle class="ring2" cx="256" cy="280" r="160" fill="none" stroke="#a78bfa" stroke-width="1" stroke-opacity="0.3"/>
+
+  <g class="sp1" fill="#fef3c7">
+    <path d="M60 70 L63 80 L60 90 L57 80 Z"/>
+    <path d="M50 80 L60 77 L70 80 L60 83 Z"/>
+  </g>
+  <g class="sp2" fill="#fef3c7">
+    <path d="M450 90 L453 100 L450 110 L447 100 Z"/>
+    <path d="M440 100 L450 97 L460 100 L450 103 Z"/>
+  </g>
+  <g class="sp3" fill="#a78bfa">
+    <path d="M40 340 L43 350 L40 360 L37 350 Z"/>
+    <path d="M30 350 L40 347 L50 350 L40 353 Z"/>
+  </g>
+  <g class="sp4" fill="#a78bfa">
+    <path d="M460 360 L463 370 L460 380 L457 370 Z"/>
+    <path d="M450 370 L460 367 L470 370 L460 373 Z"/>
+  </g>
+  <g class="sp5" fill="#fbbf24">
+    <path d="M256 20 L259 30 L256 40 L253 30 Z"/>
+    <path d="M246 30 L256 27 L266 30 L256 33 Z"/>
+  </g>
+
+  <g class="trophy-body">
+    <polygon points="256,40 340,160 172,160" fill="#3a1d5d" opacity="0.3" />
+    <polygon points="256,472 140,360 372,360" fill="#3a1d5d" opacity="0.2" />
+    <polygon points="160,440 352,440 332,460 180,460" fill="#1a1525" />
+    <polygon points="160,440 352,440 360,420 152,420" fill="#2d2244" />
+    <polygon points="180,420 332,420 312,360 200,360" fill="#3d2c5e" />
+    <polygon points="256,360 312,360 332,420 256,420" fill="#2b1e45" />
+    <polygon points="200,360 256,360 256,420 180,420" fill="#4c3875" />
+    <polygon points="230,360 282,360 292,290 220,290" fill="#d49a17" />
+    <polygon points="256,290 292,290 282,360 256,360" fill="#b27a0f" />
+    <polygon points="256,290 270,290 262,360 256,360" fill="#8c5e07" />
+    <polygon points="230,290 256,290 256,360 230,360" fill="#f5c242" />
+    <polygon points="210,290 302,290 296,270 216,270" fill="#ffd966" />
+    <polygon points="256,270 302,290 296,270" fill="#d49a17" />
+    <polygon points="140,130 372,130 320,270 192,270" fill="#d49a17" />
+    <polygon points="140,130 200,130 220,270 192,270" fill="#f5c242" />
+    <polygon points="200,130 256,130 256,270 220,270" fill="#ffe082" />
+    <polygon points="256,130 312,130 292,270 256,270" fill="#b27a0f" />
+    <polygon points="312,130 372,130 320,270 292,270" fill="#8c5e07" />
+    <polygon points="130,110 382,110 372,130 140,130" fill="#ffd966" />
+    <polygon points="256,110 382,110 372,130 256,130" fill="#d49a17" />
+    <polygon points="140,140 90,160 90,210 160,230 170,210 115,195 115,175 140,165" fill="#f5c242" />
+    <polygon points="140,140 115,165 115,175 140,165" fill="#ffe082" />
+    <polygon points="90,160 90,210 115,195 115,175" fill="#d49a17" />
+    <polygon points="372,140 422,160 422,210 352,230 342,210 397,195 397,175 372,165" fill="#b27a0f" />
+    <polygon points="372,140 397,165 397,175 372,165" fill="#d49a17" />
+    <polygon points="422,160 422,210 397,195 397,175" fill="#8c5e07" />
+    <g class="gem-center">
+      <polygon points="256,160 290,190 256,220 222,190" fill="#4a154b" />
+      <polygon points="256,160 222,190 256,190" fill="#a435b7" />
+      <polygon points="256,160 290,190 256,190" fill="#c64ee3" />
+      <polygon points="222,190 256,220 256,190" fill="#862697" />
+      <polygon points="290,190 256,220 256,190" fill="#661775" />
+      <polygon points="256,175 270,190 256,205 242,190" fill="#e19df2" opacity="0.8" />
+    </g>
+    <g transform="translate(-40, 195) scale(0.6)">
+      <polygon points="256,160 290,190 256,220 222,190" fill="#4a154b" />
+      <polygon points="256,160 222,190 256,190" fill="#c64ee3" />
+      <polygon points="256,160 290,190 256,190" fill="#a435b7" />
+      <polygon points="222,190 256,220 256,190" fill="#a435b7" />
+      <polygon points="290,190 256,220 256,190" fill="#661775" />
+    </g>
+    <g transform="translate(40, 195) scale(0.6)">
+      <polygon points="256,160 290,190 256,220 222,190" fill="#4a154b" />
+      <polygon points="256,160 222,190 256,190" fill="#a435b7" />
+      <polygon points="256,160 290,190 256,190" fill="#661775" />
+      <polygon points="222,190 256,220 256,190" fill="#661775" />
+      <polygon points="290,190 256,220 256,190" fill="#3d0c3e" />
+    </g>
+    <polygon points="220,110 256,70 292,110" fill="#ffd966" />
+    <polygon points="256,70 292,110 256,110" fill="#d49a17" />
+    <polygon points="160,110 180,85 200,110" fill="#f5c242" />
+    <polygon points="312,110 332,85 352,110" fill="#b27a0f" />
+    <polygon points="135,75 140,60 145,75 160,80 145,85 140,100 135,85 120,80" fill="#ffffff" opacity="0.9" />
+    <polygon points="365,155 370,140 375,155 390,160 375,165 370,180 365,165 350,160" fill="#ffffff" opacity="0.9" />
+  </g>
+</svg>

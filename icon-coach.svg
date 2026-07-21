@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Dark transparent background gradient -->
+    <radialGradient id="darkBg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0a001a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.95"/>
+    </radialGradient>
+
+    <!-- Core Red Glow -->
+    <filter id="red-core-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur1"/>
+      <feGaussianBlur stdDeviation="15" result="blur2"/>
+      <feColorMatrix in="blur1" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.0 0" result="coloredBlur1"/>
+      <feColorMatrix in="blur2" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.8 0" result="coloredBlur2"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur2"/>
+        <feMergeNode in="coloredBlur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Accent Red Glow for geometric lines -->
+    <filter id="accent-red-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 0.3 0 0 0  0 0 0.3 0 0  0 0 0 0.7 0" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Shading Gradient for angular facets -->
+    <linearGradient id="body-shade" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2a0005"/>
+      <stop offset="100%" stop-color="#140003"/>
+    </linearGradient>
+
+    <linearGradient id="rim-light" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ff9999" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#ff3333" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Dark Transparent Background -->
+  
+  <!-- OUTER GEOMETRIC INTERFACE RING (RPG HUD STYLE) -->
+  <g transform="translate(256, 256)" opacity="0.3">
+    <circle r="230" fill="none" stroke="#4a000d" stroke-width="3" stroke-dasharray="20 15 5 15"/>
+    <polygon points="190,-110 200,-100 190,-90 180,-100" fill="#cc001a"/>
+    <polygon points="-190,-110 -180,-100 -190,-90 -200,-100" fill="#cc001a"/>
+  </g>
+
+  <!-- MAIN ROBOT AI COACH ICON STRUCTURE -->
+  <g id="robot-icon" transform="translate(0, 10)">
+    
+    <!-- Deep Red Background Glow behind the robot -->
+    <polygon points="256,90 380,180 360,400 152,400 132,180" fill="#4d000a" filter="url(#accent-red-glow)" opacity="0.5"/>
+
+    <!-- Geometric Angular Base -->
+    <polygon points="130,400 256,430 382,400 360,415 256,438 152,415" fill="#0d0001"/>
+    <polygon points="145,395 256,418 367,395 382,400 256,430 130,400" fill="url(#body-shade)" opacity="0.8"/>
+
+    <!-- Robot Body/Torso -->
+    <polygon points="140,220 256,250 256,400 140,380" fill="url(#body-shade)"/>
+    <polygon points="372,220 256,250 256,400 372,380" fill="url(#body-shade)" opacity="0.9"/>
+    
+    <!-- Body Internal Facets/Panels -->
+    <polygon points="160,233 240,254 240,385 160,368" fill="#1b0003" opacity="0.6"/>
+    <polygon points="352,233 272,254 272,385 352,368" fill="#0d0001" opacity="0.6"/>
+
+    <!-- Angular Robot Head/Cowl -->
+    <!-- Under-shadow -->
+    <polygon points="256,105 400,210 380,230 256,145 132,230 112,210" fill="#050001"/>
+    <!-- Left Plate -->
+    <polygon points="256,110 120,215 135,235 256,150" fill="url(#rim-light)" opacity="0.3"/>
+    <!-- Right Plate -->
+    <polygon points="256,110 392,215 377,235 256,150" fill="#660010"/>
+
+    <!-- HIGH-GLOW CENTRAL ENERGY CORE (The "Eye/AI") -->
+    <g filter="url(#red-core-glow)">
+      <!-- Central Diamond Window -->
+      <polygon points="256,200 300,245 256,290 212,245" fill="#110003" stroke="#ff334d" stroke-width="3"/>
+      <!-- Inner Glowing Core -->
+      <polygon points="256,215 280,245 256,275 232,245" fill="#ff667f"/>
+      <!-- Internal Angular Accents -->
+      <line x1="256" y1="160" x2="256" y2="200" stroke="#ffcccc" stroke-width="1"/>
+      <line x1="256" y1="290" x2="256" y2="330" stroke="#ffcccc" stroke-width="1"/>
+    </g>
+
+    <!-- ANGULAR BASE PORTAL / MOUTH AREA -->
+    <!-- Frame -->
+    <polygon points="220,400 220,330 256,310 292,330 292,400" fill="#090001" stroke="#cc001a" stroke-width="2"/>
+    <!-- Glowing Slit -->
+    <g filter="url(#red-core-glow)">
+      <polygon points="250,400 250,323 256,318 262,323 262,400" fill="#ff99aa"/>
+    </g>
+
+    <!-- SHARP LINE RIM LIGHTING & GEOMETRIC ACCENTS -->
+    <!-- Head Edges -->
+    <line x1="256" y1="110" x2="120" y2="215" stroke="#ffb3cc" stroke-width="2.5" stroke-linecap="round" filter="url(#accent-red-glow)"/>
+    <line x1="256" y1="110" x2="392" y2="215" stroke="#ffb3cc" stroke-width="2.5" stroke-linecap="round" filter="url(#accent-red-glow)"/>
+    
+    <!-- Body Edges -->
+    <line x1="256" y1="250" x2="256" y2="400" stroke="#cc001a" stroke-width="1.5" opacity="0.6"/>
+    <line x1="140" y1="220" x2="140" y2="380" stroke="#ff667f" stroke-width="1.2" opacity="0.8"/>
+    <line x1="372" y1="220" x2="372" y2="380" stroke="#ff667f" stroke-width="1.2" opacity="0.8"/>
+
+    <!-- Lower Body Geometric Details -->
+    <g stroke="#ff334d" stroke-width="1" opacity="0.7">
+        <line x1="170" y1="365" x2="240" y2="380"/>
+        <line x1="342" y1="365" x2="272" y2="380"/>
+        <line x1="200" y1="350" x2="240" y2="360"/>
+        <line x1="312" y1="350" x2="272" y2="360"/>
+    </g>
+
+    <!-- Floating Energy Shards/Particles -->
+    <g filter="url(#accent-red-glow)">
+      <!-- Left Shard -->
+      <polygon points="90,260 98,252 92,268 84,275" fill="#cc001a"/>
+      <!-- Right Shard -->
+      <polygon points="422,260 414,252 420,268 428,275" fill="#cc001a"/>
+      <!-- Top Apex -->
+      <polygon points="256,70 260,78 256,84 252,78" fill="#ffb3cc"/>
+    </g>
+  </g>
+</svg>
