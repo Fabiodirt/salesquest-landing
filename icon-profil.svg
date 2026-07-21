@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Deep Dark RPG Background with Subtle Green Undertone -->
+    <radialGradient id="rpg-bg" cx="50%" cy="50%" r="75%">
+      <stop offset="0%" stop-color="#021205" stop-opacity="0.95"/>
+      <stop offset="65%" stop-color="#010502" stop-opacity="0.98"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="1"/>
+    </radialGradient>
+
+    <!-- Radiating Emerald Core Glow -->
+    <filter id="emerald-glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur1"/>
+      <feGaussianBlur stdDeviation="22" result="blur2"/>
+      <feColorMatrix type="matrix" values="
+        0 0 0 0 0.1
+        0 1 0 0 0.8
+        0 0 1 0 0.2
+        0 0 0 1 0" in="blur2" result="coloredGlow"/>
+      <feMerge>
+        <feMergeNode in="coloredGlow"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Sharp Rim Light Filter -->
+    <filter id="crisp-highlight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Obsidian & Jade Materials for Facets -->
+    <linearGradient id="obsidian-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#122b17"/>
+      <stop offset="50%" stop-color="#08140b"/>
+      <stop offset="100%" stop-color="#020503"/>
+    </linearGradient>
+
+    <linearGradient id="obsidian-right" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0b1f10"/>
+      <stop offset="50%" stop-color="#040d07"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+
+    <linearGradient id="jade-bright" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3ffb4"/>
+      <stop offset="30%" stop-color="#3aff6b"/>
+      <stop offset="100%" stop-color="#00aa2b"/>
+    </linearGradient>
+
+    <linearGradient id="gold-tier-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#33ff77"/>
+      <stop offset="100%" stop-color="#00330b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Base Profile Frame Base -->
+  
+  <!-- HUD Interface Alignment Framing (Square/Diamond Accents) -->
+  <g opacity="0.25" filter="url(#emerald-glow)">
+    <polygon points="256,16 496,256 256,496 16,256" fill="none" stroke="#1f662e" stroke-width="2"/>
+    <rect x="35" y="35" width="442" height="442" fill="none" stroke="#268039" stroke-width="1" stroke-dasharray="30 15"/>
+    <circle cx="256" cy="256" r="225" fill="none" stroke="#1f662e" stroke-width="1.5"/>
+  </g>
+
+  <!-- TROPHY STRUCTURE (Angular Profile Art) -->
+  <g transform="translate(0, 8)">
+    
+    <!-- Ambient Green Backdrop Silhouette -->
+    <polygon points="256,50 390,140 350,330 290,330 290,390 350,420 162,420 222,390 222,330 162,330 122,140" fill="#052e0f" filter="url(#emerald-glow)" opacity="0.6"/>
+
+    <!-- Pedestal / Base Structure -->
+    <!-- Lower Plinth -->
+    <polygon points="140,440 256,465 372,440 340,460 256,475 172,460" fill="#010a03"/>
+    <polygon points="155,430 256,452 357,430 372,440 256,465 140,440" fill="url(#obsidian-right)"/>
+    <!-- Upper Plinth Segments -->
+    <polygon points="180,410 256,430 332,410 350,432 256,454 162,432" fill="url(#obsidian-left)"/>
+    <polygon points="210,380 256,395 302,380 320,412 256,432 192,412" fill="url(#obsidian-right)"/>
+    <!-- Stem Column -->
+    <polygon points="236,330 256,335 276,330 286,382 256,395 226,382" fill="url(#obsidian-left)"/>
+
+    <!-- Angular Crest Handles (Left and Right) -->
+    <!-- Left Wing/Handle -->
+    <polygon points="170,140 215,185 200,250 145,260 120,185" fill="url(#obsidian-left)" stroke="#1a4d24" stroke-width="1"/>
+    <polygon points="145,260 115,220 85,230 105,290 160,285" fill="url(#obsidian-left)"/>
+    <!-- Right Wing/Handle -->
+    <polygon points="342,140 297,185 312,250 367,260 392,185" fill="url(#obsidian-right)" stroke="#1a4d24" stroke-width="1"/>
+    <polygon points="367,260 397,220 427,230 407,290 352,285" fill="url(#obsidian-right)"/>
+
+    <!-- Main Trophy Bowl / Chalice Facets -->
+    <polygon points="170,140 256,170 256,330 215,330" fill="url(#obsidian-left)"/>
+    <polygon points="342,140 256,170 256,330 297,330" fill="url(#obsidian-right)"/>
+    
+    <!-- Outer Flared Rim Plates -->
+    <polygon points="170,140 256,170 220,110 150,110" fill="url(#obsidian-left)"/>
+    <polygon points="342,140 256,170 292,110 362,110" fill="url(#obsidian-right)"/>
+
+    <!-- Internal Decorative Panel Inserts (Chalice Depth) -->
+    <polygon points="195,160 245,178 245,310 225,310" fill="#051709" opacity="0.7"/>
+    <polygon points="317,160 267,178 267,310 287,310" fill="#020a04" opacity="0.7"/>
+
+    <!-- THE EMERALD CORE MATRIX (High-Glow Achievement Core) -->
+    <g filter="url(#emerald-glow)">
+      <!-- Central Floating Power Diamond -->
+      <polygon points="256,180 295,225 256,270 217,225" fill="#010f04" stroke="url(#jade-bright)" stroke-width="2.5"/>
+      <!-- Inner Radiant Shard -->
+      <polygon points="256,195 277,225 256,255 235,225" fill="url(#jade-bright)"/>
+      <!-- Linear Energy Vectors -->
+      <line x1="256" y1="110" x2="256" y2="180" stroke="#b3ffd0" stroke-width="2" filter="url(#crisp-highlight)"/>
+      <line x1="256" y1="270" x2="256" y2="330" stroke="#b3ffd0" stroke-width="1.5"/>
+      <line x1="170" y1="140" x2="217" y2="225" stroke="#3aff6b" stroke-width="1" opacity="0.4"/>
+      <line x1="342" y1="140" x2="295" y2="225" stroke="#3aff6b" stroke-width="1" opacity="0.4"/>
+    </g>
+
+    <!-- CRITICAL GEOMETRIC RIMS & LIGHTING LINES -->
+    <!-- Main Upper V-Edge Shines -->
+    <line x1="256" y1="170" x2="150" y2="110" stroke="url(#jade-bright)" stroke-width="2" filter="url(#crisp-highlight)"/>
+    <line x1="256" y1="170" x2="362" y2="110" stroke="url(#jade-bright)" stroke-width="2" filter="url(#crisp-highlight)"/>
+    
+    <!-- Vertical Center Split Line -->
+    <line x1="256" y1="170" x2="256" y2="330" stroke="#206631" stroke-width="1.5" opacity="0.8"/>
+
+    <!-- Outer Edge Boundary Accent Highlights -->
+    <line x1="170" y1="140" x2="215" y2="330" stroke="#3aff6b" stroke-width="1" opacity="0.6"/>
+    <line x1="342" y1="140" x2="297" y2="330" stroke="#3aff6b" stroke-width="1" opacity="0.6"/>
+    
+    <!-- Base Highlight Tiers -->
+    <polygon points="210,380 256,395 302,380" fill="none" stroke="#52ff85" stroke-width="1.5" opacity="0.8"/>
+    <polygon points="180,410 256,430 332,410" fill="none" stroke="#269943" stroke-width="1.5"/>
+
+    <!-- Floating Fantasy Essence Shards -->
+    <g filter="url(#emerald-glow)">
+      <!-- Top Crest Star Shard -->
+      <polygon points="256,70 262,82 256,92 250,82" fill="#e0ffe7"/>
+      <!-- Left Outlier Shards -->
+      <polygon points="75,170 83,160 81,175 70,180" fill="#3aff6b"/>
+      <polygon points="95,310 100,295 106,308 102,318" fill="url(#gold-tier-accent)"/>
+      <!-- Right Outlier Shards -->
+      <polygon points="437,170 429,160 431,175 442,180" fill="#3aff6b"/>
+      <polygon points="417,310 412,295 406,308 410,318" fill="url(#gold-tier-accent)"/>
+    </g>
+  </g>
+</svg>
