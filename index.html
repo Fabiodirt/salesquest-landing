@@ -135,6 +135,8 @@
   .install .dl-center{text-align:center;margin:40px 0 6px}
   .install .help{text-align:center;font-size:14px;color:var(--text-faint);margin-top:22px}
   .install .help b{color:var(--gold)}
+  .install-platform{font-size:26px;text-transform:uppercase;color:var(--gold);text-align:center;margin:56px 0 24px;padding-top:24px;border-top:1px solid var(--line)}
+  .install-platform:first-of-type{margin-top:8px;padding-top:0;border-top:none}
 
   .feedback{text-align:center}
   .feedback .card{max-width:680px;margin:0 auto;background:linear-gradient(180deg,rgba(124,58,237,.14),rgba(124,58,237,.04));border:1px solid var(--violet);border-radius:18px;padding:44px 34px}
@@ -187,9 +189,9 @@
     </p>
     <div class="cta-row">
       <a href="https://github.com/Fabiodirt/salesquest-landing/releases/latest/download/salesquest.apk" class="btn btn-primary">Rejoindre la bêta (Android)</a>
-      <a href="#install" class="btn btn-ghost">Comment ça marche →</a>
+      <a href="https://salesquest-ten.vercel.app" target="_blank" rel="noopener" class="btn btn-ghost">Tester sur iPhone</a>
     </div>
-    <p class="platform-note"><b>Bêta gratuite</b> · Android · Application mobile · Version iPhone à venir</p>
+    <p class="platform-note"><b>Bêta gratuite</b> · Android · iPhone (via navigateur) · Application mobile</p>
   </div>
 </section>
 
@@ -380,8 +382,11 @@
   <div class="wrap">
     <div class="section-head">
       <div class="eyebrow">Installation — 3 minutes</div>
-      <h2>Installer l'app sur Android</h2>
+      <h2>Installer l'app</h2>
+      <p>Choisissez votre plateforme ci-dessous.</p>
     </div>
+
+    <h3 class="install-platform" id="android">Sur Android</h3>
 
     <div class="warn">
       <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l13 23H3L16 4z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 13v7" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="24" r="1.4" fill="var(--violet-soft)"/></svg></div>
@@ -427,6 +432,58 @@
     <div class="dl-center">
       <a href="https://github.com/Fabiodirt/salesquest-landing/releases/latest/download/salesquest.apk" class="btn btn-primary">Télécharger et rejoindre la bêta</a>
     </div>
+
+    <h3 class="install-platform" id="iphone">Sur iPhone</h3>
+
+    <div class="warn">
+      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="14" height="26" rx="3" stroke="var(--violet-soft)" stroke-width="2.2"/><path d="M14 25h4" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+      <p>C'est un <b>accès anticipé via navigateur</b>, en attendant l'app native sur l'App&nbsp;Store.
+      Une fois ajoutée à l'écran d'accueil, elle se comporte comme une vraie app.</p>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="n">1</div>
+        <div class="body">
+          <h4>Ouvrez le lien</h4>
+          <p>Appuyez sur « Tester sur iPhone » — ça ouvre SalesQuest dans Safari.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">2</div>
+        <div class="body">
+          <h4>Ajoutez à l'écran d'accueil</h4>
+          <p>Appuyez sur l'icône de partage (le carré avec la flèche vers le haut, en bas de l'écran
+          Safari), puis sur <b>« Sur l'écran d'accueil »</b>.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">3</div>
+        <div class="body">
+          <h4>Lancez l'app</h4>
+          <p>Une icône SalesQuest apparaît sur votre écran d'accueil. Ouvrez-la comme n'importe quelle
+          app — plein écran, sans barre de navigateur.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="n">4</div>
+        <div class="body">
+          <h4>Créez votre compte et choisissez votre profil</h4>
+          <p>Créez votre compte, puis choisissez votre profil (Chasseur, Éleveur ou Manager).</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn" style="border-color:var(--gold);background:rgba(255,204,0,.08)">
+      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l13 23H3L16 4z" stroke="var(--gold)" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 13v7" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="24" r="1.4" fill="var(--gold)"/></svg></div>
+      <p><b>Important :</b> ouvrez bien ce lien depuis <b>Safari</b> (pas Chrome ni une app tierce) pour
+      que « Ajouter à l'écran d'accueil » fonctionne.</p>
+    </div>
+
+    <div class="dl-center">
+      <a href="https://salesquest-ten.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Tester sur iPhone</a>
+    </div>
+
     <p class="help">Un souci à une étape ? Écrivez-moi à <a href="mailto:salesquestbeta@gmail.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)">salesquestbeta@gmail.com</a> ou sur <a href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)">LinkedIn</a> — je vous débloque rapidement.</p>
   </div>
 </section>
@@ -440,19 +497,6 @@
       questionnaire (5 min) vous attend — dans l'app via le bouton « Je donne mon avis », ou
       directement ici. En remerciement : <b>30 jours de Premium offerts</b>.</p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCkD-g_PISBB4GQF-LWm874grGPuRAkwk6_Ao8WazUUQ0SjQ/viewform" class="btn btn-primary">Donner mon avis (5 min)</a>
-    </div>
-  </div>
-</section>
-
-<section class="block ios">
-  <div class="wrap">
-    <div class="card">
-      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="14" height="26" rx="3" stroke="var(--text-dim)" stroke-width="2.2"/><path d="M14 25h4" stroke="var(--text-dim)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-      <h3>Vous êtes sur iPhone ?</h3>
-      <p>La version iOS n'est pas encore prête — elle arrive plus tard. Écrivez-moi à
-      <a href="mailto:salesquestbeta@gmail.com" style="color:var(--violet-soft);text-decoration:none">salesquestbeta@gmail.com</a>
-      ou sur <a href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener" style="color:var(--violet-soft);text-decoration:none">LinkedIn</a>,
-      je vous préviens dès qu'elle est disponible.</p>
     </div>
   </div>
 </section>
