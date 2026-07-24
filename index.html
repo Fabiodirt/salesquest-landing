@@ -133,6 +133,10 @@
   .step .body p{font-size:14.5px;color:var(--text-dim);margin:0}
   .step .body .hint{color:var(--text-faint);font-size:13px;margin-top:6px}
   .install .dl-center{text-align:center;margin:40px 0 6px}
+  .version-note{font-size:13px;color:var(--text-faint);margin-top:12px}
+  .version-note b{color:var(--text-dim);font-weight:600}
+  .version-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)}
+  .version-note a:hover{border-bottom-color:var(--gold)}
   .install .help{text-align:center;font-size:14px;color:var(--text-faint);margin-top:22px}
   .install .help b{color:var(--gold)}
   .install-platform{font-size:26px;text-transform:uppercase;color:var(--gold);text-align:center;margin:56px 0 24px;padding-top:24px;border-top:1px solid var(--line)}
@@ -431,6 +435,8 @@
 
     <div class="dl-center">
       <a href="https://github.com/Fabiodirt/salesquest-landing/releases/latest/download/salesquest.apk" class="btn btn-primary">Télécharger et rejoindre la bêta</a>
+      <p class="version-note">Dernière version&nbsp;: <b id="app-version">v0.9.4</b>
+        · <a href="https://github.com/Fabiodirt/salesquest-landing/releases" target="_blank" rel="noopener">Voir les nouveautés →</a></p>
     </div>
 
     <h3 class="install-platform" id="iphone">Sur iPhone</h3>
@@ -508,6 +514,18 @@
     <p class="mini">Créée par <a href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener">Fabien Goussu</a> · © 2026 SalesQuest · Bêta privée</p>
   </div>
 </footer>
+
+<script>
+  // Récupère le tag de la dernière release GitHub, pour que la version affichée
+  // reste juste sans avoir à modifier cette page à chaque publication.
+  // En cas d'échec (hors ligne, quota API), la valeur écrite en dur reste affichée.
+  fetch('https://api.github.com/repos/Fabiodirt/salesquest-landing/releases/latest')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      if (d && d.tag_name) document.getElementById('app-version').textContent = d.tag_name;
+    })
+    .catch(function () {});
+</script>
 
 </body>
 </html>
