@@ -3,530 +3,584 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SalesQuest — Le terrain d'entraînement des commerciaux</title>
-<meta name="description" content="La première app mobile pour vous entraîner à vendre : affrontez vos scénarios les plus durs, menez l'échange, recevez un débrief sur votre performance. Créée par Fabien Goussu, auteur et KAM, 20 ans de terrain.">
-<meta property="og:title" content="SalesQuest — Le terrain d'entraînement des commerciaux">
-<meta property="og:description" content="Affrontez vos scénarios les plus durs, menez l'échange, recevez un débrief sur votre performance. Sans risque, autant de fois que vous voulez.">
-<meta property="og:type" content="website">
+<title>SalesQuest — L'entraînement commercial que vos équipes utilisent, vraiment</title>
+<meta name="description" content="Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...) intégrés dès le premier jour. Suivi en temps réel pour le manager.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0a0710;
-    --ink-2:#120c1c;
-    --card:#181022;
-    --card-2:#1e1430;
-    --line:#2a1e3d;
-    --gold:#fbbf24;
-    --gold-deep:#f59e0b;
-    --violet:#7c3aed;
-    --violet-soft:#a78bfa;
-    --text:#f0ecf6;
-    --text-dim:#a99fc0;
-    --text-faint:#7a7091;
-    --ok:#55bbab;
+    --navy: #003A54;
+    --navy-deep: #00263A;
+    --orange: #F18700;
+    --orange-dark: #D97600;
+    --bg: #FFFFFF;
+    --bg-soft: #F3F6F7;
+    --text: #12242F;
+    --text-soft: #4E6672;
+    --line: #E2E8EA;
+    --white: #FFFFFF;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6;overflow-x:hidden}
-  h1,h2,h3,.display{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.06}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  .eyebrow{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--gold)}
-  a{color:inherit}
 
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(10,7,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-  .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em}
-  .brand span{color:var(--gold)}
-  .badge-beta{font-family:'Oswald',sans-serif;font-weight:600;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--violet-soft);border:1px solid var(--violet);border-radius:999px;padding:5px 12px}
+  *{ box-sizing: border-box; margin:0; padding:0; }
 
-  .hero{position:relative;padding:80px 0 56px;text-align:center;overflow:hidden}
-  .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(680px 340px at 50% -10%, rgba(124,58,237,.30), transparent 70%),radial-gradient(520px 300px at 50% 120%, rgba(251,191,36,.10), transparent 70%);pointer-events:none}
-  .hero .inner{position:relative}
-  .hero .eyebrow{margin-bottom:20px}
-  .hero h1{font-size:clamp(38px,7vw,72px);text-transform:uppercase;margin:0 auto 22px;max-width:16ch}
-  .hero h1 em{font-style:normal;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-  .hero p.lead{font-size:clamp(16px,2.2vw,20px);color:var(--text-dim);max-width:60ch;margin:0 auto 36px}
-  .hero p.lead b{color:var(--text)}
-  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:15px;text-decoration:none;padding:16px 30px;border-radius:14px;border:1px solid transparent;transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;cursor:pointer}
-  .btn-primary{color:#1a1205;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);box-shadow:0 10px 34px rgba(251,191,36,.32),0 0 0 1px rgba(251,191,36,.4) inset}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(251,191,36,.44)}
-  .btn-ghost{color:var(--text);border-color:var(--line);background:var(--card)}
-  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--violet)}
-  .hero .platform-note{margin-top:18px;font-size:13px;color:var(--text-faint)}
-  .hero .platform-note b{color:var(--text-dim)}
+  html{ scroll-behavior: smooth; }
 
-  .author{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
-  .author .wrap{display:flex;gap:26px;align-items:center;padding:30px 24px;flex-wrap:wrap;justify-content:center}
-  .author .who{max-width:680px}
-  .author .who .tag{font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-size:11px;color:var(--gold);margin-bottom:8px}
-  .author .who h3{font-size:22px;margin-bottom:8px;text-transform:none}
-  .author .who p{font-size:15px;color:var(--text-dim)}
-  .author .who p .books{color:var(--text);font-style:italic}
-  .author .who a.li{display:inline-block;margin-top:10px;font-size:13px;color:var(--violet-soft);text-decoration:none;border-bottom:1px solid var(--line)}
-  .author .who a.li:hover{border-color:var(--violet-soft)}
-
-  section.block{padding:64px 0}
-  .section-head{text-align:center;margin-bottom:44px}
-  .section-head h2{font-size:clamp(28px,4.4vw,42px);text-transform:uppercase;margin-top:12px}
-  .section-head p{color:var(--text-dim);max-width:56ch;margin:14px auto 0;font-size:16px}
-
-  .problem{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .problem .wrap{max-width:760px;text-align:center}
-  .problem h2{font-size:clamp(26px,4vw,38px);text-transform:uppercase;margin-bottom:22px}
-  .problem p{font-size:17px;color:var(--text-dim);margin-bottom:16px}
-  .problem p b{color:var(--text)}
-  .problem .punch{font-family:'Oswald',sans-serif;font-weight:600;font-size:clamp(20px,3vw,26px);color:var(--gold);margin-top:10px;text-transform:none;line-height:1.3}
-
-  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .feat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:transform .15s ease,border-color .15s ease}
-  .feat:hover{transform:translateY(-3px);border-color:var(--violet)}
-  .feat .ic{font-size:30px;margin-bottom:16px}
-  .feat .ic svg{width:48px;height:48px;display:block}
-  .feat .ic img{width:76px;height:76px;object-fit:contain;display:block;transition:transform .25s ease}
-  .feat:hover .ic img{transform:scale(1.08)}
-  .feat h3{font-size:20px;text-transform:uppercase;margin-bottom:10px}
-  .feat p{font-size:14.5px;color:var(--text-dim)}
-
-  .showcase{text-align:center}
-  .trophy-row{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;align-items:center;max-width:820px;margin:0 auto}
-  .trophy-row img{width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(124,58,237,.28));transition:transform .25s ease}
-  .trophy-row img:hover{transform:translateY(-6px) scale(1.08)}
-  @media(max-width:760px){.trophy-row img{width:84px;height:84px}}
-
-  .screens{text-align:center}
-  .screens-row{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:8px}
-  .phone{margin:0;max-width:250px;flex:0 1 250px}
-  .phone img{width:100%;border-radius:26px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);display:block}
-  .phone figcaption{margin-top:16px;font-size:14px;color:var(--text-dim);max-width:280px;margin-left:auto;margin-right:auto}
-  @media(max-width:760px){.phone{max-width:260px}.screens-row{gap:36px}}
-
-  .profiles{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .prof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .prof{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 22px;text-align:center;transition:transform .2s ease,border-color .2s ease}
-  .prof:hover{transform:translateY(-6px);border-color:var(--violet)}
-  .prof .ic{font-size:28px;margin-bottom:12px}
-  .prof .prof-ic{width:72px;height:72px;object-fit:contain;margin:0 auto 14px;display:block;filter:drop-shadow(0 4px 12px rgba(0,0,0,.4))}
-  .prof h3{font-size:19px;text-transform:uppercase;margin-bottom:8px;color:var(--gold)}
-  .prof p{font-size:14px;color:var(--text-dim)}
-
-  .diff .wrap{max-width:820px}
-  .diff-list{display:flex;flex-direction:column;gap:14px}
-  .diff-row{display:flex;gap:16px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
-  .diff-row .ic{flex:0 0 auto;font-size:22px;line-height:1.2}
-  .diff-row .ic svg{width:32px;height:32px;display:block}
-  .diff-row .txt h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;margin-bottom:4px}
-  .diff-row .txt p{font-size:14.5px;color:var(--text-dim)}
-
-  .install{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .install .warn{display:flex;gap:14px;align-items:flex-start;background:rgba(124,58,237,.10);border:1px solid var(--violet);border-radius:14px;padding:18px 20px;margin:0 auto 40px;max-width:760px}
-  .install .warn .ic{font-size:22px;line-height:1}
-  .install .warn .ic svg{width:30px;height:30px;display:block}
-  .install .warn p{font-size:15px;color:var(--text-dim);margin:0}
-  .install .warn b{color:var(--text)}
-  .steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-  .step{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
-  .step .n{flex:0 0 auto;width:38px;height:38px;border-radius:10px;display:grid;place-items:center;font-family:'Oswald',sans-serif;font-weight:700;font-size:17px;color:#1a1205;background:linear-gradient(180deg,var(--gold),var(--gold-deep))}
-  .step .body h4{font-family:'Oswald',sans-serif;font-weight:600;font-size:17px;margin-bottom:4px;letter-spacing:.01em}
-  .step .body p{font-size:14.5px;color:var(--text-dim);margin:0}
-  .step .body .hint{color:var(--text-faint);font-size:13px;margin-top:6px}
-  .install .dl-center{text-align:center;margin:40px 0 6px}
-  .version-note{font-size:13px;color:var(--text-faint);margin-top:10px;text-align:center}
-  .version-note b{color:var(--text-dim);font-weight:600}
-  .version-note a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)}
-  .version-note a:hover{border-bottom-color:var(--gold)}
-  .install .help{text-align:center;font-size:14px;color:var(--text-faint);margin-top:22px}
-  .install .help b{color:var(--gold)}
-  .install-platform{font-size:26px;text-transform:uppercase;color:var(--gold);text-align:center;margin:56px 0 24px;padding-top:24px;border-top:1px solid var(--line)}
-  .install-platform:first-of-type{margin-top:8px;padding-top:0;border-top:none}
-
-  .feedback{text-align:center}
-  .feedback .card{max-width:680px;margin:0 auto;background:linear-gradient(180deg,rgba(124,58,237,.14),rgba(124,58,237,.04));border:1px solid var(--violet);border-radius:18px;padding:44px 34px}
-  .feedback .gift{font-size:34px;margin-bottom:14px}
-  .feedback .gift svg{width:40px;height:40px;display:block;margin:0 auto;transform-origin:50% 60%;transition:transform .3s ease}
-  .feedback .card:hover .gift svg{animation:giftWiggle .6s ease-in-out}
-  @keyframes giftWiggle{0%,100%{transform:rotate(0)}20%{transform:rotate(-9deg)}40%{transform:rotate(7deg)}60%{transform:rotate(-5deg)}80%{transform:rotate(3deg)}}
-  .feedback h2{font-size:clamp(26px,4vw,36px);text-transform:uppercase;margin-bottom:14px}
-  .feedback p{color:var(--text-dim);max-width:52ch;margin:0 auto 28px;font-size:15.5px}
-
-  .ios{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}
-  .ios .card{max-width:620px;margin:0 auto;background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:32px 28px}
-  .ios .ic{font-size:28px;margin-bottom:12px}
-  .ios .ic svg{width:34px;height:34px;display:block;margin:0 auto}
-  .ios h3{font-size:21px;text-transform:uppercase;margin-bottom:10px}
-  .ios p{color:var(--text-dim);font-size:15px;max-width:46ch;margin:0 auto}
-
-  footer{padding:36px 0;text-align:center}
-  footer .brand{font-size:16px;margin-bottom:8px}
-  footer p{font-size:13px;color:var(--text-faint)}
-  footer .mini{margin-top:8px;font-size:12px;color:var(--text-faint)}
-  footer a{color:var(--violet-soft);text-decoration:none}
-
-  @media(max-width:760px){
-    .feat-grid,.prof-grid{grid-template-columns:1fr}
-    .hero{padding:56px 0 44px}
-    section.block{padding:50px 0}
-    .author .wrap{flex-direction:column;text-align:center}
+  body{
+    font-family: 'Archivo', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
   }
-  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+
+  img{ max-width:100%; display:block; }
+
+  a{ color: inherit; text-decoration: none; }
+
+  .wrap{
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  h1,h2,h3{ font-weight: 800; letter-spacing: -0.01em; }
+
+  /* ---------- NAV ---------- */
+  .nav{
+    background: var(--navy);
+    padding: 20px 0;
+  }
+  .nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+  }
+  .logo{
+    font-weight: 900;
+    font-size: 1.25rem;
+    color: var(--white);
+    letter-spacing: -0.02em;
+  }
+  .logo span{ color: var(--orange); }
+  .nav-cta{
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 22px;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .nav-cta:hover{ background: var(--orange-dark); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background: var(--navy);
+    color: var(--white);
+    padding: 76px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before{
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(45% 55% at 20% 25%, rgba(241,135,0,0.22), transparent 60%),
+      radial-gradient(55% 65% at 85% 75%, rgba(0,120,160,0.28), transparent 60%),
+      radial-gradient(40% 50% at 60% 15%, rgba(241,135,0,0.12), transparent 55%),
+      linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    background-size: 180% 180%, 180% 180%, 180% 180%, 100% 100%;
+    animation: mesh-drift 22s ease-in-out infinite;
+    z-index: 0;
+  }
+  .hero .wrap{ position: relative; z-index: 1; }
+
+  .particles{
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .particle{
+    position: absolute;
+    bottom: -20px;
+    border-radius: 50%;
+    background: var(--orange);
+    animation: particle-rise linear infinite;
+  }
+  .particle.alt{ background: #7FBFDD; }
+  @keyframes particle-rise{
+    0%{ transform: translate(0, 0); opacity: 0; }
+    12%{ opacity: 0.7; }
+    88%{ opacity: 0.55; }
+    100%{ transform: translate(var(--drift, 24px), -520px); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .particle{ animation: none; opacity: 0; }
+  }
+  @keyframes mesh-drift{
+    0%{ background-position: 0% 0%, 100% 100%, 50% 0%, 0 0; }
+    50%{ background-position: 30% 20%, 70% 80%, 30% 30%, 0 0; }
+    100%{ background-position: 0% 0%, 100% 100%, 50% 0%, 0 0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero::before{ animation: none; }
+  }
+  .hero .wrap{
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 40px;
+    align-items: end;
+  }
+  .hero-copy{ padding-bottom: 88px; }
+  .hero h1{
+    font-size: clamp(2.1rem, 3.6vw, 3.1rem);
+    line-height: 1.12;
+    max-width: 12ch;
+  }
+  .hero p.sub{
+    margin-top: 22px;
+    font-size: 1.1rem;
+    color: #C7D8DF;
+    max-width: 46ch;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .cta-block{
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .btn-primary{
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.02rem;
+    padding: 15px 30px;
+    border-radius: 6px;
+    display: inline-block;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .btn-primary:hover{ background: var(--orange-dark); transform: translateY(-1px); }
+  .micro{
+    font-size: 0.9rem;
+    color: #93AAB4;
+  }
+
+  .hero-visual{
+    position: relative;
+    display:flex;
+    justify-content: center;
+  }
+  .phone{
+    width: 260px;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.55), 0 0 0 6px rgba(255,255,255,0.06);
+    position: relative;
+    z-index: 2;
+    animation: float-phone 6s ease-in-out infinite;
+  }
+  @keyframes float-phone{
+    0%, 100%{ transform: rotate(-5deg) translateY(20px); }
+    50%{ transform: rotate(-5deg) translateY(6px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .phone{ animation: none; transform: rotate(-5deg) translateY(20px); }
+  }
+  .phone img{ width:100%; display:block; }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{
+    padding: 88px 0;
+  }
+  .problem .wrap{
+    max-width: 720px;
+  }
+  .problem h2{
+    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    color: var(--navy);
+    max-width: 18ch;
+  }
+  .problem p{
+    margin-top: 20px;
+    font-size: 1.08rem;
+    color: var(--text-soft);
+    max-width: 62ch;
+  }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    background: var(--navy);
+    color: var(--white);
+    padding: 64px 0;
+  }
+  .stats-grid{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat{
+    padding: 0 24px;
+    border-left: 1px solid rgba(255,255,255,0.16);
+  }
+  .stat:first-child{ border-left: none; padding-left: 0; }
+  .stat .num{
+    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-weight: 900;
+    color: var(--orange);
+    letter-spacing: -0.02em;
+  }
+  .stat p{
+    margin-top: 10px;
+    font-size: 0.92rem;
+    color: #C7D8DF;
+    line-height: 1.45;
+  }
+  .stat .source{
+    display: block;
+    margin-top: 8px;
+    font-size: 0.76rem;
+    color: #7C97A2;
+    font-style: italic;
+  }
+
+  /* ---------- SOLUTION ---------- */
+  .solution{
+    padding: 96px 0;
+    background: var(--bg-soft);
+  }
+  .solution .wrap{
+    display: grid;
+    grid-template-columns: 0.95fr 1.05fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .solution h2{
+    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    color: var(--navy);
+    max-width: 16ch;
+  }
+  .solution p{
+    margin-top: 20px;
+    font-size: 1.08rem;
+    color: var(--text-soft);
+    max-width: 48ch;
+  }
+  .solution-phone{
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px -18px rgba(0,58,84,0.35);
+    max-width: 320px;
+    margin: 0 auto;
+    border: 1px solid var(--line);
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features{
+    padding: 96px 0;
+  }
+  .features-head{
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+  .features-head h2{
+    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    color: var(--navy);
+  }
+  .features-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px 56px;
+  }
+  .feature{
+    border-left: 3px solid var(--orange);
+    padding-left: 22px;
+  }
+  .feature h3{
+    font-size: 1.12rem;
+    color: var(--navy);
+    font-weight: 700;
+  }
+  .feature p{
+    margin-top: 10px;
+    font-size: 0.98rem;
+    color: var(--text-soft);
+    line-height: 1.55;
+  }
+
+  /* ---------- AUDIENCE ---------- */
+  .audience{
+    padding: 88px 0;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .audience .wrap{ max-width: 720px; }
+  .audience h2{
+    font-size: clamp(1.4rem, 2.2vw, 1.7rem);
+    color: var(--navy);
+    max-width: 20ch;
+  }
+  .audience p{
+    margin-top: 18px;
+    font-size: 1.05rem;
+    color: var(--text-soft);
+    max-width: 58ch;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    color: var(--white);
+    padding: 96px 0;
+    text-align: center;
+  }
+  .cta-final h2{
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    max-width: 20ch;
+    margin: 0 auto;
+  }
+  .cta-final .cta-block{
+    justify-content: center;
+    margin-top: 30px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background: var(--navy-deep);
+    color: #8FA6B0;
+    padding: 32px 0;
+    font-size: 0.88rem;
+  }
+  footer .wrap{
+    display:flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer .links{ display:flex; gap:18px; flex-wrap: wrap; }
+  footer a:hover{ color: var(--white); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .hero .wrap{ grid-template-columns: 1fr; }
+    .hero-copy{ padding-bottom: 40px; }
+    .hero-visual{ padding-bottom: 60px; }
+    .phone{ transform: rotate(-3deg); width: 220px; }
+    .stats-grid{ grid-template-columns: 1fr 1fr; row-gap: 32px; }
+    .stat{ border-left: none; padding-left: 0; }
+    .stat:nth-child(odd){ border-right: 1px solid rgba(255,255,255,0.16); padding-right: 20px; }
+    .solution .wrap{ grid-template-columns: 1fr; }
+    .solution-phone{ order: -1; max-width: 240px; }
+    .features-grid{ grid-template-columns: 1fr; }
+    footer .wrap{ flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior: auto; }
+    *{ transition: none !important; }
+  }
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<header class="nav">
   <div class="wrap">
-    <div class="brand">SALES<span>QUEST</span></div>
-    <div class="badge-beta">Bêta privée</div>
+    <div class="logo">Sales<span>Quest</span></div>
+    <a class="nav-cta" href="#cta">Démarrer un POC</a>
   </div>
 </header>
 
 <section class="hero">
-  <div class="wrap inner">
-    <div class="eyebrow">N'attendez pas que votre entreprise vous forme. Entraînez-vous.</div>
-    <h1>Le terrain d'entraînement des <em>commerciaux</em></h1>
-    <p class="lead">
-      SalesQuest transforme les techniques de vente en réflexes. Affrontez vos scénarios les plus
-      durs&nbsp;— prospect coriace, client remonté, négociation tendue. <b>Vous menez l'échange, vous
-      êtes débriefé sur votre performance</b>, autant de fois qu'il le faut.
-    </p>
-    <div class="cta-row">
-      <a href="#android" class="btn btn-primary">Rejoindre la bêta (Android)</a>
-      <a href="#iphone" class="btn btn-ghost">Tester sur iPhone</a>
-    </div>
-    <p class="platform-note"><b>Bêta gratuite</b> · Android · iPhone (via navigateur) · Application mobile</p>
-    <p class="version-note">Dernière version&nbsp;: <b id="app-version">v0.10.0</b>
-      · <a href="https://github.com/Fabiodirt/salesquest-landing/releases" target="_blank" rel="noopener">Voir les nouveautés →</a></p>
+  <div class="particles">
+    <span class="particle" style="left:6%; width:6px; height:6px; --drift:14px; animation-duration:14s; animation-delay:0s;"></span>
+    <span class="particle alt" style="left:14%; width:4px; height:4px; --drift:-10px; animation-duration:11s; animation-delay:2s;"></span>
+    <span class="particle" style="left:22%; width:8px; height:8px; --drift:20px; animation-duration:17s; animation-delay:1s;"></span>
+    <span class="particle" style="left:31%; width:5px; height:5px; --drift:-16px; animation-duration:13s; animation-delay:4s;"></span>
+    <span class="particle alt" style="left:39%; width:4px; height:4px; --drift:12px; animation-duration:10s; animation-delay:0.5s;"></span>
+    <span class="particle" style="left:47%; width:7px; height:7px; --drift:-22px; animation-duration:16s; animation-delay:3s;"></span>
+    <span class="particle" style="left:55%; width:5px; height:5px; --drift:18px; animation-duration:12s; animation-delay:5s;"></span>
+    <span class="particle alt" style="left:63%; width:6px; height:6px; --drift:-14px; animation-duration:15s; animation-delay:1.5s;"></span>
+    <span class="particle" style="left:70%; width:4px; height:4px; --drift:10px; animation-duration:9s; animation-delay:2.5s;"></span>
+    <span class="particle" style="left:77%; width:8px; height:8px; --drift:-20px; animation-duration:18s; animation-delay:0s;"></span>
+    <span class="particle alt" style="left:84%; width:5px; height:5px; --drift:16px; animation-duration:11s; animation-delay:3.5s;"></span>
+    <span class="particle" style="left:91%; width:6px; height:6px; --drift:-12px; animation-duration:14s; animation-delay:4.5s;"></span>
+    <span class="particle" style="left:10%; width:3px; height:3px; --drift:8px; animation-duration:10s; animation-delay:6s;"></span>
+    <span class="particle alt" style="left:58%; width:3px; height:3px; --drift:-8px; animation-duration:12s; animation-delay:7s;"></span>
+    <span class="particle" style="left:35%; width:4px; height:4px; --drift:14px; animation-duration:15s; animation-delay:6.5s;"></span>
   </div>
-</section>
-
-<section class="block problem">
   <div class="wrap">
-    <div class="eyebrow" style="text-align:center;display:block;margin-bottom:14px">Le vrai problème</div>
-    <h2>Savoir quoi dire ≠ savoir le dire sous pression</h2>
-    <p>
-      Vous avez lu les livres, suivi les formations, révisé les techniques. Mais entre
-      <b>connaître</b> la bonne réponse et la <b>sortir au bon moment</b>, dans le feu de l'échange,
-      il y a un monde. Et c'est là que les deals se perdent.
-    </p>
-    <p>
-      Ce qui comble cet écart, ce n'est pas une formation de plus. C'est la <b>répétition</b>&nbsp;:
-      s'entraîner sur les situations difficiles jusqu'à ce que la bonne réponse devienne un réflexe.
-    </p>
-    <p class="punch">C'est exactement ce que fait SalesQuest — quel que soit votre métier.</p>
-  </div>
-</section>
-
-<section class="block profiles">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Quel que soit votre rôle</div>
-      <h2>Un terrain pour chaque profil</h2>
-      <p>Le contenu, les scénarios et les techniques s'adaptent à votre métier.</p>
+    <div class="hero-copy">
+      <h1>L'entraînement commercial que vos équipes utilisent, vraiment.</h1>
+      <p class="sub">Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...) — intégrés dès le premier jour. Suivi en temps réel pour le manager.</p>
+      <div class="cta-block">
+        <a class="btn-primary" href="#cta">Démarrer un POC</a>
+        <span class="micro">14 jours, accès complet, sans carte bancaire</span>
+      </div>
     </div>
-    <div class="prof-grid">
-      <div class="prof">
-        <img class="prof-ic" src="https://res.cloudinary.com/dsatbizti/image/upload/icon_chasseur.png" alt="Chasseur" loading="lazy">
-        <h3>Chasseur</h3>
-        <p>Prospection, cold call, prise de rendez-vous. Pour ceux qui vont chercher le business.</p>
-      </div>
-      <div class="prof">
-        <img class="prof-ic" src="https://res.cloudinary.com/dsatbizti/image/upload/icon_eleveur.png" alt="Éleveur" loading="lazy">
-        <h3>Éleveur</h3>
-        <p>Comptes clients, fidélisation, upsell, situations tendues. Pour ceux qui font grandir le portefeuille.</p>
-      </div>
-      <div class="prof">
-        <img class="prof-ic" src="https://res.cloudinary.com/dsatbizti/image/upload/icon_manager.png" alt="Manager" loading="lazy">
-        <h3>Manager</h3>
-        <p>Recadrage, recrutement, négociation d'objectifs. Pour ceux qui pilotent une équipe.</p>
+    <div class="hero-visual">
+      <div class="phone">
+        <img src="screenshot-accueil.png" alt="Écran d'accueil de l'application SalesQuest, montrant la progression et le programme du jour">
       </div>
     </div>
   </div>
 </section>
 
-<section class="block">
+<section class="problem">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Ce que vous allez faire</div>
-      <h2>Trois façons de progresser</h2>
-    </div>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="ic"><img src="icon-coach.svg" alt="Coach" loading="lazy"></div>
-        <h3>Le Coach</h3>
-        <p>Lancez un scénario : votre coach joue votre interlocuteur — prospect difficile, client
-        mécontent, collaborateur à recadrer. Vous menez l'échange en conditions réelles, puis vous
-        recevez un débrief argumenté sur votre performance. Il s'adapte même à votre secteur.</p>
+    <h2>La formation commerciale, vos équipes l'oublient en une semaine</h2>
+    <p>Un PDF envoyé une fois. Une session e-learning cochée puis jamais rouverte. La plupart des outils de formation commerciale sont conçus pour être suivis, pas pour être utilisés. Résultat : les méthodes ne s'ancrent jamais dans la pratique quotidienne.</p>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num"><span class="count" data-target="84" data-suffix="%">0%</span></div>
+        <p>du contenu de formation est oublié en 3 mois, faute de renforcement</p>
+        <span class="source">Source : Qwilr</span>
       </div>
-      <div class="feat">
-        <div class="ic"><img src="icon-arsenal.svg" alt="Arsenal" loading="lazy"></div>
-        <h3>L'Arsenal</h3>
-        <p>Des dizaines de techniques classées par thème — prospection, closing, objections, mindset.
-        Chaque fiche pointe l'erreur à éviter et la bonne approche. Puis des modes d'entraînement pour
-        ancrer ce que vous apprenez.</p>
+      <div class="stat">
+        <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–0%</span></div>
+        <p>de ce qui est appris en formation classique est réellement appliqué face à un vrai client</p>
+        <span class="source">Source : Association for Talent Development</span>
       </div>
-      <div class="feat">
-        <div class="ic"><img src="icon-profil.svg" alt="Progression" loading="lazy"></div>
-        <h3>La progression</h3>
-        <p>Un QCM quotidien en répétition espacée qui ancre durablement les techniques, des défis, des
-        séries, des rangs et des trophées. SalesQuest transforme l'entraînement en habitude — quelques
-        minutes par jour qui, cumulées, font la différence sur le terrain.</p>
+      <div class="stat">
+        <div class="num"><span class="count" data-target="83" data-suffix="%">0%</span> <span style="font-size:0.5em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
+        <p>de salariés se disent motivés en formation gamifiée, contre le format traditionnel</p>
+        <span class="source">Source : étude citée par 5mins.ai</span>
+      </div>
+      <div class="stat">
+        <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+0%</span></div>
+        <p>de ventes nettes par commercial avec une formation continue, vs une formation ponctuelle</p>
+        <span class="source">Source : Qwilr</span>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block showcase">
+<section class="solution">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Chaque progrès se mérite</div>
-      <h2>Des trophées à débloquer</h2>
-      <p>Ouvrez des coffres, gravissez les rangs, collectionnez les trophées — de bronze à légendaire.
-      L'entraînement devient un jeu dont on veut voir la suite.</p>
+    <div class="solution-phone">
+      <img src="screenshot-roleplay.png" alt="Écran Coach de l'application SalesQuest, avec choix de scénarios d'entraînement (Cold call, Closing, Défense de l'offre)">
     </div>
-    <div class="trophy-row">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/coffre_ferme.png" alt="Coffre" loading="lazy">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/t_or_1_Rang_%C3%89lite.png" alt="Trophée Rang Élite" loading="lazy">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/t_platine_1_La_L%C3%A9gende.png" alt="Trophée La Légende" loading="lazy">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/t_or_6_Chasseur_L%C3%A9gendaire.png" alt="Trophée Chasseur Légendaire" loading="lazy">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/t_platine_5_Le_Ma%C3%AEtre_Absolu.png" alt="Trophée Le Maître Absolu" loading="lazy">
-      <img src="https://res.cloudinary.com/dsatbizti/image/upload/t_or_16_Score_Parfait.png" alt="Trophée Score Parfait" loading="lazy">
+    <div>
+      <h2>Un jeu d'entraînement, pas un cours à cocher</h2>
+      <p>SalesQuest transforme l'entraînement commercial en pratique quotidienne — questions flash, mises en situation face à un Coach IA, défis progressifs. Vos commerciaux reviennent chaque jour parce que ça leur donne envie, pas parce qu'on les y oblige.</p>
     </div>
   </div>
 </section>
 
-<section class="block screens">
+<section class="features">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Le Coach en action</div>
-      <h2>Choisissez une situation. Entraînez-vous. Progressez.</h2>
-      <p>Prospection, défense de l'offre, closing, filtrage du décideur… Votre coach joue le rôle, vous
-      menez l'échange, et vous ressortez avec un débrief concret.</p>
+    <div class="features-head">
+      <h2>Ce qui fait la différence</h2>
     </div>
-    <div class="screens-row">
-      <figure class="phone">
-        <img src="screen-accueil.png" alt="L'écran d'accueil de SalesQuest" loading="lazy">
-        <figcaption>Série, défis du jour, QCM : un entraînement qui devient une habitude.</figcaption>
-      </figure>
-      <figure class="phone">
-        <img src="coach-menu.png" alt="L'accueil du Coach" loading="lazy">
-        <figcaption>Roleplay, préparation de RDV, débrief : votre coach couvre tout le cycle, avec des scénarios adaptés à votre profil.</figcaption>
-      </figure>
-      <figure class="phone">
-        <img src="screen-arsenal.png" alt="L'Arsenal des techniques de vente" loading="lazy">
-        <figcaption>L'Arsenal : les techniques par thème, à maîtriser puis affronter en Boss.</figcaption>
-      </figure>
-      <figure class="phone">
-        <img src="screen-bilan.png" alt="Le bilan de progression" loading="lazy">
-        <figcaption>Votre bilan : votre coach analyse vos progrès et pointe vos axes de travail.</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="block diff">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Pourquoi SalesQuest</div>
-      <h2>Pensé pour vous, pas pour un service RH</h2>
-      <p>Votre progression ne devrait pas dépendre du budget formation de votre boîte.</p>
-    </div>
-    <div class="diff-list">
-      <div class="diff-row">
-        <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="14" height="26" rx="3" stroke="var(--violet-soft)" stroke-width="2.2"/><path d="M14 25h4" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-        <div class="txt">
-          <h4>Dans votre poche, quand vous voulez</h4>
-          <p>Une app mobile, pas une plateforme d'entreprise. Vous vous entraînez sur votre temps,
-          entre deux rendez-vous, sans attendre que quelqu'un organise une session.</p>
-        </div>
+    <div class="features-grid">
+      <div class="feature">
+        <h3>Coach IA</h3>
+        <p>Un coach qui s'adapte à chaque commercial : prépare un rendez-vous, débriefe un appel, répond à une question sur une objection précise — à toute heure.</p>
       </div>
-      <div class="diff-row">
-        <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 7h22v15H14l-6 5v-5H5V7z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linejoin="round"/><path d="M11 13h10M11 17h6" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-        <div class="txt">
-          <h4>En français, pour la vente à la française</h4>
-          <p>Scénarios, tournures, culture commerciale : tout est pensé en français, pas traduit d'un
-          outil américain.</p>
-        </div>
+      <div class="feature">
+        <h3>Mises en situation réalistes</h3>
+        <p>Cold call, négociation, gestion d'objection : vos commerciaux s'entraînent face à des personnages IA avant d'affronter un vrai prospect.</p>
       </div>
-      <div class="diff-row">
-        <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l3.3 6.7 7.4 1-5.4 5.2 1.3 7.3L16 26.9l-6.6 3.5 1.3-7.3-5.4-5.2 7.4-1L16 4z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linejoin="round"/></svg></div>
-        <div class="txt">
-          <h4>Un entraînement qui donne envie de revenir</h4>
-          <p>Rangs, défis, trophées : la progression est motivante, pas un module de formation imposé
-          qu'on abandonne au bout de deux jours.</p>
-        </div>
+      <div class="feature">
+        <h3>Méthodes reconnues, intégrées</h3>
+        <p>SPIN Selling, Challenger Sale, MEDDIC, Sandler, la méthode Voss, les principes de Cialdini — déjà dans l'app, prêts à l'emploi, sans rien importer.</p>
       </div>
-      <div class="diff-row">
-        <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 26c8-2 12-6 16-12M22 6l4 4-13 13-5 1 1-5L22 6z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <div class="txt">
-          <h4>Une méthode, pas juste un outil</h4>
-          <p>Vous ne vous entraînez pas dans le vide : chaque exercice a une intention, chaque scénario
-          est cadré par un vrai commercial — pas généré au hasard.</p>
-        </div>
+      <div class="feature">
+        <h3>Pilotage en temps réel</h3>
+        <p>En tant que manager, suivez la progression de votre équipe, identifiez les points faibles collectifs, et laissez l'IA vous proposer des actions concrètes.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="author">
+<section class="audience">
   <div class="wrap">
-    <div class="who">
-      <div class="tag">Créée par un commercial, pour les commerciaux</div>
-      <h3>Fabien Goussu — Key Account Manager, 20 ans de terrain</h3>
-      <p>
-        Auteur de <span class="books">« Maîtriser la Vente B2B »</span> et
-        <span class="books">« L'Art de Vendre Sans S'Épuiser »</span>. SalesQuest prolonge ces
-        livres&nbsp;: passer de la théorie à la pratique, en s'entraînant pour de vrai.
-      </p>
-      <a class="li" href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener">Voir mon profil LinkedIn →</a>
-    </div>
+    <h2>Pour les équipes commerciales qui veulent progresser, pas juste cocher une case</h2>
+    <p>SalesQuest s'adresse aux directeurs commerciaux et responsables des ventes qui veulent que leurs équipes s'entraînent vraiment — pas aux services RH qui cherchent une ligne de plus dans un plan de formation.</p>
   </div>
 </section>
 
-<section class="block install" id="install">
+<section class="cta-final" id="cta">
   <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow">Installation — 3 minutes</div>
-      <h2>Installer l'app</h2>
-      <p>Choisissez votre plateforme ci-dessous.</p>
-    </div>
-
-    <h3 class="install-platform" id="android">Sur Android</h3>
-
-    <div class="warn">
-      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l13 23H3L16 4z" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 13v7" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="24" r="1.4" fill="var(--violet-soft)"/></svg></div>
-      <p><b>C'est normal qu'Android vous prévienne.</b> L'app n'est pas encore sur le Play Store
-      (c'est une bêta privée), donc votre téléphone demande une autorisation avant d'installer. Rien
-      d'inquiétant — voici les étapes.</p>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="n">1</div>
-        <div class="body">
-          <h4>Téléchargez le fichier</h4>
-          <p>Appuyez sur « Rejoindre la bêta » — le fichier arrive dans vos Téléchargements.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">2</div>
-        <div class="body">
-          <h4>Ouvrez le fichier téléchargé</h4>
-          <p>Appuyez dessus dans vos Téléchargements (ou dans la notification de téléchargement).</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">3</div>
-        <div class="body">
-          <h4>Autorisez l'installation</h4>
-          <p>Android affiche un message de sécurité. Appuyez sur <b>« Paramètres »</b>, activez
-          <b>« Autoriser depuis cette source »</b>, puis revenez en arrière.</p>
-          <p class="hint">Un écran peut proposer d'analyser l'app → vous pouvez « Installer quand même ».</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">4</div>
-        <div class="body">
-          <h4>Créez votre compte et choisissez votre profil</h4>
-          <p>Ouvrez SalesQuest, créez votre compte, puis choisissez votre profil (Chasseur, Éleveur
-          ou Manager). Tout le contenu s'adapte à votre choix.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="dl-center">
-      <a href="https://github.com/Fabiodirt/salesquest-landing/releases/latest/download/salesquest.apk" class="btn btn-primary">Télécharger et rejoindre la bêta</a>
-    </div>
-
-    <h3 class="install-platform" id="iphone">Sur iPhone</h3>
-
-    <div class="warn">
-      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="9" y="3" width="14" height="26" rx="3" stroke="var(--violet-soft)" stroke-width="2.2"/><path d="M14 25h4" stroke="var(--violet-soft)" stroke-width="2.2" stroke-linecap="round"/></svg></div>
-      <p>C'est un <b>accès anticipé via navigateur</b>, en attendant l'app native sur l'App&nbsp;Store.
-      Une fois ajoutée à l'écran d'accueil, elle se comporte comme une vraie app.</p>
-    </div>
-
-    <div class="steps">
-      <div class="step">
-        <div class="n">1</div>
-        <div class="body">
-          <h4>Ouvrez le lien</h4>
-          <p>Appuyez sur « Tester sur iPhone » — ça ouvre SalesQuest dans Safari.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">2</div>
-        <div class="body">
-          <h4>Ajoutez à l'écran d'accueil</h4>
-          <p>Appuyez sur l'icône de partage (le carré avec la flèche vers le haut, en bas de l'écran
-          Safari), puis sur <b>« Sur l'écran d'accueil »</b>.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">3</div>
-        <div class="body">
-          <h4>Lancez l'app</h4>
-          <p>Une icône SalesQuest apparaît sur votre écran d'accueil. Ouvrez-la comme n'importe quelle
-          app — plein écran, sans barre de navigateur.</p>
-        </div>
-      </div>
-      <div class="step">
-        <div class="n">4</div>
-        <div class="body">
-          <h4>Créez votre compte et choisissez votre profil</h4>
-          <p>Créez votre compte, puis choisissez votre profil (Chasseur, Éleveur ou Manager).</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="warn" style="border-color:var(--gold);background:rgba(255,204,0,.08)">
-      <div class="ic"><svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4l13 23H3L16 4z" stroke="var(--gold)" stroke-width="2.2" stroke-linejoin="round"/><path d="M16 13v7" stroke="var(--gold)" stroke-width="2.2" stroke-linecap="round"/><circle cx="16" cy="24" r="1.4" fill="var(--gold)"/></svg></div>
-      <p><b>Important :</b> ouvrez bien ce lien depuis <b>Safari</b> (pas Chrome ni une app tierce) pour
-      que « Ajouter à l'écran d'accueil » fonctionne.</p>
-    </div>
-
-    <div class="dl-center">
-      <a href="https://salesquest-ten.vercel.app" target="_blank" rel="noopener" class="btn btn-primary">Tester sur iPhone</a>
-    </div>
-
-    <p class="help">Un souci à une étape ? Écrivez-moi à <a href="mailto:salesquestbeta@gmail.com" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)">salesquestbeta@gmail.com</a> ou sur <a href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)">LinkedIn</a> — je vous débloque rapidement.</p>
-  </div>
-</section>
-
-<section class="block feedback">
-  <div class="wrap">
-    <div class="card">
-      <div class="gift"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="15" width="30" height="20" rx="2" stroke="var(--violet-soft)" stroke-width="2.4"/><path d="M3 15h34v6H3z" stroke="var(--violet-soft)" stroke-width="2.4" stroke-linejoin="round"/><path d="M20 15v20" stroke="var(--violet-soft)" stroke-width="2.4"/><path d="M20 15s-6-1-8-4c-1.5-2.2.5-5 3-4 2.5 1 5 8 5 8zM20 15s6-1 8-4c1.5-2.2-.5-5-3-4-2.5 1-5 8-5 8z" stroke="var(--violet-soft)" stroke-width="2.4" stroke-linejoin="round"/></svg></div>
-      <h2>Votre avis façonne l'app</h2>
-      <p>Vous êtes parmi les premiers à tester SalesQuest. Après quelques jours d'utilisation, un court
-      questionnaire (5 min) vous attend — dans l'app via le bouton « Je donne mon avis », ou
-      directement ici. En remerciement : <b>30 jours de Premium offerts</b>.</p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeCkD-g_PISBB4GQF-LWm874grGPuRAkwk6_Ao8WazUUQ0SjQ/viewform" class="btn btn-primary">Donner mon avis (5 min)</a>
+    <h2>Prêt à voir si vos équipes accrochent ?</h2>
+    <div class="cta-block">
+      <a class="btn-primary" href="mailto:contact@salesquest.fr?subject=Démarrer%20un%20POC">Démarrer un POC</a>
+      <span class="micro">14 jours, accès complet, sans carte bancaire</span>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div class="brand">SALES<span style="color:var(--gold)">QUEST</span></div>
-    <p>Votre coach est propulsé par une IA de dernière génération (Claude, Anthropic).</p>
-    <p class="mini">Créée par <a href="https://www.linkedin.com/in/fabien-goussu-434386160/" target="_blank" rel="noopener">Fabien Goussu</a> · © 2026 SalesQuest · Bêta privée</p>
-    <p class="mini"><a href="suppression-compte.html">Suppression de compte</a></p>
+    <div class="logo" style="font-size:1rem;">Sales<span>Quest</span></div>
+    <div class="links">
+      <a href="privacy.html">Politique de confidentialité</a>
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="suppression-compte.html">Suppression de compte</a>
+      <a href="mailto:contact@salesquest.fr">contact@salesquest.fr</a>
+    </div>
   </div>
 </footer>
 
 <script>
-  // Récupère le tag de la dernière release GitHub, pour que la version affichée
-  // reste juste sans avoir à modifier cette page à chaque publication.
-  // En cas d'échec (hors ligne, quota API), la valeur écrite en dur reste affichée.
-  fetch('https://api.github.com/repos/Fabiodirt/salesquest-landing/releases/latest')
-    .then(function (r) { return r.ok ? r.json() : null; })
-    .then(function (d) {
-      if (d && d.tag_name) document.getElementById('app-version').textContent = d.tag_name;
-    })
-    .catch(function () {});
-</script>
+(function(){
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var counters = document.querySelectorAll('.count');
 
+  function setFinal(el){
+    var target = el.getAttribute('data-target');
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    el.textContent = prefix + target + suffix;
+  }
+
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    counters.forEach(setFinal);
+    return;
+  }
+
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-target'), 10);
+    var prefix = el.getAttribute('data-prefix') || '';
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1200;
+    var start = null;
+
+    function step(ts){
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var value = Math.round(eased * target);
+      el.textContent = prefix + value + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = prefix + target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        animateCount(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(function(el){ observer.observe(el); });
+})();
+</script>
 </body>
 </html>
