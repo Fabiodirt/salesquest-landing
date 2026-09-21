@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — SalesQuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #003A54;
+    --navy-deep: #00263A;
+    --orange: #F18700;
+    --orange-dark: #D97600;
+    --bg: #FFFFFF;
+    --bg-soft: #F3F6F7;
+    --text: #12242F;
+    --text-soft: #4E6672;
+    --line: #E2E8EA;
+    --white: #FFFFFF;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  body{
+    font-family: 'Archivo', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--orange); text-decoration: underline; }
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .nav{ background: var(--navy); padding: 20px 0; }
+  .nav .wrap{ max-width: 1160px; display:flex; align-items:center; justify-content: space-between; }
+  .logo{ font-weight: 900; font-size: 1.25rem; color: var(--white); letter-spacing: -0.02em; }
+  .logo span{ color: var(--orange); }
+  .back{ color: #C7D8DF; font-size: 0.92rem; text-decoration: none; }
+  .back:hover{ color: var(--white); }
+  main{ padding: 64px 0 96px; }
+  h1{ font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+  .updated{ margin-top: 8px; color: var(--text-soft); font-size: 0.92rem; font-style: italic; }
+  h2{ margin-top: 44px; margin-bottom: 14px; font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+  p, li{ font-size: 1rem; color: var(--text-soft); margin-bottom: 14px; }
+  ul{ padding-left: 22px; margin-bottom: 14px; }
+  table{ width:100%; border-collapse: collapse; margin: 18px 0; font-size: 0.94rem; }
+  th, td{ text-align: left; padding: 10px 12px; border: 1px solid var(--line); color: var(--text-soft); }
+  th{ background: var(--bg-soft); color: var(--navy); font-weight: 700; }
+  footer{ background: var(--navy-deep); color: #8FA6B0; padding: 28px 0; font-size: 0.86rem; text-align:center; }
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Sales<span>Quest</span></a>
+    <a class="back" href="index.html">&larr; Retour au site</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Politique de confidentialité</h1>
+    <p class="updated">Dernière mise à jour : 21 septembre 2026</p>
+    <h2>1. Qui sommes-nous</h2>
+<p>SalesQuest est édité par Fabien GOUSSU (nom commercial : SalesQuest), entrepreneur individuel, RCS Versailles n° 109 351 437, 21 rue du Clocher, 78910 Orgerus.</p>
+<p>Pour toute question relative à cette politique ou à vos données personnelles : contact@salesquest.fr.</p>
+<h2>2. Données que nous collectons</h2>
+<ul>
+<li><strong>Données de compte</strong> : nom, prénom, email, mot de passe (géré par Firebase Authentication), rattachement à une organisation.</li>
+<li><strong>Données d'usage et de progression</strong> : points de progression, statistiques de régularité, compétences validées, historique d'entraînement.</li>
+<li><strong>Contenu que vous saisissez</strong> : échanges avec le Coach IA, texte libre des fonctionnalités Préparation de rendez-vous et Débriefing. Ces champs peuvent contenir des informations concernant des tiers (nom d'un prospect, d'une entreprise cliente, détails d'un rendez-vous).</li>
+<li><strong>Données techniques</strong> : adresse IP, type d'appareil, journaux techniques, à des fins de sécurité et de bon fonctionnement du service.</li>
+</ul>
+<h2>3. Finalités du traitement</h2>
+<p>Vos données sont traitées pour : fournir et faire fonctionner le service (authentification, sauvegarde de la progression), faire fonctionner les fonctionnalités d'intelligence artificielle (Coach, Prép RDV, Débrief), assurer le pilotage par le responsable de votre organisation (statistiques agrégées de l'équipe), assurer la sécurité du service, et — pour le compte responsable — la facturation de l'abonnement.</p>
+<h2>4. Sous-traitants et destinataires</h2>
+<p>Nous faisons appel aux prestataires suivants pour exploiter le service :</p>
+<table>
+<thead>
+<tr>
+<th>Prestataire</th>
+<th>Rôle</th>
+<th>Données concernées</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Firebase (Google)</strong></td>
+<td>Authentification, base de données, hébergement</td>
+<td>Compte, données de jeu et de progression</td>
+</tr>
+<tr>
+<td><strong>Anthropic</strong></td>
+<td>Traitement des fonctionnalités d'intelligence artificielle (Coach, Prép RDV, Débrief)</td>
+<td>Contenu des conversations avec le Coach IA</td>
+</tr>
+<tr>
+<td><strong>Cloudinary</strong></td>
+<td>Hébergement des images (icônes, visuels)</td>
+<td>Pas de donnée personnelle a priori</td>
+</tr>
+<tr>
+<td><strong>Stripe</strong></td>
+<td>Paiement et facturation de l'abonnement</td>
+<td>Données de facturation du compte responsable</td>
+</tr>
+<tr>
+<td><strong>Brevo</strong></td>
+<td>Emails transactionnels (invitations, réinitialisation de mot de passe)</td>
+<td>Email du destinataire</td>
+</tr>
+</tbody>
+</table>
+<p>Ces prestataires n'utilisent vos données que pour exécuter les services qui leur sont confiés, pas à leurs propres fins.</p>
+<h2>5. Transferts hors Union européenne</h2>
+<p>Certains de nos prestataires (Firebase/Google, Anthropic, Stripe) sont susceptibles de traiter des données en dehors de l'Union européenne, notamment aux États-Unis. Ces transferts s'appuient sur les garanties prévues par le RGPD (clauses contractuelles types ou mécanismes équivalents propres à chaque prestataire).</p>
+<h2>6. Durée de conservation</h2>
+<p>Vos données sont conservées pendant la durée de votre utilisation du service, puis supprimées ou anonymisées dans un délai raisonnable après la suppression de votre compte, sauf obligation légale de conservation plus longue (notamment comptable).</p>
+<h2>7. Sécurité</h2>
+<p>L'accès à la base de données est restreint par des règles de sécurité limitant chaque utilisateur à ses propres données (et, pour un responsable d'organisation, aux données agrégées de son équipe). Les données sont chiffrées en transit (HTTPS).</p>
+<h2>8. Vos droits</h2>
+<p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, de suppression, de limitation et d'opposition concernant vos données personnelles, ainsi que d'un droit à la portabilité. Vous pouvez également demander la suppression de votre compte directement depuis l'application.</p>
+<p>Pour exercer ces droits, contactez-nous à contact@salesquest.fr. Vous pouvez également introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+<h2>9. Mineurs</h2>
+<p>SalesQuest est destiné à un usage professionnel par des adultes. Nous ne collectons pas sciemment de données concernant des mineurs.</p>
+<h2>10. Modifications</h2>
+<p>Cette politique peut être mise à jour. La date de dernière mise à jour figure en haut de ce document. En cas de changement significatif, nous vous en informerons via l'application ou par email.</p>
+<h2>11. Contact</h2>
+<p>contact@salesquest.fr — 21 rue du Clocher, 78910 Orgerus</p>
+  </div>
+</main>
+<footer>SalesQuest — contact@salesquest.fr</footer>
+</body>
+</html>
