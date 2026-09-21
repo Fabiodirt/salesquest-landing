@@ -298,16 +298,29 @@
     gap: 44px 56px;
   }
   .feature{
-    border-left: 3px solid var(--orange);
-    padding-left: 22px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
   }
+  .feature-icon{
+    flex: none;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .feature-icon svg{ width: 24px; height: 24px; }
   .feature h3{
     font-size: 1.12rem;
     color: var(--navy);
     font-weight: 700;
   }
   .feature p{
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 0.98rem;
     color: var(--text-soft);
     line-height: 1.55;
@@ -315,21 +328,29 @@
 
   /* ---------- AUDIENCE ---------- */
   .audience{
-    padding: 88px 0;
-    background: var(--bg-soft);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    padding: 96px 0;
+    background: var(--navy);
+    color: var(--white);
   }
-  .audience .wrap{ max-width: 720px; }
+  .audience .wrap{ max-width: 760px; position: relative; }
+  .audience-mark{
+    font-family: Georgia, serif;
+    font-size: 5.5rem;
+    color: var(--orange);
+    line-height: 1;
+    opacity: 0.85;
+  }
   .audience h2{
-    font-size: clamp(1.4rem, 2.2vw, 1.7rem);
-    color: var(--navy);
-    max-width: 20ch;
+    margin-top: -18px;
+    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    color: var(--white);
+    max-width: 22ch;
+    line-height: 1.25;
   }
   .audience p{
-    margin-top: 18px;
-    font-size: 1.05rem;
-    color: var(--text-soft);
+    margin-top: 20px;
+    font-size: 1.08rem;
+    color: #C7D8DF;
     max-width: 58ch;
   }
 
@@ -485,20 +506,40 @@
     </div>
     <div class="features-grid">
       <div class="feature">
-        <h3>Coach IA</h3>
-        <p>Un coach qui s'adapte à chaque commercial : prépare un rendez-vous, débriefe un appel, répond à une question sur une objection précise — à toute heure.</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div>
+          <h3>Coach IA</h3>
+          <p>Un coach qui s'adapte à chaque commercial : prépare un rendez-vous, débriefe un appel, répond à une question sur une objection précise — à toute heure.</p>
+        </div>
       </div>
       <div class="feature">
-        <h3>Mises en situation réalistes</h3>
-        <p>Cold call, négociation, gestion d'objection : vos commerciaux s'entraînent face à des personnages IA avant d'affronter un vrai prospect.</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.2"/><path d="M3 21v-1c0-3 2.7-5 6-5s6 2 6 5v1"/><path d="M16 3.5c1.6.4 2.8 1.9 2.8 3.5s-1.2 3.1-2.8 3.5"/><path d="M18 13.2c1.9.5 3.5 1.9 3.5 4.3V19"/></svg>
+        </div>
+        <div>
+          <h3>Mises en situation réalistes</h3>
+          <p>Cold call, négociation, gestion d'objection : vos commerciaux s'entraînent face à des personnages IA avant d'affronter un vrai prospect.</p>
+        </div>
       </div>
       <div class="feature">
-        <h3>Méthodes reconnues, intégrées</h3>
-        <p>SPIN Selling, Challenger Sale, MEDDIC, Sandler, la méthode Voss, les principes de Cialdini — déjà dans l'app, prêts à l'emploi, sans rien importer.</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        </div>
+        <div>
+          <h3>Méthodes reconnues, intégrées</h3>
+          <p>SPIN Selling, Challenger Sale, MEDDIC, Sandler, la méthode Voss, les principes de Cialdini — déjà dans l'app, prêts à l'emploi, sans rien importer.</p>
+        </div>
       </div>
       <div class="feature">
-        <h3>Pilotage en temps réel</h3>
-        <p>En tant que manager, suivez la progression de votre équipe, identifiez les points faibles collectifs, et laissez l'IA vous proposer des actions concrètes.</p>
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+        </div>
+        <div>
+          <h3>Pilotage en temps réel</h3>
+          <p>En tant que manager, suivez la progression de votre équipe, identifiez les points faibles collectifs, et laissez l'IA vous proposer des actions concrètes.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -506,6 +547,7 @@
 
 <section class="audience">
   <div class="wrap">
+    <div class="audience-mark">"</div>
     <h2>Pour les équipes commerciales qui veulent progresser, pas juste cocher une case</h2>
     <p>SalesQuest s'adresse aux directeurs commerciaux et responsables des ventes qui veulent que leurs équipes s'entraînent vraiment — pas aux services RH qui cherchent une ligne de plus dans un plan de formation.</p>
   </div>
