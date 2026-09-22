@@ -7,127 +7,179 @@
 <meta name="description" content="Demandez la suppression de votre compte SalesQuest et de vos données (historique de débriefs, préparations, progression).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0a0710;
-    --ink-2:#120c1c;
-    --card:#181022;
-    --line:#2a1e3d;
-    --gold:#fbbf24;
-    --gold-deep:#f59e0b;
-    --violet:#7c3aed;
-    --violet-soft:#a78bfa;
-    --text:#f0ecf6;
-    --text-dim:#a99fc0;
-    --text-faint:#7a7091;
+    --navy: #003A54;
+    --navy-deep: #00263A;
+    --orange: #F18700;
+    --orange-dark: #D97600;
+    --bg: #FFFFFF;
+    --bg-soft: #F3F6F7;
+    --text: #12242F;
+    --text-soft: #4E6672;
+    --line: #E2E8EA;
+    --white: #FFFFFF;
   }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:var(--ink);color:var(--text);font-family:'Inter',system-ui,sans-serif;line-height:1.6}
-  h1,h2,.display{font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.01em;line-height:1.15}
-  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
-  a{color:inherit}
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  body{
+    font-family: 'Archivo', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--orange); text-decoration: underline; }
+  .wrap{ max-width: 640px; margin: 0 auto; padding: 0 32px; }
 
-  .topbar{position:sticky;top:0;z-index:50;background:rgba(10,7,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1080px}
-  .brand{font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;letter-spacing:.08em}
-  .brand span{color:var(--gold)}
-  .back{font-size:13px;color:var(--violet-soft);text-decoration:none;border-bottom:1px solid var(--line)}
-  .back:hover{border-color:var(--violet-soft)}
+  .nav{ background: var(--navy); padding: 20px 0; }
+  .nav .wrap{ max-width: 1160px; display:flex; align-items:center; justify-content: space-between; }
+  .logo{ font-weight: 900; font-size: 1.25rem; color: var(--white); letter-spacing: -0.02em; text-decoration:none; }
+  .logo span{ color: var(--orange); }
+  .back{ color: #C7D8DF; font-size: 0.92rem; text-decoration: none; }
+  .back:hover{ color: var(--white); }
 
-  main{padding:56px 0 80px}
-  .eyebrow{font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--gold);margin-bottom:14px}
-  h1{font-size:clamp(28px,5vw,40px);text-transform:uppercase;margin-bottom:24px}
+  main{ padding: 64px 0 96px; }
+  .eyebrow{
+    display:inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--orange);
+    background: rgba(241,135,0,0.1);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  h1{ font-size: clamp(1.7rem, 3vw, 2.1rem); font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+  h2{ margin-top: 40px; margin-bottom: 14px; font-size: 1.15rem; font-weight: 700; color: var(--navy); }
+  p{ font-size: 1rem; color: var(--text-soft); margin-bottom: 14px; }
+  ul{ padding-left: 20px; margin-bottom: 14px; }
+  li{ font-size: 1rem; color: var(--text-soft); margin-bottom: 10px; }
+  li strong{ color: var(--text); }
 
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px 28px;margin-bottom:24px}
-  .card h2{font-size:18px;text-transform:uppercase;margin-bottom:14px;color:var(--gold)}
-  .card p{font-size:15px;color:var(--text-dim);margin-bottom:12px}
-  .card p:last-child{margin-bottom:0}
-  .card ul{margin:0 0 0 20px;color:var(--text-dim);font-size:15px}
-  .card ul li{margin-bottom:8px}
-  .card ul li b{color:var(--text)}
+  .notice{
+    margin-top: 22px;
+    padding: 16px 18px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--orange);
+    border-radius: 8px;
+    font-size: 0.94rem;
+    color: var(--text-soft);
+  }
 
-  form label{display:block;font-family:'Oswald',sans-serif;font-weight:600;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dim);margin-bottom:8px}
-  form input[type="email"]{width:100%;padding:14px 16px;border-radius:10px;border:1px solid var(--line);background:var(--ink-2);color:var(--text);font-size:15px;font-family:'Inter',sans-serif}
-  form input[type="email"]:focus{outline:none;border-color:var(--violet)}
-  form .hint{font-size:13px;color:var(--text-faint);margin-top:8px}
+  .form-block{
+    margin-top: 44px;
+    padding: 28px;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+  }
+  label{
+    display:block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  input[type="email"]{
+    width: 100%;
+    padding: 13px 14px;
+    font-family: 'Archivo', sans-serif;
+    font-size: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--white);
+    color: var(--text);
+  }
+  input[type="email"]:focus{ outline: 2px solid var(--orange); outline-offset: 1px; }
+  .form-note{ margin-top: 10px; font-size: 0.86rem; color: var(--text-soft); }
+  button{
+    margin-top: 18px;
+    width: 100%;
+    background: var(--orange);
+    color: var(--white);
+    font-family: 'Archivo', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  button:hover{ background: var(--orange-dark); }
+  .fallback{ margin-top: 16px; font-size: 0.9rem; color: var(--text-soft); }
 
-  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'Oswald',sans-serif;font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:15px;text-decoration:none;padding:16px 30px;border-radius:14px;border:none;transition:transform .15s ease,box-shadow .15s ease;cursor:pointer;margin-top:20px}
-  .btn-primary{color:#1a1205;background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);box-shadow:0 10px 34px rgba(251,191,36,.32)}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 42px rgba(251,191,36,.44)}
-  .btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
-
-  .contact{font-size:13px;color:var(--text-faint);margin-top:18px}
-  .contact a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--line)}
-
-  footer{padding:36px 0;text-align:center;border-top:1px solid var(--line)}
-  footer p{font-size:13px;color:var(--text-faint)}
-  footer a{color:var(--violet-soft);text-decoration:none}
+  footer{ background: var(--navy-deep); color: #8FA6B0; padding: 28px 0; font-size: 0.86rem; }
+  footer .wrap{ max-width: 1160px; display:flex; flex-wrap: wrap; gap: 8px 18px; align-items:center; justify-content: space-between; }
+  footer .links{ display:flex; gap:18px; flex-wrap: wrap; }
+  footer a{ color: #8FA6B0; text-decoration:none; }
+  footer a:hover{ color: var(--white); }
 </style>
 </head>
 <body>
 
-<header class="topbar">
+<header class="nav">
   <div class="wrap">
-    <div class="brand">SALES<span>QUEST</span></div>
-    <a class="back" href="index.html">← Retour à l'accueil</a>
+    <a class="logo" href="index.html">Sales<span>Quest</span></a>
+    <a class="back" href="index.html">&larr; Retour à l'accueil</a>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <div class="eyebrow">Confidentialité</div>
+    <span class="eyebrow">Confidentialité</span>
     <h1>Demande de suppression de compte</h1>
 
-    <div class="card">
-      <h2>Ce qui sera supprimé</h2>
-      <p>Si vous demandez la suppression de votre compte SalesQuest, nous supprimons définitivement&nbsp;:</p>
-      <ul>
-        <li><b>Votre compte</b> — identifiants, profil (Chasseur / Éleveur / Manager), paramètres.</li>
-        <li><b>Votre historique avec le Coach</b> — sessions de roleplay, préparations de rendez-vous et débriefs enregistrés.</li>
-        <li><b>Votre progression</b> — XP, rangs, séries, trophées, réponses aux QCM et défis.</li>
-      </ul>
-      <p>Cette suppression est irréversible. Comptez jusqu'à 30 jours pour un traitement complet, conformément au RGPD.</p>
-    </div>
+    <h2>Ce qui sera supprimé</h2>
+    <p>Si vous demandez la suppression de votre compte SalesQuest, nous supprimons définitivement :</p>
+    <ul>
+      <li><strong>Votre compte</strong> — identifiants, profil (Chasseur / Éleveur / Manager), paramètres.</li>
+      <li><strong>Votre historique avec le Coach</strong> — sessions de roleplay, préparations de rendez-vous et débriefs enregistrés.</li>
+      <li><strong>Votre progression</strong> — XP, rangs, séries, trophées, réponses aux QCM et défis.</li>
+    </ul>
+    <div class="notice">Cette suppression est irréversible. Comptez jusqu'à 30 jours pour un traitement complet, conformément au RGPD.</div>
 
-    <div class="card">
-      <h2>Faire la demande</h2>
-      <p>Indiquez l'adresse email associée à votre compte SalesQuest, puis appuyez sur le bouton. Cela ouvre votre application mail avec un message pré-rempli à nous envoyer.</p>
-      <form id="delete-form" onsubmit="return false">
-        <label for="account-email">Email du compte à supprimer</label>
-        <input type="email" id="account-email" name="account-email" placeholder="vous@exemple.com" required>
-        <p class="hint">Nous vous répondons pour confirmer la suppression une fois effectuée.</p>
-        <button type="button" class="btn btn-primary" id="delete-btn">Demander la suppression de mon compte</button>
-      </form>
-      <p class="contact">Vous pouvez aussi écrire directement à <a href="mailto:fgouss@gmail.com">fgouss@gmail.com</a>.</p>
+    <div class="form-block">
+      <h2 style="margin-top:0;">Faire la demande</h2>
+      <p style="margin-bottom:18px;">Indiquez l'adresse email associée à votre compte SalesQuest, puis appuyez sur le bouton. Cela ouvre votre application mail avec un message pré-rempli à nous envoyer.</p>
+      <label for="delete-email">Email du compte à supprimer</label>
+      <input type="email" id="delete-email" placeholder="vous@exemple.com" required>
+      <p class="form-note">Nous vous répondons pour confirmer la suppression une fois effectuée.</p>
+      <button type="button" onclick="sendDeletionRequest()">Demander la suppression de mon compte</button>
     </div>
+    <p class="fallback">Vous pouvez aussi écrire directement à <a href="mailto:fgouss@gmail.com">fgouss@gmail.com</a>.</p>
   </div>
 </main>
 
 <footer>
   <div class="wrap">
-    <p><a href="index.html">SalesQuest</a> · © 2026 SalesQuest · Bêta privée</p>
+    <div class="logo" style="font-size:1rem;">Sales<span style="color:var(--orange);">Quest</span> · © 2026 · Bêta privée</div>
+    <div class="links">
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="privacy.html">Politique de confidentialité</a>
+      <a href="cgv.html">CGV</a>
+      <a href="cgu.html">CGU</a>
+      <a href="mailto:contact@salesquest.fr">contact@salesquest.fr</a>
+    </div>
   </div>
 </footer>
 
 <script>
-  document.getElementById('delete-btn').addEventListener('click', function () {
-    var emailInput = document.getElementById('account-email');
-    var email = emailInput.value.trim();
-    if (!email) {
-      emailInput.reportValidity();
-      return;
-    }
-    var subject = encodeURIComponent('Demande de suppression de compte SalesQuest');
-    var body = encodeURIComponent(
-      'Bonjour,\n\n' +
-      'Je souhaite supprimer mon compte SalesQuest et l\'ensemble des données associées ' +
-      '(historique de débriefs/préparations, progression).\n\n' +
-      'Email du compte concerné : ' + email + '\n\n' +
-      'Merci de confirmer une fois la suppression effectuée.'
-    );
-    window.location.href = 'mailto:fgouss@gmail.com?subject=' + subject + '&body=' + body;
-  });
+function sendDeletionRequest(){
+  var email = document.getElementById('delete-email').value.trim();
+  if(!email){
+    document.getElementById('delete-email').focus();
+    return;
+  }
+  var subject = encodeURIComponent('Suppression de compte SalesQuest');
+  var body = encodeURIComponent(
+    'Bonjour,\n\nJe souhaite supprimer mon compte SalesQuest et l\'ensemble de mes données associées.\n\nAdresse email du compte : ' + email + '\n\nMerci de me confirmer une fois la suppression effectuée.'
+  );
+  window.location.href = 'mailto:contact@salesquest.fr?subject=' + subject + '&body=' + body;
+}
 </script>
 
 </body>
