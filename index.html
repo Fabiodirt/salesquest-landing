@@ -241,6 +241,20 @@
     color: #7C97A2;
     font-style: italic;
   }
+  .stat-bar{
+    margin-top: 16px;
+    height: 4px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .stat-bar-fill{
+    height: 100%;
+    width: 0%;
+    background: var(--orange);
+    border-radius: 2px;
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
 
   /* ---------- FEATURES / BENTO ---------- */
   .features{
@@ -275,11 +289,45 @@
     background: var(--white);
     border: 1px solid var(--line);
     box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.6s ease;
+    opacity: 0;
+    transform: translateY(18px);
   }
+  .tile.in-view{ opacity: 1; transform: translateY(0); }
   .tile:hover{
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+  }
+  @media (prefers-reduced-motion: reduce){
+    .tile{ opacity: 1; transform: none; }
+  }
+
+  /* ---------- FLOATING MINI CTA ---------- */
+  .mini-cta{
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 200;
+    background: var(--orange);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 14px 24px;
+    border-radius: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+  }
+  .mini-cta.show{
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .mini-cta:hover{ background: var(--orange-dark); }
+  @media (max-width: 600px){
+    .mini-cta{ left: 16px; right: 16px; bottom: 16px; text-align: center; }
   }
 
   /* Highlight Feature: Library / AI Generator */
@@ -394,6 +442,54 @@
     line-height: 1.65;
   }
 
+  /* ---------- FAQ ---------- */
+  .faq{
+    padding: 88px 0;
+    background: var(--bg-soft);
+    border-top: 1px solid var(--line);
+  }
+  .faq .wrap{ max-width: 760px; }
+  .faq h2{
+    font-size: clamp(1.7rem, 2.7vw, 2.1rem);
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .faq-item{
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+  .faq-item summary{
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 1.08rem;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .faq-item summary::-webkit-details-marker{ display: none; }
+  .faq-item summary::after{
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--orange);
+    font-weight: 400;
+    margin-left: 16px;
+    flex: none;
+    transition: transform 0.2s ease;
+  }
+  .faq-item[open] summary::after{ transform: rotate(45deg); }
+  .faq-item p{
+    margin-top: 14px;
+    font-size: 1rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+  .faq-item p a{ color: var(--orange); text-decoration: underline; }
+
   /* ---------- CTA FINAL ---------- */
   .cta-final{
     background: linear-gradient(180deg, var(--navy-deep) 0%, #001A28 100%);
@@ -456,7 +552,10 @@
 <header class="nav">
   <div class="wrap">
     <div class="logo">Sales<span>Quest</span></div>
-    <a class="nav-cta" href="#cta">Démarrer un POC</a>
+    <div style="display:flex; align-items:center; gap:28px;">
+      <a href="pricing.html" style="color:#C7D8DF; font-weight:600; font-size:0.95rem;">Tarifs</a>
+      <a class="nav-cta" href="#cta">Démarrer un POC</a>
+    </div>
   </div>
 </header>
 
@@ -492,21 +591,25 @@
       <div class="stat">
         <div class="num"><span class="count" data-target="84" data-suffix="%">0%</span></div>
         <p>du contenu de formation est oublié en 3 mois, faute de renforcement quotidien</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="84"></div></div>
         <span class="source">Source : Qwilr</span>
       </div>
       <div class="stat">
         <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–0%</span></div>
         <p>de ce qui est appris en formation théorique est réellement appliqué en rendez-vous</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="2"></div></div>
         <span class="source">Source : ATD</span>
       </div>
       <div class="stat">
         <div class="num"><span class="count" data-target="83" data-suffix="%">0%</span> <span style="font-size:0.48em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
         <p>de salariés motivés par un entraînement gamifié vs format traditionnel</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="83"></div></div>
         <span class="source">Source : 5mins.ai</span>
       </div>
       <div class="stat">
         <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+0%</span></div>
         <p>de ventes nettes par commercial avec un entraînement continu</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="50"></div></div>
         <span class="source">Source : Qwilr</span>
       </div>
     </div>
@@ -594,6 +697,34 @@
   </div>
 </section>
 
+<section class="faq">
+  <div class="wrap">
+    <h2>Questions fréquentes</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Mes documents internes sont-ils en sécurité ?</summary>
+        <p>Oui. Vos documents restent liés à votre organisation et ne sont jamais partagés avec d'autres clients. Le détail des sous-traitants et de l'hébergement figure dans notre <a href="privacy.html">politique de confidentialité</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Quelle est la différence entre Essentiel et Expert ?</summary>
+        <p>Essentiel donne accès à l'application complète et au tableau de bord manager en lecture. Expert ajoute l'import de contenu personnalisé par IA (Bibliothèque) et les pistes IA pour le manager. Détail sur la <a href="pricing.html">page Tarifs</a>.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Y a-t-il un engagement ?</summary>
+        <p>Non, l'abonnement est mensuel ou annuel sans engagement de durée au-delà de la période choisie, résiliable à tout moment depuis l'application.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Comment se passe l'essai de 14 jours ?</summary>
+        <p>Accès complet aux deux paliers (Essentiel et Expert), sans carte bancaire. Le choix du palier ne se fait qu'à la fin, au moment de payer.</p>
+      </details>
+      <details class="faq-item">
+        <summary>SalesQuest remplace-t-il notre CRM ?</summary>
+        <p>Non. SalesQuest est un outil d'entraînement et de coaching, pas un CRM — il vient en complément de vos outils existants, pas à leur place.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
 <section class="cta-final" id="cta">
   <div class="wrap">
     <h2>Prêt à tester l'entraînement personnalisé avec votre équipe ?</h2>
@@ -617,6 +748,8 @@
     </div>
   </div>
 </footer>
+
+<a href="#cta" class="mini-cta" id="miniCta">Démarrer un POC →</a>
 
 <script>
 (function(){
@@ -664,6 +797,76 @@
   }, { threshold: 0.5 });
 
   counters.forEach(function(el){ observer.observe(el); });
+
+  // Animate stat bars alongside counters
+  var bars = document.querySelectorAll('.stat-bar-fill');
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    bars.forEach(function(b){ b.style.width = b.getAttribute('data-fill') + '%'; });
+  } else {
+    var barObserver = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.style.width = entry.target.getAttribute('data-fill') + '%';
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    bars.forEach(function(b){ barObserver.observe(b); });
+  }
+})();
+
+// Bento tiles: fade up once when scrolled into view
+(function(){
+  var tiles = document.querySelectorAll('.tile');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    tiles.forEach(function(t){ t.classList.add('in-view'); });
+    return;
+  }
+  var tileObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting){
+        var el = entry.target;
+        var delay = Array.prototype.indexOf.call(tiles, el) * 70;
+        setTimeout(function(){ el.classList.add('in-view'); }, delay);
+        tileObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
+  tiles.forEach(function(t){ tileObserver.observe(t); });
+})();
+
+// Floating mini-CTA: show after hero, hide once final CTA is in view
+(function(){
+  var miniCta = document.getElementById('miniCta');
+  var hero = document.querySelector('.hero');
+  var finalCta = document.getElementById('cta');
+  if (!miniCta || !hero || !finalCta || !('IntersectionObserver' in window)) return;
+
+  var pastHero = false;
+  var nearFinalCta = false;
+
+  function update(){
+    if (pastHero && !nearFinalCta){
+      miniCta.classList.add('show');
+    } else {
+      miniCta.classList.remove('show');
+    }
+  }
+
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      pastHero = !entry.isIntersecting;
+      update();
+    });
+  }, { threshold: 0 }).observe(hero);
+
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      nearFinalCta = entry.isIntersecting;
+      update();
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -30% 0px' }).observe(finalCta);
 })();
 </script>
 </body>
