@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SalesQuest — L'entraînement commercial que vos équipes utilisent, vraiment</title>
-<meta name="description" content="Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...) intégrés dès le premier jour. Suivi en temps réel pour le manager.">
+<title>SalesQuest — L'entraînement commercial personnalisé que vos équipes utilisent, vraiment</title>
+<meta name="description" content="Transformez vos argumentaires internes en entraînement quotidien. Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...). Suivi en temps réel pour le manager.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,600&display=swap" rel="stylesheet">
@@ -12,10 +12,11 @@
   :root{
     --navy: #003A54;
     --navy-deep: #00263A;
+    --navy-light: #004D6E;
     --orange: #F18700;
     --orange-dark: #D97600;
     --bg: #FFFFFF;
-    --bg-soft: #F3F6F7;
+    --bg-soft: #F4F7F8;
     --text: #12242F;
     --text-soft: #4E6672;
     --line: #E2E8EA;
@@ -39,17 +40,36 @@
   a{ color: inherit; text-decoration: none; }
 
   .wrap{
-    max-width: 1160px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 0 32px;
   }
 
-  h1,h2,h3{ font-weight: 800; letter-spacing: -0.01em; }
+  h1,h2,h3{ font-weight: 800; letter-spacing: -0.015em; }
+
+  .badge{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(241, 135, 0, 0.12);
+    color: var(--orange);
+    border: 1px solid rgba(241, 135, 0, 0.25);
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
 
   /* ---------- NAV ---------- */
   .nav{
     background: var(--navy);
-    padding: 20px 0;
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .nav .wrap{
     display:flex;
@@ -58,7 +78,7 @@
   }
   .logo{
     font-weight: 900;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     color: var(--white);
     letter-spacing: -0.02em;
   }
@@ -70,15 +90,16 @@
     font-size: 0.95rem;
     padding: 10px 22px;
     border-radius: 6px;
-    transition: background 0.15s ease;
+    box-shadow: 0 4px 14px rgba(241,135,0,0.3);
+    transition: all 0.2s ease;
   }
-  .nav-cta:hover{ background: var(--orange-dark); }
+  .nav-cta:hover{ background: var(--orange-dark); transform: translateY(-1px); }
 
   /* ---------- HERO ---------- */
   .hero{
-    background: var(--navy);
+    background: var(--navy-deep);
     color: var(--white);
-    padding: 76px 0 0;
+    padding: 80px 0 0;
     overflow: hidden;
     position: relative;
   }
@@ -87,70 +108,43 @@
     position: absolute;
     inset: -20%;
     background:
-      radial-gradient(45% 55% at 20% 25%, rgba(241,135,0,0.22), transparent 60%),
-      radial-gradient(55% 65% at 85% 75%, rgba(0,120,160,0.28), transparent 60%),
-      radial-gradient(40% 50% at 60% 15%, rgba(241,135,0,0.12), transparent 55%),
+      radial-gradient(45% 55% at 20% 25%, rgba(241,135,0,0.18), transparent 60%),
+      radial-gradient(55% 65% at 85% 75%, rgba(0,120,160,0.22), transparent 60%),
       linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
-    background-size: 180% 180%, 180% 180%, 180% 180%, 100% 100%;
+    background-size: 180% 180%, 180% 180%, 100% 100%;
     animation: mesh-drift 22s ease-in-out infinite;
     z-index: 0;
   }
   .hero .wrap{ position: relative; z-index: 1; }
 
-  .particles{
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: 0;
-    pointer-events: none;
-  }
-  .particle{
-    position: absolute;
-    bottom: -20px;
-    border-radius: 50%;
-    background: var(--orange);
-    animation: particle-rise linear infinite;
-  }
-  .particle.alt{ background: #7FBFDD; }
-  @keyframes particle-rise{
-    0%{ transform: translate(0, 0); opacity: 0; }
-    12%{ opacity: 0.7; }
-    88%{ opacity: 0.55; }
-    100%{ transform: translate(var(--drift, 24px), -520px); opacity: 0; }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .particle{ animation: none; opacity: 0; }
-  }
   @keyframes mesh-drift{
-    0%{ background-position: 0% 0%, 100% 100%, 50% 0%, 0 0; }
-    50%{ background-position: 30% 20%, 70% 80%, 30% 30%, 0 0; }
-    100%{ background-position: 0% 0%, 100% 100%, 50% 0%, 0 0; }
+    0%{ background-position: 0% 0%, 100% 100%, 0 0; }
+    50%{ background-position: 30% 20%, 70% 80%, 0 0; }
+    100%{ background-position: 0% 0%, 100% 100%, 0 0; }
   }
-  @media (prefers-reduced-motion: reduce){
-    .hero::before{ animation: none; }
-  }
+
   .hero .wrap{
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
-    gap: 40px;
-    align-items: end;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
   }
   .hero-copy{ padding-bottom: 88px; }
   .hero h1{
-    font-size: clamp(2.3rem, 3.9vw, 3.4rem);
-    line-height: 1.1;
-    max-width: 12ch;
+    font-size: clamp(2.4rem, 4.1vw, 3.5rem);
+    line-height: 1.12;
+    margin-top: 18px;
   }
   .hero p.sub{
     margin-top: 22px;
     font-size: 1.2rem;
     color: #C7D8DF;
-    max-width: 46ch;
+    max-width: 48ch;
     font-weight: 400;
     line-height: 1.6;
   }
   .cta-block{
-    margin-top: 34px;
+    margin-top: 36px;
     display: flex;
     align-items: center;
     gap: 18px;
@@ -160,15 +154,16 @@
     background: var(--orange);
     color: var(--white);
     font-weight: 700;
-    font-size: 1.02rem;
-    padding: 15px 30px;
-    border-radius: 6px;
+    font-size: 1.05rem;
+    padding: 16px 32px;
+    border-radius: 8px;
     display: inline-block;
-    transition: background 0.15s ease, transform 0.15s ease;
+    box-shadow: 0 6px 20px rgba(241,135,0,0.35);
+    transition: all 0.2s ease;
   }
-  .btn-primary:hover{ background: var(--orange-dark); transform: translateY(-1px); }
+  .btn-primary:hover{ background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(241,135,0,0.45); }
   .micro{
-    font-size: 0.9rem;
+    font-size: 0.88rem;
     color: #93AAB4;
   }
 
@@ -176,42 +171,40 @@
     position: relative;
     display:flex;
     justify-content: center;
+    padding-bottom: 20px;
   }
   .phone{
-    width: 260px;
-    border-radius: 30px;
+    width: 270px;
+    border-radius: 36px;
     overflow: hidden;
-    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.55), 0 0 0 6px rgba(255,255,255,0.06);
+    box-shadow: 0 35px 70px -15px rgba(0,0,0,0.65), 0 0 0 8px rgba(255,255,255,0.08);
     position: relative;
     z-index: 2;
-    animation: float-phone 6s ease-in-out infinite;
+    transform: rotate(-4deg);
+    transition: transform 0.3s ease;
   }
-  @keyframes float-phone{
-    0%, 100%{ transform: rotate(-5deg) translateY(20px); }
-    50%{ transform: rotate(-5deg) translateY(6px); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .phone{ animation: none; transform: rotate(-5deg) translateY(20px); }
-  }
+  .phone:hover{ transform: rotate(0deg) scale(1.02); }
   .phone img{ width:100%; display:block; }
 
   /* ---------- PROBLEM ---------- */
   .problem{
-    padding: 64px 0;
+    padding: 88px 0;
+    background: #FAFCFC;
+    border-bottom: 1px solid var(--line);
   }
   .problem .wrap{
-    max-width: 720px;
+    max-width: 780px;
+    text-align: center;
   }
   .problem h2{
-    font-size: clamp(1.7rem, 2.7vw, 2.1rem);
+    font-size: clamp(1.8rem, 2.8vw, 2.3rem);
     color: var(--navy);
-    max-width: 18ch;
   }
   .problem p{
-    margin-top: 20px;
-    font-size: 1.18rem;
+    margin: 20px auto 0;
+    font-size: 1.2rem;
     color: var(--text-soft);
-    max-width: 62ch;
+    line-height: 1.65;
   }
 
   /* ---------- STATS ---------- */
@@ -226,249 +219,235 @@
   }
   .stat{
     padding: 0 24px;
-    border-left: 1px solid rgba(255,255,255,0.16);
+    border-left: 1px solid rgba(255,255,255,0.14);
   }
   .stat:first-child{ border-left: none; padding-left: 0; }
   .stat .num{
-    font-size: clamp(2.2rem, 3.4vw, 2.9rem);
+    font-size: clamp(2.3rem, 3.5vw, 3rem);
     font-weight: 900;
     color: var(--orange);
     letter-spacing: -0.02em;
   }
   .stat p{
     margin-top: 10px;
-    font-size: 1rem;
+    font-size: 0.98rem;
     color: #C7D8DF;
     line-height: 1.45;
   }
   .stat .source{
     display: block;
     margin-top: 8px;
-    font-size: 0.76rem;
+    font-size: 0.75rem;
     color: #7C97A2;
     font-style: italic;
   }
 
   /* ---------- FEATURES / BENTO ---------- */
   .features{
-    padding: 96px 0 64px;
+    padding: 96px 0;
   }
   .features-head{
-    max-width: 560px;
-    margin-bottom: 40px;
+    max-width: 700px;
+    margin-bottom: 48px;
   }
   .features-head h2{
-    font-size: clamp(1.7rem, 2.7vw, 2.1rem);
+    font-size: clamp(1.8rem, 2.8vw, 2.3rem);
     color: var(--navy);
+    margin-top: 12px;
+  }
+  .features-head p{
+    font-size: 1.15rem;
+    color: var(--text-soft);
+    margin-top: 12px;
   }
 
   .bento{
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: minmax(160px, auto);
-    gap: 20px;
+    grid-auto-rows: minmax(180px, auto);
+    gap: 24px;
   }
   .tile{
-    border-radius: 16px;
-    padding: 26px;
+    border-radius: 20px;
+    padding: 30px;
     position: relative;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
-  .tile.in-view{ opacity: 1; transform: translateY(0); }
+  .tile:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.07);
+  }
+
+  /* Highlight Feature: Library / AI Generator */
+  .tile-library-hero{
+    grid-column: span 6;
+    background: linear-gradient(135deg, #002D42 0%, var(--navy) 100%);
+    color: var(--white);
+    border: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
+  }
+  .tile-library-hero .tile-copy{
+    padding: 44px;
+    flex: 0 0 42%;
+  }
+  .tile-library-hero h3{ font-size: 1.6rem; color: var(--white); font-weight: 800; line-height: 1.3; }
+  .tile-library-hero p{ margin-top: 14px; font-size: 1.08rem; color: #C7D8DF; line-height: 1.6; }
+  .tile-library-hero .tile-img-wrapper{
+    flex: 1;
+    height: 100%;
+    min-height: 360px;
+    position: relative;
+    overflow: hidden;
+  }
+  .tile-library-hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+    border-left: 1px solid rgba(255,255,255,0.1);
+  }
 
   .tile-plain{
-    grid-column: span 3;
+    grid-column: span 2;
     background: var(--bg-soft);
-    border: 1px solid var(--line);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
   }
-  .tile-plain h3{ font-size: 1.2rem; color: var(--navy); font-weight: 700; margin-top: 14px; }
-  .tile-plain p{ margin-top: 8px; font-size: 1.04rem; color: var(--text-soft); line-height: 1.5; }
-  .tile-small{ grid-column: span 2; }
+  .tile-plain h3{ font-size: 1.2rem; color: var(--navy); font-weight: 700; margin-top: 18px; }
+  .tile-plain p{ margin-top: 8px; font-size: 1rem; color: var(--text-soft); line-height: 1.55; }
 
   .tile-solution{
     grid-column: span 4;
-    grid-row: span 2;
-    background: radial-gradient(120% 100% at 100% 0%, #0a4d6b 0%, var(--navy) 55%);
-    padding: 0;
+    background: radial-gradient(120% 100% at 100% 0%, #0a4d6b 0%, var(--navy) 70%);
+    color: var(--white);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    align-items: center;
+    gap: 24px;
   }
+  .tile-solution .tile-copy{ flex: 1; }
+  .tile-solution h3{ color: var(--white); font-size: 1.45rem; font-weight: 800; }
+  .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 1.05rem; line-height: 1.55; }
   .tile-solution .tile-img{
-    position: absolute;
-    right: 26px;
-    top: 26px;
-    bottom: 26px;
-    width: auto;
-    height: calc(100% - 52px);
-    border-radius: 14px;
-    box-shadow: 0 18px 34px -14px rgba(0,0,0,0.55);
-    border: 1px solid rgba(255,255,255,0.12);
+    width: 170px;
+    border-radius: 12px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.15);
   }
-  .tile-solution .tile-copy{
-    position: relative;
-    z-index: 1;
-    padding: 28px;
-    max-width: 52%;
-  }
-  .tile-solution h3{ color: var(--white); font-size: 1.4rem; font-weight: 800; }
-  .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 1.06rem; line-height: 1.55; }
 
-  .tile-image-wide{
-    grid-column: span 3;
-    background: var(--bg-soft);
-    border: 1px solid var(--line);
-    padding: 24px 24px 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  .tile-image-wide .tile-img{
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: 18px;
-    border-radius: 8px 8px 0 0;
-    border: 1px solid var(--line);
-    border-bottom: none;
-  }
-  .tile-image-wide .tile-copy{ padding: 0; }
-  .tile-image-wide h3{ font-size: 1.15rem; color: var(--navy); font-weight: 700; }
-  .tile-image-wide p{ margin-top: 8px; font-size: 1rem; color: var(--text-soft); line-height: 1.5; }
-
-  .tile-library-wide{
+  .tile-dashboard{
     grid-column: span 6;
     background: var(--bg-soft);
-    border: 1px solid var(--line);
-    padding: 0;
-    display: flex;
-    align-items: stretch;
-    gap: 0;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 32px;
+    align-items: center;
+    padding: 36px;
   }
-  .tile-library-wide .tile-copy{
-    padding: 30px;
-    flex: 0 0 34%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .tile-library-wide h3{ font-size: 1.28rem; color: var(--navy); font-weight: 800; line-height: 1.3; }
-  .tile-library-wide p{ margin-top: 12px; font-size: 1.02rem; color: var(--text-soft); line-height: 1.55; }
-  .tile-library-wide .tile-img{
-    flex: 1;
+  .tile-dashboard h3{ font-size: 1.4rem; color: var(--navy); font-weight: 800; }
+  .tile-dashboard p{ margin-top: 12px; font-size: 1.05rem; color: var(--text-soft); line-height: 1.6; }
+  .tile-dashboard img{
     width: 100%;
-    max-height: 380px;
-    object-fit: cover;
-    object-position: top center;
-    border-left: 1px solid var(--line);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 1px solid var(--line);
   }
 
   .feature-icon{
-    flex: none;
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
     background: var(--white);
     border: 1px solid var(--line);
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   }
-  .feature-icon svg{ width: 22px; height: 22px; }
-
-  @media (prefers-reduced-motion: reduce){
-    .tile{ opacity: 1; transform: none; transition: none; }
-  }
+  .feature-icon svg{ width: 24px; height: 24px; }
 
   /* ---------- AUDIENCE ---------- */
   .audience{
-    padding: 88px 0 64px;
-    background: var(--navy);
+    padding: 96px 0;
+    background: var(--navy-deep);
     color: var(--white);
+    position: relative;
   }
-  .audience .wrap{ max-width: 760px; position: relative; }
-  .audience-mark{ margin-bottom: 8px; }
-  .audience-mark svg{ width: 40px; height: 32px; }
+  .audience .wrap{ max-width: 800px; text-align: center; }
+  .audience-mark{ margin-bottom: 16px; }
+  .audience-mark svg{ width: 48px; height: 38px; }
   .audience h2{
-    font-size: clamp(1.7rem, 2.9vw, 2.2rem);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
     color: var(--white);
-    max-width: 22ch;
-    line-height: 1.25;
+    line-height: 1.3;
   }
   .audience p{
-    margin-top: 20px;
-    font-size: 1.18rem;
+    margin: 24px auto 0;
+    font-size: 1.2rem;
     color: #C7D8DF;
-    max-width: 58ch;
+    line-height: 1.65;
   }
 
   /* ---------- CTA FINAL ---------- */
   .cta-final{
-    background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
+    background: linear-gradient(180deg, var(--navy-deep) 0%, #001A28 100%);
     color: var(--white);
-    padding: 64px 0 96px;
+    padding: 88px 0 104px;
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.12);
+    border-top: 1px solid rgba(255,255,255,0.08);
   }
   .cta-final h2{
-    font-size: clamp(1.9rem, 3.3vw, 2.5rem);
-    max-width: 20ch;
+    font-size: clamp(2rem, 3.5vw, 2.7rem);
+    max-width: 22ch;
     margin: 0 auto;
   }
   .cta-final .cta-block{
     justify-content: center;
-    margin-top: 30px;
+    margin-top: 36px;
   }
 
   /* ---------- FOOTER ---------- */
   footer{
-    background: var(--navy-deep);
+    background: #001420;
     color: #8FA6B0;
-    padding: 32px 0;
+    padding: 36px 0;
     font-size: 0.88rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
   }
   footer .wrap{
     display:flex;
     flex-wrap: wrap;
-    gap: 8px 18px;
+    gap: 16px;
     align-items: center;
     justify-content: space-between;
   }
-  footer .links{ display:flex; gap:18px; flex-wrap: wrap; }
+  footer .links{ display:flex; gap:20px; flex-wrap: wrap; }
   footer a:hover{ color: var(--white); }
 
   /* ---------- RESPONSIVE ---------- */
-  @media (max-width: 860px){
+  @media (max-width: 900px){
     .hero .wrap{ grid-template-columns: 1fr; }
-    .hero-copy{ padding-bottom: 40px; }
-    .hero-visual{ padding-bottom: 60px; }
-    .phone{ transform: rotate(-3deg); width: 220px; }
+    .hero-copy{ padding-bottom: 40px; text-align: center; }
+    .hero p.sub{ margin-left: auto; margin-right: auto; }
+    .cta-block{ justify-content: center; }
+    .hero-visual{ padding-bottom: 40px; }
     .stats-grid{ grid-template-columns: 1fr 1fr; row-gap: 32px; }
     .stat{ border-left: none; padding-left: 0; }
-    .stat:nth-child(odd){ border-right: 1px solid rgba(255,255,255,0.16); padding-right: 20px; }
-    .bento{ grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .tile-plain, .tile-small, .tile-image-wide, .tile-library-wide, .tile-solution{ grid-column: 1 / -1; grid-row: auto; }
-    .tile-library-wide{ flex-direction: column; align-items: stretch; }
-    .tile-library-wide .tile-copy{ flex: none; padding: 20px; }
-    .tile-library-wide .tile-img{ max-height: none; width: 100%; border-left: none; border-top: 1px solid var(--line); }
-    .tile-solution{ min-height: 260px; padding-top: 20px; }
-    .tile-solution .tile-img{ position: static; width: 140px; margin: 0 20px 12px auto; display:block; }
-    .tile-solution .tile-copy{ max-width: 100%; padding: 0 20px 20px; }
-    .tile-image-wide{ flex-direction: column; }
-    .tile-image-wide .tile-img{ width: 100%; height: 160px; }
-    .tile-image-wide .tile-copy{ padding: 18px; }
-    footer .wrap{ flex-direction: column; align-items: flex-start; }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior: auto; }
-    *{ transition: none !important; }
+    .stat:nth-child(odd){ border-right: 1px solid rgba(255,255,255,0.14); padding-right: 20px; }
+    .bento{ grid-template-columns: 1fr; }
+    .tile-plain, .tile-solution, .tile-library-hero, .tile-dashboard{ grid-column: 1 / -1; }
+    .tile-library-hero{ flex-direction: column; }
+    .tile-library-hero .tile-copy{ flex: none; padding: 30px; }
+    .tile-library-hero .tile-img-wrapper{ width: 100%; min-height: 240px; }
+    .tile-solution{ flex-direction: column; text-align: center; }
+    .tile-solution .tile-img{ width: 140px; }
+    .tile-dashboard{ grid-template-columns: 1fr; padding: 24px; }
   }
 </style>
 </head>
@@ -482,30 +461,14 @@
 </header>
 
 <section class="hero">
-  <div class="particles">
-    <span class="particle" style="left:6%; width:6px; height:6px; --drift:14px; animation-duration:14s; animation-delay:0s;"></span>
-    <span class="particle alt" style="left:14%; width:4px; height:4px; --drift:-10px; animation-duration:11s; animation-delay:2s;"></span>
-    <span class="particle" style="left:22%; width:8px; height:8px; --drift:20px; animation-duration:17s; animation-delay:1s;"></span>
-    <span class="particle" style="left:31%; width:5px; height:5px; --drift:-16px; animation-duration:13s; animation-delay:4s;"></span>
-    <span class="particle alt" style="left:39%; width:4px; height:4px; --drift:12px; animation-duration:10s; animation-delay:0.5s;"></span>
-    <span class="particle" style="left:47%; width:7px; height:7px; --drift:-22px; animation-duration:16s; animation-delay:3s;"></span>
-    <span class="particle" style="left:55%; width:5px; height:5px; --drift:18px; animation-duration:12s; animation-delay:5s;"></span>
-    <span class="particle alt" style="left:63%; width:6px; height:6px; --drift:-14px; animation-duration:15s; animation-delay:1.5s;"></span>
-    <span class="particle" style="left:70%; width:4px; height:4px; --drift:10px; animation-duration:9s; animation-delay:2.5s;"></span>
-    <span class="particle" style="left:77%; width:8px; height:8px; --drift:-20px; animation-duration:18s; animation-delay:0s;"></span>
-    <span class="particle alt" style="left:84%; width:5px; height:5px; --drift:16px; animation-duration:11s; animation-delay:3.5s;"></span>
-    <span class="particle" style="left:91%; width:6px; height:6px; --drift:-12px; animation-duration:14s; animation-delay:4.5s;"></span>
-    <span class="particle" style="left:10%; width:3px; height:3px; --drift:8px; animation-duration:10s; animation-delay:6s;"></span>
-    <span class="particle alt" style="left:58%; width:3px; height:3px; --drift:-8px; animation-duration:12s; animation-delay:7s;"></span>
-    <span class="particle" style="left:35%; width:4px; height:4px; --drift:14px; animation-duration:15s; animation-delay:6.5s;"></span>
-  </div>
   <div class="wrap">
     <div class="hero-copy">
+      <span class="badge">Méthode & Pratique Terrain</span>
       <h1>L'entraînement commercial que vos équipes utilisent, vraiment.</h1>
-      <p class="sub">Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...) — intégrés dès le premier jour. Suivi en temps réel pour le manager.</p>
+      <p class="sub">Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...). Vos argumentaires terrain transformés en réflexes quotidiens.</p>
       <div class="cta-block">
-        <a class="btn-primary" href="#cta">Démarrer un POC</a>
-        <span class="micro">14 jours, accès complet, sans carte bancaire</span>
+        <a class="btn-primary" href="#cta">Démarrer un POC (14 jours)</a>
+        <span class="micro">Accès complet • Sans engagement</span>
       </div>
     </div>
     <div class="hero-visual">
@@ -518,8 +481,8 @@
 
 <section class="problem">
   <div class="wrap">
-    <h2>La formation commerciale, vos équipes l'oublient en une semaine</h2>
-    <p>Un PDF envoyé une fois. Une session e-learning cochée puis jamais rouverte. La plupart des outils de formation commerciale sont conçus pour être suivis, pas pour être utilisés. Résultat : les méthodes ne s'ancrent jamais dans la pratique quotidienne.</p>
+    <h2>La formation classique, vos équipes l'oublient en une semaine</h2>
+    <p>Un PDF transmis une fois par an. Une session e-learning cochée puis rapidement oubliée. La plupart des outils de formation sont conçus pour être administrés, pas pour être pratiqués. Résultat : les méthodes ne s'ancrent jamais dans la réalité du terrain.</p>
   </div>
 </section>
 
@@ -528,22 +491,22 @@
     <div class="stats-grid">
       <div class="stat">
         <div class="num"><span class="count" data-target="84" data-suffix="%">0%</span></div>
-        <p>du contenu de formation est oublié en 3 mois, faute de renforcement</p>
+        <p>du contenu de formation est oublié en 3 mois, faute de renforcement quotidien</p>
         <span class="source">Source : Qwilr</span>
       </div>
       <div class="stat">
         <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–0%</span></div>
-        <p>de ce qui est appris en formation classique est réellement appliqué face à un vrai client</p>
-        <span class="source">Source : Association for Talent Development</span>
+        <p>de ce qui est appris en formation théorique est réellement appliqué en rendez-vous</p>
+        <span class="source">Source : ATD</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="83" data-suffix="%">0%</span> <span style="font-size:0.5em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
-        <p>de salariés se disent motivés en formation gamifiée, contre le format traditionnel</p>
-        <span class="source">Source : étude citée par 5mins.ai</span>
+        <div class="num"><span class="count" data-target="83" data-suffix="%">0%</span> <span style="font-size:0.48em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
+        <p>de salariés motivés par un entraînement gamifié vs format traditionnel</p>
+        <span class="source">Source : 5mins.ai</span>
       </div>
       <div class="stat">
         <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+0%</span></div>
-        <p>de ventes nettes par commercial avec une formation continue, vs une formation ponctuelle</p>
+        <p>de ventes nettes par commercial avec un entraînement continu</p>
         <span class="source">Source : Qwilr</span>
       </div>
     </div>
@@ -553,55 +516,69 @@
 <section class="features">
   <div class="wrap">
     <div class="features-head">
-      <h2>Ce qui fait la différence</h2>
+      <span class="badge">Pour le Manager & l'Équipe</span>
+      <h2>Conçu pour le terrain, piloté par le manager</h2>
+      <p>Transformez vos vrais documents commerciaux en simulations interactives et suivez la progression exacte de chaque membre de l'équipe.</p>
     </div>
+
     <div class="bento">
-      <div class="tile tile-solution">
-        <img class="tile-img" src="screenshot-roleplay.png" alt="Écran Coach de l'application SalesQuest, avec choix de scénarios d'entraînement">
+      <!-- HERO FEATURE: MANAGER DOCUMENT IMPORT -->
+      <div class="tile tile-library-hero">
         <div class="tile-copy">
-          <h3>Ils reviennent chaque jour, sans qu'on le leur demande</h3>
-          <p>Questions flash, mises en situation face à un Coach IA, défis progressifs. Vos commerciaux reviennent chaque jour parce que ça leur donne envie, pas parce qu'on les y oblige.</p>
+          <span class="badge" style="background: rgba(255,255,255,0.1); color: #FFF; border-color: rgba(255,255,255,0.2);">Exclusivité SalesQuest</span>
+          <h3 style="margin-top: 14px;">Vos documents internes transformés en entraînement sur-mesure par l'IA</h3>
+          <p>Importez vos argumentaires, offres et fiches d'objections terrain. L'IA génère automatiquement des QCM et scénarios de coaching 100% fidèles à votre secteur, prêts à publier.</p>
+        </div>
+        <div class="tile-img-wrapper">
+          <img src="screenshot-bibliotheque.png" alt="Bibliothèque Manager SalesQuest : Génération automatique d'entraînements depuis des documents PDF et DOCX">
         </div>
       </div>
 
-      <div class="tile tile-plain tile-small">
+      <!-- FEATURE: ENGAGEMENT -->
+      <div class="tile tile-solution">
+        <div class="tile-copy">
+          <h3>Une pratique quotidienne naturelle</h3>
+          <p>Défis courts, cas pratiques face au Coach IA, questions flash. Vos commerciaux s'entraînent chaque jour en toute autonomie.</p>
+        </div>
+        <img class="tile-img" src="screenshot-roleplay.png" alt="Scénarios d'entraînement interactifs SalesQuest">
+      </div>
+
+      <!-- FEATURE: COACH IA -->
+      <div class="tile tile-plain">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
-        <h3>Coach IA</h3>
-        <p>Prépare un rendez-vous, débriefe un appel, répond à une objection précise — à toute heure.</p>
+        <h3>Coach IA 24/7</h3>
+        <p>Préparer une négociation, débrifer un appel dur, valider une accroche — disponible à tout moment.</p>
       </div>
 
-      <div class="tile tile-plain tile-small">
-        <div class="feature-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.2"/><path d="M3 21v-1c0-3 2.7-5 6-5s6 2 6 5v1"/><path d="M16 3.5c1.6.4 2.8 1.9 2.8 3.5s-1.2 3.1-2.8 3.5"/><path d="M18 13.2c1.9.5 3.5 1.9 3.5 4.3V19"/></svg>
-        </div>
-        <h3>Mises en situation réalistes</h3>
-        <p>Cold call, négociation, objection : face à des personnages IA, avant le vrai prospect.</p>
-      </div>
-
+      <!-- FEATURE: METHODOLOGIES -->
       <div class="tile tile-plain">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
-        <h3>Méthodes reconnues, intégrées</h3>
-        <p>SPIN Selling, Challenger Sale, MEDDIC, Sandler, la méthode Voss, les principes de Cialdini — déjà dans l'app, prêts à l'emploi.</p>
+        <h3>Méthodes de référence</h3>
+        <p>SPIN Selling, Challenger, MEDDIC, Sandler, Voss, Cialdini : les meilleures méthodologies pré-intégrées.</p>
       </div>
 
-      <div class="tile tile-image-wide">
-        <div class="tile-copy">
-          <h3>Pilotage en temps réel</h3>
-          <p>Suivez la progression de votre équipe, identifiez les points faibles collectifs, laissez l'IA proposer des actions concrètes.</p>
+      <!-- FEATURE: REALISTIC ROLEPLAY -->
+      <div class="tile tile-plain">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.2"/><path d="M3 21v-1c0-3 2.7-5 6-5s6 2 6 5v1"/><path d="M16 3.5c1.6.4 2.8 1.9 2.8 3.5s-1.2 3.1-2.8 3.5"/><path d="M18 13.2c1.9.5 3.5 1.9 3.5 4.3V19"/></svg>
         </div>
-        <img class="tile-img" src="screenshot-dashboard-kpis.png" alt="Indicateurs de maîtrise par compétence sur le dashboard manager SalesQuest : Prospection, Closing, Objections, Mindset">
+        <h3>Simulations de négociation</h3>
+        <p>Cold call, traitement des objections prix, closing : entraînez-vous face à l'IA avant d'appeler le prospect.</p>
       </div>
 
-      <div class="tile tile-library-wide">
-        <div class="tile-copy">
-          <h3>Vos documents internes, transformés en entraînement par l'IA</h3>
-          <p>Importez votre argumentaire, vos comptes rendus d'objections terrain — l'IA génère automatiquement QCM et scénarios de coaching adaptés à votre secteur, prêts à publier.</p>
+      <!-- FEATURE: DASHBOARD & ANALYTICS -->
+      <div class="tile tile-dashboard">
+        <div>
+          <h3>Pilotage et détection des axes de progrès</h3>
+          <p>Identifiez en un coup d'œil les points faibles collectifs (ex: closing, objections) et laissez l'IA vous recommander les entraînements prioritaires pour l'équipe.</p>
         </div>
-        <img class="tile-img" src="screenshot-bibliotheque.png" alt="Écran Bibliothèque du dashboard manager SalesQuest : documents importés et contenu généré par IA (QCM, scénarios de coaching)">
+        <div>
+          <img src="screenshot-dashboard-full.png" alt="Dashboard manager SalesQuest : suivi de la maîtrise par compétence et classement de l'équipe">
+        </div>
       </div>
     </div>
   </div>
@@ -609,18 +586,20 @@
 
 <section class="audience">
   <div class="wrap">
-    <div class="audience-mark"><svg viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 36V21.6C0 9.6 7.2 1.8 19.2 0L21 5.4C13.8 7.2 10.2 12 10.2 18H19.2V36H0ZM28.8 36V21.6C28.8 9.6 36 1.8 48 0L49.8 5.4C42.6 7.2 39 12 39 18H48V36H28.8Z" fill="#F18700"/></svg></div>
-    <h2>Pour les équipes commerciales qui veulent progresser, pas juste cocher une case</h2>
-    <p>SalesQuest s'adresse aux directeurs commerciaux et responsables des ventes qui veulent que leurs équipes s'entraînent vraiment — pas aux services RH qui cherchent une ligne de plus dans un plan de formation.</p>
+    <div class="audience-mark">
+      <svg viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 36V21.6C0 9.6 7.2 1.8 19.2 0L21 5.4C13.8 7.2 10.2 12 10.2 18H19.2V36H0ZM28.8 36V21.6C28.8 9.6 36 1.8 48 0L49.8 5.4C42.6 7.2 39 12 39 18H48V36H28.8Z" fill="#F18700"/></svg>
+    </div>
+    <h2>Pensé pour les Directeurs Commerciaux exigeants</h2>
+    <p>SalesQuest s'adresse aux managers et dirigeants qui recherchent des résultats d'exécution concrets sur le terrain, pas une validation théorique supplémentaire sur un LMS classique.</p>
   </div>
 </section>
 
 <section class="cta-final" id="cta">
   <div class="wrap">
-    <h2>Prêt à voir si vos équipes accrochent ?</h2>
+    <h2>Prêt à tester l'entraînement personnalisé avec votre équipe ?</h2>
     <div class="cta-block">
-      <a class="btn-primary" href="mailto:contact@salesquest.fr?subject=Démarrer%20un%20POC">Démarrer un POC</a>
-      <span class="micro">14 jours, accès complet, sans carte bancaire</span>
+      <a class="btn-primary" href="mailto:contact@salesquest.fr?subject=D%C3%A9marrer%20un%20POC%20SalesQuest">Démarrer un POC gratuit</a>
+      <span class="micro">14 jours d'essai • Accès complet • Sans carte bancaire</span>
     </div>
   </div>
 </section>
@@ -630,7 +609,7 @@
     <div class="logo" style="font-size:1rem;">Sales<span>Quest</span></div>
     <div class="links">
       <a href="mentions-legales.html">Mentions légales</a>
-      <a href="privacy.html">Politique de confidentialité</a>
+      <a href="privacy.html">Confidentialité</a>
       <a href="cgv.html">CGV</a>
       <a href="cgu.html">CGU</a>
       <a href="suppression-compte.html">Suppression de compte</a>
@@ -685,26 +664,6 @@
   }, { threshold: 0.5 });
 
   counters.forEach(function(el){ observer.observe(el); });
-})();
-
-(function(){
-  var tiles = document.querySelectorAll('.tile');
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion || !('IntersectionObserver' in window)) {
-    tiles.forEach(function(t){ t.classList.add('in-view'); });
-    return;
-  }
-  var tileObserver = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry, i){
-      if (entry.isIntersecting){
-        var el = entry.target;
-        var delay = Array.prototype.indexOf.call(tiles, el) * 80;
-        setTimeout(function(){ el.classList.add('in-view'); }, delay);
-        tileObserver.unobserve(el);
-      }
-    });
-  }, { threshold: 0.2 });
-  tiles.forEach(function(t){ tileObserver.observe(t); });
 })();
 </script>
 </body>
