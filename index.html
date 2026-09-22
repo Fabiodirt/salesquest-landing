@@ -197,7 +197,7 @@
 
   /* ---------- PROBLEM ---------- */
   .problem{
-    padding: 88px 0;
+    padding: 64px 0;
   }
   .problem .wrap{
     max-width: 720px;
@@ -251,7 +251,7 @@
 
   /* ---------- FEATURES / BENTO ---------- */
   .features{
-    padding: 96px 0;
+    padding: 96px 0 64px;
   }
   .features-head{
     max-width: 560px;
@@ -294,7 +294,7 @@
   .tile-solution{
     grid-column: span 4;
     grid-row: span 2;
-    background: var(--navy);
+    background: radial-gradient(120% 100% at 100% 0%, #0a4d6b 0%, var(--navy) 55%);
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -302,9 +302,11 @@
   }
   .tile-solution .tile-img{
     position: absolute;
-    right: -18px;
-    top: 24px;
-    width: 190px;
+    right: 26px;
+    top: 26px;
+    bottom: 26px;
+    width: auto;
+    height: calc(100% - 52px);
     border-radius: 14px;
     box-shadow: 0 18px 34px -14px rgba(0,0,0,0.55);
     border: 1px solid rgba(255,255,255,0.12);
@@ -313,7 +315,7 @@
     position: relative;
     z-index: 1;
     padding: 28px;
-    max-width: 58%;
+    max-width: 52%;
   }
   .tile-solution h3{ color: var(--white); font-size: 1.4rem; font-weight: 800; }
   .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 1.06rem; line-height: 1.55; }
@@ -322,19 +324,21 @@
     grid-column: span 3;
     background: var(--bg-soft);
     border: 1px solid var(--line);
-    padding: 0;
+    padding: 24px 24px 0;
     display: flex;
-    align-items: center;
-    gap: 18px;
+    flex-direction: column;
+    justify-content: flex-start;
   }
   .tile-image-wide .tile-img{
-    height: 100%;
-    width: 108px;
-    object-fit: cover;
-    object-position: top;
-    flex: none;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 18px;
+    border-radius: 8px 8px 0 0;
+    border: 1px solid var(--line);
+    border-bottom: none;
   }
-  .tile-image-wide .tile-copy{ padding: 20px 20px 20px 0; }
+  .tile-image-wide .tile-copy{ padding: 0; }
   .tile-image-wide h3{ font-size: 1.15rem; color: var(--navy); font-weight: 700; }
   .tile-image-wide p{ margin-top: 8px; font-size: 1rem; color: var(--text-soft); line-height: 1.5; }
 
@@ -344,21 +348,24 @@
     border: 1px solid var(--line);
     padding: 0;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     gap: 0;
   }
   .tile-library-wide .tile-copy{
     padding: 30px;
     flex: 0 0 34%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .tile-library-wide h3{ font-size: 1.28rem; color: var(--navy); font-weight: 800; line-height: 1.3; }
   .tile-library-wide p{ margin-top: 12px; font-size: 1.02rem; color: var(--text-soft); line-height: 1.55; }
   .tile-library-wide .tile-img{
     flex: 1;
-    width: auto;
-    max-height: 340px;
+    width: 100%;
+    max-height: 380px;
     object-fit: cover;
-    object-position: top left;
+    object-position: top center;
     border-left: 1px solid var(--line);
   }
 
@@ -381,20 +388,14 @@
 
   /* ---------- AUDIENCE ---------- */
   .audience{
-    padding: 96px 0;
+    padding: 88px 0 64px;
     background: var(--navy);
     color: var(--white);
   }
   .audience .wrap{ max-width: 760px; position: relative; }
-  .audience-mark{
-    font-family: Georgia, serif;
-    font-size: 5.5rem;
-    color: var(--orange);
-    line-height: 1;
-    opacity: 0.85;
-  }
+  .audience-mark{ margin-bottom: 8px; }
+  .audience-mark svg{ width: 40px; height: 32px; }
   .audience h2{
-    margin-top: -18px;
     font-size: clamp(1.7rem, 2.9vw, 2.2rem);
     color: var(--white);
     max-width: 22ch;
@@ -411,8 +412,9 @@
   .cta-final{
     background: linear-gradient(180deg, var(--navy) 0%, var(--navy-deep) 100%);
     color: var(--white);
-    padding: 96px 0;
+    padding: 64px 0 96px;
     text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.12);
   }
   .cta-final h2{
     font-size: clamp(1.9rem, 3.3vw, 2.5rem);
@@ -587,11 +589,11 @@
       </div>
 
       <div class="tile tile-image-wide">
-        <img class="tile-img" src="screenshot-dashboard-full.png" alt="Dashboard manager SalesQuest, avec le point faible de l'équipe détecté par l'IA et le suivi par compétence">
         <div class="tile-copy">
           <h3>Pilotage en temps réel</h3>
           <p>Suivez la progression de votre équipe, identifiez les points faibles collectifs, laissez l'IA proposer des actions concrètes.</p>
         </div>
+        <img class="tile-img" src="screenshot-dashboard-kpis.png" alt="Indicateurs de maîtrise par compétence sur le dashboard manager SalesQuest : Prospection, Closing, Objections, Mindset">
       </div>
 
       <div class="tile tile-library-wide">
@@ -607,7 +609,7 @@
 
 <section class="audience">
   <div class="wrap">
-    <div class="audience-mark">"</div>
+    <div class="audience-mark"><svg viewBox="0 0 48 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 36V21.6C0 9.6 7.2 1.8 19.2 0L21 5.4C13.8 7.2 10.2 12 10.2 18H19.2V36H0ZM28.8 36V21.6C28.8 9.6 36 1.8 48 0L49.8 5.4C42.6 7.2 39 12 39 18H48V36H28.8Z" fill="#F18700"/></svg></div>
     <h2>Pour les équipes commerciales qui veulent progresser, pas juste cocher une case</h2>
     <p>SalesQuest s'adresse aux directeurs commerciaux et responsables des ventes qui veulent que leurs équipes s'entraînent vraiment — pas aux services RH qui cherchent une ligne de plus dans un plan de formation.</p>
   </div>
