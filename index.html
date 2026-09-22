@@ -24,7 +24,7 @@
 
   *{ box-sizing: border-box; margin:0; padding:0; }
 
-  html{ scroll-behavior: smooth; }
+  html{ scroll-behavior: smooth; font-size: 17.5px; }
 
   body{
     font-family: 'Archivo', sans-serif;
@@ -137,13 +137,13 @@
   }
   .hero-copy{ padding-bottom: 88px; }
   .hero h1{
-    font-size: clamp(2.1rem, 3.6vw, 3.1rem);
-    line-height: 1.12;
+    font-size: clamp(2.3rem, 3.9vw, 3.4rem);
+    line-height: 1.1;
     max-width: 12ch;
   }
   .hero p.sub{
     margin-top: 22px;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #C7D8DF;
     max-width: 46ch;
     font-weight: 400;
@@ -203,13 +203,13 @@
     max-width: 720px;
   }
   .problem h2{
-    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    font-size: clamp(1.7rem, 2.7vw, 2.1rem);
     color: var(--navy);
     max-width: 18ch;
   }
   .problem p{
     margin-top: 20px;
-    font-size: 1.08rem;
+    font-size: 1.18rem;
     color: var(--text-soft);
     max-width: 62ch;
   }
@@ -230,14 +230,14 @@
   }
   .stat:first-child{ border-left: none; padding-left: 0; }
   .stat .num{
-    font-size: clamp(2rem, 3vw, 2.6rem);
+    font-size: clamp(2.2rem, 3.4vw, 2.9rem);
     font-weight: 900;
     color: var(--orange);
     letter-spacing: -0.02em;
   }
   .stat p{
     margin-top: 10px;
-    font-size: 0.92rem;
+    font-size: 1rem;
     color: #C7D8DF;
     line-height: 1.45;
   }
@@ -258,7 +258,7 @@
     margin-bottom: 40px;
   }
   .features-head h2{
-    font-size: clamp(1.5rem, 2.4vw, 1.9rem);
+    font-size: clamp(1.7rem, 2.7vw, 2.1rem);
     color: var(--navy);
   }
 
@@ -287,10 +287,9 @@
     flex-direction: column;
     justify-content: flex-start;
   }
-  .tile-plain h3{ font-size: 1.08rem; color: var(--navy); font-weight: 700; margin-top: 14px; }
-  .tile-plain p{ margin-top: 8px; font-size: 0.94rem; color: var(--text-soft); line-height: 1.5; }
-  .tile-wide{ grid-column: span 6; }
-  .tile-wide p{ max-width: 60ch; }
+  .tile-plain h3{ font-size: 1.2rem; color: var(--navy); font-weight: 700; margin-top: 14px; }
+  .tile-plain p{ margin-top: 8px; font-size: 1.04rem; color: var(--text-soft); line-height: 1.5; }
+  .tile-small{ grid-column: span 2; }
 
   .tile-solution{
     grid-column: span 4;
@@ -316,8 +315,8 @@
     padding: 28px;
     max-width: 58%;
   }
-  .tile-solution h3{ color: var(--white); font-size: 1.25rem; font-weight: 800; }
-  .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 0.96rem; line-height: 1.55; }
+  .tile-solution h3{ color: var(--white); font-size: 1.4rem; font-weight: 800; }
+  .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 1.06rem; line-height: 1.55; }
 
   .tile-image-wide{
     grid-column: span 3;
@@ -336,8 +335,32 @@
     flex: none;
   }
   .tile-image-wide .tile-copy{ padding: 20px 20px 20px 0; }
-  .tile-image-wide h3{ font-size: 1.02rem; color: var(--navy); font-weight: 700; }
-  .tile-image-wide p{ margin-top: 8px; font-size: 0.9rem; color: var(--text-soft); line-height: 1.5; }
+  .tile-image-wide h3{ font-size: 1.15rem; color: var(--navy); font-weight: 700; }
+  .tile-image-wide p{ margin-top: 8px; font-size: 1rem; color: var(--text-soft); line-height: 1.5; }
+
+  .tile-library-wide{
+    grid-column: span 6;
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .tile-library-wide .tile-copy{
+    padding: 30px;
+    flex: 0 0 34%;
+  }
+  .tile-library-wide h3{ font-size: 1.28rem; color: var(--navy); font-weight: 800; line-height: 1.3; }
+  .tile-library-wide p{ margin-top: 12px; font-size: 1.02rem; color: var(--text-soft); line-height: 1.55; }
+  .tile-library-wide .tile-img{
+    flex: 1;
+    width: auto;
+    max-height: 340px;
+    object-fit: cover;
+    object-position: top left;
+    border-left: 1px solid var(--line);
+  }
 
   .feature-icon{
     flex: none;
@@ -372,14 +395,14 @@
   }
   .audience h2{
     margin-top: -18px;
-    font-size: clamp(1.5rem, 2.6vw, 2rem);
+    font-size: clamp(1.7rem, 2.9vw, 2.2rem);
     color: var(--white);
     max-width: 22ch;
     line-height: 1.25;
   }
   .audience p{
     margin-top: 20px;
-    font-size: 1.08rem;
+    font-size: 1.18rem;
     color: #C7D8DF;
     max-width: 58ch;
   }
@@ -392,7 +415,7 @@
     text-align: center;
   }
   .cta-final h2{
-    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-size: clamp(1.9rem, 3.3vw, 2.5rem);
     max-width: 20ch;
     margin: 0 auto;
   }
@@ -428,7 +451,10 @@
     .stat{ border-left: none; padding-left: 0; }
     .stat:nth-child(odd){ border-right: 1px solid rgba(255,255,255,0.16); padding-right: 20px; }
     .bento{ grid-template-columns: 1fr; grid-auto-rows: auto; }
-    .tile-plain, .tile-wide, .tile-image-wide, .tile-solution{ grid-column: 1 / -1; grid-row: auto; }
+    .tile-plain, .tile-small, .tile-image-wide, .tile-library-wide, .tile-solution{ grid-column: 1 / -1; grid-row: auto; }
+    .tile-library-wide{ flex-direction: column; align-items: stretch; }
+    .tile-library-wide .tile-copy{ flex: none; padding: 20px; }
+    .tile-library-wide .tile-img{ max-height: none; width: 100%; border-left: none; border-top: 1px solid var(--line); }
     .tile-solution{ min-height: 260px; padding-top: 20px; }
     .tile-solution .tile-img{ position: static; width: 140px; margin: 0 20px 12px auto; display:block; }
     .tile-solution .tile-copy{ max-width: 100%; padding: 0 20px 20px; }
@@ -531,12 +557,12 @@
       <div class="tile tile-solution">
         <img class="tile-img" src="screenshot-roleplay.png" alt="Écran Coach de l'application SalesQuest, avec choix de scénarios d'entraînement">
         <div class="tile-copy">
-          <h3>Un jeu d'entraînement, pas un cours à cocher</h3>
+          <h3>Ils reviennent chaque jour, sans qu'on le leur demande</h3>
           <p>Questions flash, mises en situation face à un Coach IA, défis progressifs. Vos commerciaux reviennent chaque jour parce que ça leur donne envie, pas parce qu'on les y oblige.</p>
         </div>
       </div>
 
-      <div class="tile tile-plain">
+      <div class="tile tile-plain tile-small">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         </div>
@@ -544,7 +570,7 @@
         <p>Prépare un rendez-vous, débriefe un appel, répond à une objection précise — à toute heure.</p>
       </div>
 
-      <div class="tile tile-plain">
+      <div class="tile tile-plain tile-small">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="7" r="3.2"/><path d="M3 21v-1c0-3 2.7-5 6-5s6 2 6 5v1"/><path d="M16 3.5c1.6.4 2.8 1.9 2.8 3.5s-1.2 3.1-2.8 3.5"/><path d="M18 13.2c1.9.5 3.5 1.9 3.5 4.3V19"/></svg>
         </div>
@@ -552,7 +578,7 @@
         <p>Cold call, négociation, objection : face à des personnages IA, avant le vrai prospect.</p>
       </div>
 
-      <div class="tile tile-plain tile-wide">
+      <div class="tile tile-plain">
         <div class="feature-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
         </div>
@@ -561,11 +587,19 @@
       </div>
 
       <div class="tile tile-image-wide">
-        <img class="tile-img" src="screenshot-accueil.png" alt="Écran d'accueil de l'application SalesQuest, avec le programme du jour et la progression">
+        <img class="tile-img" src="screenshot-dashboard-full.png" alt="Dashboard manager SalesQuest, avec le point faible de l'équipe détecté par l'IA et le suivi par compétence">
         <div class="tile-copy">
           <h3>Pilotage en temps réel</h3>
           <p>Suivez la progression de votre équipe, identifiez les points faibles collectifs, laissez l'IA proposer des actions concrètes.</p>
         </div>
+      </div>
+
+      <div class="tile tile-library-wide">
+        <div class="tile-copy">
+          <h3>Vos documents internes, transformés en entraînement par l'IA</h3>
+          <p>Importez votre argumentaire, vos comptes rendus d'objections terrain — l'IA génère automatiquement QCM et scénarios de coaching adaptés à votre secteur, prêts à publier.</p>
+        </div>
+        <img class="tile-img" src="screenshot-bibliotheque.png" alt="Écran Bibliothèque du dashboard manager SalesQuest : documents importés et contenu généré par IA (QCM, scénarios de coaching)">
       </div>
     </div>
   </div>
