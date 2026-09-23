@@ -211,7 +211,7 @@
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Toutes les méthodes reconnues intégrées (SPIN, Challenger, MEDDIC...)</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Tableau de bord manager en lecture</li>
         </ul>
-        <a class="plan-cta" href="mailto:contact@salesquest.fr?subject=D%C3%A9marrer%20un%20POC%20-%20Essentiel">Démarrer un POC</a>
+        <a class="plan-cta" data-link-monthly="https://buy.stripe.com/test_5kQcN67KBcOz9Zs0XE1RC00" data-link-annual="https://buy.stripe.com/test_eVq28s7KB7ufgnQgWC1RC01" href="https://buy.stripe.com/test_eVq28s7KB7ufgnQgWC1RC01">Démarrer un POC</a>
       </div>
 
       <div class="plan popular">
@@ -227,7 +227,7 @@
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Import de vos documents internes, contenu généré par IA (Bibliothèque)</li>
           <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l4 4 8-8"/></svg>Pistes IA : recommandations d'action pour le manager</li>
         </ul>
-        <a class="plan-cta" href="mailto:contact@salesquest.fr?subject=D%C3%A9marrer%20un%20POC%20-%20Expert">Démarrer un POC</a>
+        <a class="plan-cta" data-link-monthly="https://buy.stripe.com/test_cNi9AUc0RbKv1sW21I1RC02" data-link-annual="https://buy.stripe.com/test_28E9AUaWN5m74F849Q1RC03" href="https://buy.stripe.com/test_28E9AUaWN5m74F849Q1RC03">Démarrer un POC</a>
       </div>
 
       <div class="plan enterprise">
@@ -268,6 +268,7 @@
   var annualBtn = document.getElementById('toggleAnnual');
   var amounts = document.querySelectorAll('.amount[data-monthly]');
   var annualNotes = document.querySelectorAll('.plan-annual-note[data-annual-text]');
+  var links = document.querySelectorAll('.plan-cta[data-link-monthly]');
 
   function setMode(annual){
     monthlyBtn.classList.toggle('active', !annual);
@@ -278,6 +279,9 @@
     });
     annualNotes.forEach(function(el){
       el.textContent = annual ? el.getAttribute('data-annual-text') : '';
+    });
+    links.forEach(function(el){
+      el.href = annual ? el.getAttribute('data-link-annual') : el.getAttribute('data-link-monthly');
     });
   }
 
