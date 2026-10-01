@@ -571,7 +571,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="badge">Application mobile iOS & Android</span>
+      <span class="badge">Application mobile Android</span>
       <h1>L'entraînement commercial que vos équipes utilisent, vraiment.</h1>
       <p class="sub">Coach IA, mises en situation immersives et méthodes reconnues (SPIN, Challenger, MEDDIC, Sandler...) - dans l'application mobile de vos commerciaux. Vos argumentaires terrain transformés en réflexes quotidiens.</p>
       <div class="cta-block">
@@ -598,25 +598,25 @@
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat">
-        <div class="num"><span class="count" data-target="84" data-suffix="%">0%</span></div>
+        <div class="num"><span class="count" data-target="84" data-suffix="%">84%</span></div>
         <p>du contenu de formation est oublié en 3 mois, faute de renforcement quotidien</p>
         <div class="stat-bar"><div class="stat-bar-fill" data-fill="84"></div></div>
         <span class="source">Source : Qwilr</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–0%</span></div>
+        <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–2%</span></div>
         <p>de ce qui est appris en formation théorique est réellement appliqué en rendez-vous</p>
         <div class="stat-bar"><div class="stat-bar-fill" data-fill="2"></div></div>
         <span class="source">Source : ATD</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="83" data-suffix="%">0%</span> <span style="font-size:0.48em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
+        <div class="num"><span class="count" data-target="83" data-suffix="%">83%</span> <span style="font-size:0.48em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
         <p>de salariés motivés par un entraînement gamifié vs format traditionnel</p>
         <div class="stat-bar"><div class="stat-bar-fill" data-fill="83"></div></div>
         <span class="source">Source : 5mins.ai</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+0%</span></div>
+        <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+50%</span></div>
         <p>de ventes nettes par commercial avec un entraînement continu</p>
         <div class="stat-bar"><div class="stat-bar-fill" data-fill="50"></div></div>
         <span class="source">Source : Qwilr</span>
@@ -712,7 +712,7 @@
     <div class="faq-list">
       <details class="faq-item">
         <summary>Comment mes commerciaux installent-ils l'application ?</summary>
-        <p>Une fois votre abonnement démarré, vous invitez vos commerciaux depuis le dashboard manager. Chacun reçoit un email avec le lien de téléchargement (iOS et Android) et un code à saisir pour rejoindre votre équipe.</p>
+        <p>Une fois votre abonnement démarré, vous invitez vos commerciaux depuis le dashboard manager. Chacun reçoit un email avec le lien de téléchargement de l'application Android et un code à saisir pour rejoindre votre équipe.</p>
       </details>
       <details class="faq-item">
         <summary>Mes documents internes sont-ils en sécurité ?</summary>
@@ -809,7 +809,12 @@
     });
   }, { threshold: 0.5 });
 
-  counters.forEach(function(el){ observer.observe(el); });
+  counters.forEach(function(el){
+    // Le HTML contient déjà la valeur finale (visible sans JavaScript, dans les aperçus de lien et pour les moteurs de recherche) ;
+    // on repart de 0 uniquement quand l'animation va réellement se jouer.
+    el.textContent = (el.getAttribute('data-prefix') || '') + '0' + (el.getAttribute('data-suffix') || '');
+    observer.observe(el);
+  });
 
   // Animate stat bars alongside counters
   var bars = document.querySelectorAll('.stat-bar-fill');
