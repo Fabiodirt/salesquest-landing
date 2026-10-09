@@ -402,14 +402,15 @@
     content: "";
     position: absolute; inset: 0;
     border-radius: 50%;
-    background: #55bbab;
+    background: rgba(85,187,171,.35);
+    border: 3px solid #55bbab;
     opacity: 0;
     animation: micRipple 2s ease-out infinite;
   }
   .mic-ripple::after{ animation-delay: 1s; }
   @keyframes micRipple{
-    0%{ transform: scale(1); opacity: .55; }
-    100%{ transform: scale(2.3); opacity: 0; }
+    0%{ transform: scale(1); opacity: .9; }
+    100%{ transform: scale(2.6); opacity: 0; }
   }
   @media (prefers-reduced-motion: reduce){
     .mic-ripple{ display: none; }
