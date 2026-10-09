@@ -389,8 +389,32 @@
   .tile-solution .tile-copy{ flex: 1; }
   .tile-solution h3{ color: var(--white); font-size: 1.45rem; font-weight: 800; }
   .tile-solution p{ margin-top: 10px; color: #C7D8DF; font-size: 1.05rem; line-height: 1.55; }
+  .mic-wrap{ position: relative; width: 170px; flex-shrink: 0; }
+  .mic-wrap .tile-img{ width: 100%; display: block; }
+  .mic-ripple{
+    position: absolute;
+    left: 50%; top: 87.8%;
+    width: 19.4%; aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+  .mic-ripple::before, .mic-ripple::after{
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 50%;
+    background: #55bbab;
+    opacity: 0;
+    animation: micRipple 2s ease-out infinite;
+  }
+  .mic-ripple::after{ animation-delay: 1s; }
+  @keyframes micRipple{
+    0%{ transform: scale(1); opacity: .55; }
+    100%{ transform: scale(2.3); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .mic-ripple{ display: none; }
+  }
   .tile-solution .tile-img{
-    width: 170px;
     border-radius: 12px;
     box-shadow: 0 14px 28px rgba(0,0,0,0.4);
     border: 1px solid rgba(255,255,255,0.15);
@@ -549,7 +573,7 @@
     .tile-library-hero .tile-copy{ flex: none; padding: 30px; }
     .tile-library-hero .tile-img-wrapper{ width: 100%; min-height: 240px; }
     .tile-solution{ flex-direction: column; text-align: center; }
-    .tile-solution .tile-img{ width: 140px; }
+    .mic-wrap{ width: 140px; }
     .tile-dashboard{ grid-template-columns: 1fr; padding: 24px; }
   }
 </style>
@@ -652,7 +676,10 @@
           <h3>Une pratique quotidienne naturelle</h3>
           <p>Défis courts, cas pratiques face au Coach IA, questions flash. Vos commerciaux s'entraînent chaque jour en toute autonomie.</p>
         </div>
-        <img class="tile-img" src="screenshot-roleplay.png?v=2" alt="Roleplay en séance dans SalesQuest : mise en situation « Défense de l'offre » face à Claire, avec l'indice du coach">
+        <div class="mic-wrap">
+          <img class="tile-img" src="screenshot-roleplay.png?v=2" alt="Roleplay en séance dans SalesQuest : mise en situation « Défense de l'offre » face à Claire, avec l'indice du coach">
+          <span class="mic-ripple" aria-hidden="true"></span>
+        </div>
       </div>
 
       <!-- FEATURE: COACH IA -->
