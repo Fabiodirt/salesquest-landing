@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Guide des testeurs — SalesQuest</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #003A54;
+    --navy-deep: #00263A;
+    --orange: #F18700;
+    --orange-dark: #D97600;
+    --bg: #FFFFFF;
+    --bg-soft: #F3F6F7;
+    --text: #12242F;
+    --text-soft: #4E6672;
+    --line: #E2E8EA;
+    --white: #FFFFFF;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  body{
+    font-family: 'Archivo', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--orange-dark); }
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .nav{ background: var(--navy); padding: 20px 0; }
+  .logo{ font-weight: 900; font-size: 1.25rem; color: var(--white); letter-spacing: -0.02em; text-decoration:none; }
+  .logo span{ color: var(--orange); }
+  main{ padding: 48px 0 80px; }
+  h1{ font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 800; color: var(--navy); letter-spacing: -0.01em; line-height:1.2; }
+  .lead{ margin-top: 14px; font-size: 1.08rem; color: var(--text-soft); }
+  h2{ margin-top: 48px; margin-bottom: 14px; font-size: 1.25rem; font-weight: 800; color: var(--navy); }
+  p, li{ font-size: 1rem; color: var(--text-soft); margin-bottom: 12px; }
+  ul{ padding-left: 22px; margin-bottom: 12px; }
+  strong{ color: var(--text); }
+  .cta{ display:inline-block; margin: 6px 0 14px; padding: 15px 28px; border-radius: 999px; background: var(--orange); color: var(--navy); font-weight: 800; font-size: 1.05rem; text-decoration: none; }
+  .cta:hover{ background: var(--orange-dark); }
+  .steps{ list-style:none; padding:0; counter-reset: s; }
+  .steps > li{ counter-increment: s; position: relative; padding: 0 0 0 52px; margin-bottom: 22px; }
+  .steps > li::before{ content: counter(s); position:absolute; left:0; top:0; width:36px; height:36px; border-radius:50%; background: var(--navy); color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center; }
+  .box{ background: var(--bg-soft); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 12px 0 16px; }
+  .box p:last-child{ margin-bottom:0; }
+  .mission{ border:1px solid var(--line); border-radius: 18px; padding: 20px; margin: 18px 0; }
+  .mission h3{ font-size: 1.1rem; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .tag{ display:inline-block; font-size:.78rem; font-weight:700; padding:2px 10px; border-radius:999px; background:#FFF1DC; color:#8A4B00; margin-bottom:8px; }
+  .shots{ display:flex; gap:12px; flex-wrap:wrap; margin-top: 12px; }
+  .shots figure{ flex: 1 1 140px; max-width: 200px; }
+  .shots img{ width:100%; height:auto; border-radius: 14px; border:1px solid var(--line); display:block; }
+  .shots figcaption{ font-size:.82rem; color: var(--text-soft); margin-top:6px; }
+  pre{ white-space: pre-wrap; font-family: inherit; font-size: .95rem; color: var(--text); }
+  details{ border-bottom:1px solid var(--line); padding: 12px 0; }
+  summary{ cursor:pointer; font-weight:700; color: var(--navy); }
+  details p{ margin-top:8px; margin-bottom:0; }
+  footer{ background: var(--navy-deep); color: #8FA6B0; padding: 28px 0; font-size: 0.86rem; text-align:center; }
+  footer a{ color:#8FA6B0; }
+</style>
+<link rel="icon" type="image/png" href="favicon.png"><link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap"><a class="logo" href="index.html">Sales<span>Quest</span></a></div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Merci de tester SalesQuest&nbsp;!</h1>
+    <p class="lead">Avant sa sortie, l'appli doit être testée pendant <strong>14 jours</strong> par un petit groupe de testeurs. Tu en fais partie. Ce qu'on te demande est simple : rester inscrit au test pendant ces 14 jours, et faire <strong>3 petites missions de 5 minutes</strong> pour me dire si tout fonctionne.</p>
+
+    <h2>1. Installer l'appli (3 étapes)</h2>
+    <ol class="steps">
+      <li>
+        <strong>Rejoins le test.</strong> Ouvre ce lien sur ton téléphone Android, avec le compte Gmail que tu m'as donné, puis appuie sur « Devenir testeur ».<br>
+        <a class="cta" href="[LIEN_ADHESION_PLAY]">Rejoindre le test</a>
+      </li>
+      <li>
+        <strong>Installe l'appli.</strong> Sur la même page, appuie sur le lien « Télécharger sur Google Play », puis sur « Installer ». C'est gratuit.
+      </li>
+      <li>
+        <strong>Crée ton compte avec ton invitation.</strong> Tu as reçu (ou vas recevoir) un e-mail d'invitation SalesQuest. À l'ouverture de l'appli, renseigne ton prénom, l'adresse e-mail de l'invitation, un mot de passe (6 caractères minimum, à confirmer) et le <strong>code d'invitation</strong> de l'e-mail. Appuie sur « Continuer » : l'appli te pose ensuite 3 questions rapides (ton profil, ce que tu vends, le nom de ton coach).
+        <div class="shots">
+          <figure><img src="img-testeurs/inscription.webp" alt="Écran de création de compte : prénom, e-mail, mot de passe et code d'invitation" loading="lazy" width="480" height="1039"><figcaption>Création du compte</figcaption></figure>
+          <figure><img src="img-testeurs/profil.webp" alt="Écran Choisis ton profil : Chasseur, Éleveur ou Manager" loading="lazy" width="480" height="1039"><figcaption>Choisis ton profil</figcaption></figure>
+        </div>
+        <div class="box"><p>Le code d'invitation n'est utilisable qu'une seule fois, pour toi. S'il ne passe pas, écris-moi : je t'en renvoie un.</p></div>
+      </li>
+    </ol>
+
+    <h2>2. Tes 3 missions</h2>
+    <p>5 minutes chacune. Répartis-les sur les 14 jours, avec <strong>une session au moins tous les 2-3 jours</strong> : c'est ça qui rend le test utile.</p>
+
+    <div class="mission">
+      <span class="tag">Mission 1</span>
+      <h3>Le QCM du jour</h3>
+      <p>Depuis l'accueil, appuie sur « Lancer l'entraînement du jour » et réponds aux questions. Note si une question est floue ou si quelque chose bug.</p>
+      <div class="shots">
+        <figure><img src="img-testeurs/accueil.webp" alt="Écran d'accueil de SalesQuest avec la maîtrise moyenne et le bouton Lancer l'entraînement du jour" loading="lazy" width="480" height="1039"><figcaption>L'accueil</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="mission">
+      <span class="tag">Mission 2</span>
+      <h3>Un roleplay avec le Coach</h3>
+      <p>Dans l'onglet Coach, appuie sur le micro pour lancer un roleplay, et réponds à voix haute (ou au clavier) à ton client. À la fin, regarde le verdict.</p>
+      <div class="shots">
+        <figure><img src="img-testeurs/coach.webp" alt="Écran Coach avec le bouton micro pour lancer un roleplay" loading="lazy" width="480" height="1039"><figcaption>Lance le roleplay</figcaption></figure>
+        <figure><img src="img-testeurs/roleplay.webp" alt="Roleplay en séance : échange entre toi et le client" loading="lazy" width="480" height="1039"><figcaption>La séance</figcaption></figure>
+        <figure><img src="img-testeurs/verdict.webp" alt="Verdict du coach avec note sur 100 et critères" loading="lazy" width="480" height="1039"><figcaption>Le verdict</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="mission">
+      <span class="tag">Mission 3</span>
+      <h3>Une Prép RDV</h3>
+      <p>Dans l'onglet Coach, choisis « Prép RDV », renseigne un rendez-vous (réel ou imaginaire), puis appuie sur « Construire le brief ». N'y mets pas de données personnelles sensibles.</p>
+      <div class="shots">
+        <figure><img src="img-testeurs/prep-rdv.webp" alt="Écran de préparation de rendez-vous avec les objectifs à choisir" loading="lazy" width="480" height="1039"><figcaption>La Prép RDV</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="mission">
+      <span class="tag">Bonus</span>
+      <h3>Ton bilan, à la fin du test</h3>
+      <p>Au bout de quelques jours d'usage, ouvre ton Bilan depuis le Profil : il montre ta régularité.</p>
+      <div class="shots">
+        <figure><img src="img-testeurs/bilan.webp" alt="Écran Bilan avec les jours actifs sur 5 semaines" loading="lazy" width="480" height="1039"><figcaption>Le Bilan</figcaption></figure>
+      </div>
+    </div>
+
+    <h2>3. Me faire un retour</h2>
+    <p>Un bug, un texte pas clair, une idée&nbsp;? Écris-moi à <a href="mailto:contact@salesquest.fr">contact@salesquest.fr</a>. Tu peux copier ce modèle :</p>
+    <div class="box"><pre>Téléphone (marque et modèle) :
+Ce que j'ai fait :
+Ce qui a coincé ou m'a surpris :
+Une idée ou une suggestion :</pre></div>
+    <p>Une capture d'écran aide toujours beaucoup.</p>
+
+    <h2>Questions fréquentes</h2>
+    <details><summary>Je ne dois pas quitter le test ?</summary><p>Non, reste inscrit et ne désinstalle pas l'appli jusqu'au jour 14. Si tu te désinscris avant, le test ne compte plus.</p></details>
+    <details><summary>« Accès impossible » en ouvrant le lien</summary><p>Vérifie que tu es connecté sur ton téléphone avec le compte Gmail que tu m'as donné (en haut à droite de la page, ou dans l'appli Play Store). Si c'est le bon et que ça ne passe toujours pas, écris-moi.</p></details>
+    <details><summary>Je n'ai pas reçu l'invitation par e-mail</summary><p>Regarde dans tes spams ou dans l'onglet Promotions de Gmail. Sinon, écris-moi et je te la renvoie.</p></details>
+    <details><summary>Ça me coûte quelque chose ?</summary><p>Non. L'appli et le test sont gratuits pour toi.</p></details>
+    <details><summary>Qu'est-ce que mes données deviennent ?</summary><p>Tout est détaillé dans la <a href="privacy.html">politique de confidentialité</a>. Pendant le test, ne saisis pas d'informations sensibles sur des tiers.</p></details>
+  </div>
+</main>
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;">
+    <a href="index.html">SalesQuest</a>
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="privacy.html">Politique de confidentialité</a>
+    <a href="mailto:contact@salesquest.fr">contact@salesquest.fr</a>
+  </div>
+</footer>
+</body>
+</html>
