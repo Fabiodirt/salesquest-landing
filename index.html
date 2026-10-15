@@ -85,13 +85,20 @@
   }
   .logo{
     font-weight: 900;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     color: var(--white);
     letter-spacing: -0.02em;
   }
   .logo{ display:inline-flex; align-items:center; }
-  .logo img{ height:30px; width:auto; display:block; margin-right:10px; }
+  .logo img{ height:44px; width:auto; display:block; margin-right:12px; }
   .logo span{ color: var(--orange); }
+  @media (max-width: 640px){
+    .logo{ font-size: 1.15rem; }
+    .logo img{ height: 32px; margin-right: 8px; }
+    .nav .wrap > div:last-child{ gap: 14px !important; }
+    .nav-cta{ white-space: nowrap; padding: 10px 14px !important; font-size: .85rem !important; }
+    .nav .wrap > div:last-child a:not(.nav-cta){ display: none; }
+  }
   .nav-cta{
     background: var(--orange);
     color: var(--white);
@@ -587,7 +594,7 @@
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="./" aria-label="SalesQuest, accueil"><img src="logo-sq.png?v=5" alt="" width="27" height="30">Sales<span>Quest</span></a>
+    <a class="logo" href="./" aria-label="SalesQuest, accueil"><img src="logo-sq.png?v=6" alt="" width="40" height="44">Sales<span>Quest</span></a>
     <div style="display:flex; align-items:center; gap:28px;">
       <a href="pricing.html" style="color:#C7D8DF; font-weight:600; font-size:0.95rem;">Tarifs</a>
       <a class="nav-cta" href="https://app.salesquest.fr">Démarrer un POC</a>
