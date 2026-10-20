@@ -623,7 +623,7 @@
 
 <section class="problem">
   <div class="wrap">
-    <h2>La formation classique, vos équipes l'oublient en une semaine</h2>
+    <h2>La formation ponctuelle s'efface vite de la mémoire de vos équipes</h2>
     <p>Un PDF transmis une fois par an. Une session e-learning suivie une fois, marquée "terminée", puis jamais rouverte. La plupart des outils de formation sont conçus pour être suivis une fois, pas pratiqués au quotidien. Résultat : les méthodes ne s'ancrent jamais dans la réalité du terrain.</p>
   </div>
 </section>
@@ -632,30 +632,31 @@
   <div class="wrap">
     <div class="stats-grid">
       <div class="stat">
-        <div class="num"><span class="count" data-target="84" data-suffix="%">84%</span></div>
-        <p>du contenu de formation est oublié en 3 mois, faute de renforcement quotidien</p>
-        <div class="stat-bar"><div class="stat-bar-fill" data-fill="84"></div></div>
-        <span class="source">Source : Qwilr</span>
+        <div class="num"><span class="count" data-target="7" data-prefix="+" data-suffix="&nbsp;%">+7&nbsp;%</span></div>
+        <p>de croissance annuelle du chiffre d'affaires pour les entreprises qui coachent bien leurs commerciaux</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="7"></div></div>
+        <span class="source">Source : The Center for Sales Strategy</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="2" data-prefix="1–" data-suffix="%">1–2%</span></div>
-        <p>de ce qui est appris en formation théorique est réellement appliqué en rendez-vous</p>
-        <div class="stat-bar"><div class="stat-bar-fill" data-fill="2"></div></div>
-        <span class="source">Source : ATD</span>
+        <div class="num"><span class="count" data-target="62.3" data-decimals="1" data-suffix="&nbsp;%">62,3&nbsp;%</span></div>
+        <p>des commerciaux atteignent leur quota avec un coaching formel, contre 50,3&nbsp;% quand il est laissé à la discrétion des managers</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="62"></div></div>
+        <span class="source">Source : CSO Insights, 2014 (1&nbsp;200 entreprises)</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="83" data-suffix="%">83%</span> <span style="font-size:0.48em; font-weight:700; color:#C7D8DF;">vs 39%</span></div>
-        <p>de salariés motivés par un entraînement gamifié vs format traditionnel</p>
-        <div class="stat-bar"><div class="stat-bar-fill" data-fill="83"></div></div>
-        <span class="source">Source : 5mins.ai</span>
+        <div class="num"><span class="count" data-target="17.4" data-decimals="1" data-prefix="+" data-suffix="&nbsp;%">+17,4&nbsp;%</span></div>
+        <p>de taux de victoire en passant d'un coaching ad hoc à un coaching dynamique</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="17"></div></div>
+        <span class="source">Source : CSO Insights, 2016</span>
       </div>
       <div class="stat">
-        <div class="num"><span class="count" data-target="50" data-prefix="+" data-suffix="%">+50%</span></div>
-        <p>de ventes nettes par commercial avec un entraînement continu</p>
-        <div class="stat-bar"><div class="stat-bar-fill" data-fill="50"></div></div>
-        <span class="source">Source : Qwilr</span>
+        <div class="num"><span class="count" data-target="73" data-suffix="&nbsp;%">73&nbsp;%</span></div>
+        <p>des managers coachent moins de 30 minutes par commercial et par semaine</p>
+        <div class="stat-bar"><div class="stat-bar-fill" data-fill="73"></div></div>
+        <span class="source">Source : ATD, State of Sales Training 2025</span>
       </div>
     </div>
+    <p style="text-align:center; margin-top:28px; font-size:0.85rem; color:#9FB6C1;">Corrélations observées sur des échantillons d'entreprises, pas des résultats garantis.</p>
   </div>
 </section>
 
@@ -806,11 +807,14 @@
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var counters = document.querySelectorAll('.count');
 
+  function fmt(v, d){ return v.toFixed(d).replace('.', ','); }
+
   function setFinal(el){
     var target = el.getAttribute('data-target');
     var prefix = el.getAttribute('data-prefix') || '';
     var suffix = el.getAttribute('data-suffix') || '';
-    el.textContent = prefix + target + suffix;
+    var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
+    el.textContent = prefix + fmt(parseFloat(target), dec) + suffix;
   }
 
   if (reduceMotion || !('IntersectionObserver' in window)) {
@@ -819,7 +823,8 @@
   }
 
   function animateCount(el){
-    var target = parseInt(el.getAttribute('data-target'), 10);
+    var target = parseFloat(el.getAttribute('data-target'));
+    var dec = parseInt(el.getAttribute('data-decimals') || '0', 10);
     var prefix = el.getAttribute('data-prefix') || '';
     var suffix = el.getAttribute('data-suffix') || '';
     var duration = 1200;
@@ -829,10 +834,10 @@
       if (!start) start = ts;
       var progress = Math.min((ts - start) / duration, 1);
       var eased = 1 - Math.pow(1 - progress, 3);
-      var value = Math.round(eased * target);
-      el.textContent = prefix + value + suffix;
+      var value = eased * target;
+      el.textContent = prefix + fmt(value, dec) + suffix;
       if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = prefix + target + suffix;
+      else el.textContent = prefix + fmt(target, dec) + suffix;
     }
     requestAnimationFrame(step);
   }
@@ -849,7 +854,7 @@
   counters.forEach(function(el){
     // Le HTML contient déjà la valeur finale (visible sans JavaScript, dans les aperçus de lien et pour les moteurs de recherche) ;
     // on repart de 0 uniquement quand l'animation va réellement se jouer.
-    el.textContent = (el.getAttribute('data-prefix') || '') + '0' + (el.getAttribute('data-suffix') || '');
+    el.textContent = (el.getAttribute('data-prefix') || '') + fmt(0, parseInt(el.getAttribute('data-decimals') || '0', 10)) + (el.getAttribute('data-suffix') || '');
     observer.observe(el);
   });
 
