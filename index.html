@@ -687,7 +687,10 @@
   .dp-mask.teal{ background:#55BBAB; left:9.6%; right:52%; top:32.3%; height:2.6%; }
   .dp-mask.off{ opacity:0; }
   .dp-mask.hide{ display:none; }
-  .dp-mic{ display:none; }
+  .dp-mic, .dp-mic2{ display:none; }
+  .dp-mic2{ left:17%; top:20.7%; width:13.6%; }
+  .dp.tile-live .dp-mic2{ display:block; }
+  .dp-mic2::before, .dp-mic2::after{ background: rgba(255,255,255,.35); border-color:#fff; }
   .dp.rp-on .dp-mic{ display:block; }
   .mf-card{ position:absolute; left:2%; width:95.4%; top:6%; height:56%; background:#fff; border-radius:999px; display:flex; align-items:center; padding:0 7px 0 12px; box-shadow: 0 5px 8px -6px rgba(0,58,84,.45), 0 1px 0 rgba(0,58,84,.08); }
   .mf-card b{ flex:1; font-size:9.6px; font-weight:700; color: var(--navy); }
@@ -872,6 +875,7 @@
           <div class="dp-mask" id="mFlash"><div class="mf-card"><b>Questions flash</b><span class="mf-ok"><svg width="8" height="7" viewBox="0 0 12 10"><path d="M1.5 5.2L4.6 8.2L10.5 1.8" fill="none" stroke="#fff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div><div class="mf-sub">12 min · Prospection</div></div>
           <div class="dp-mask teal" id="mTile"></div>
           <span class="mic-ripple dp-mic" aria-hidden="true"></span>
+          <span class="mic-ripple dp-mic2" aria-hidden="true"></span>
           <div class="dp-halo" id="hFlash"></div>
           <div class="dp-halo" id="hTile"></div>
           <div class="dp-qs" id="dpQ"><div class="qin">
@@ -1226,7 +1230,7 @@
 
   function sleep(ms, t){ return new Promise(function(res, rej){ setTimeout(function(){ t === tok ? res() : rej('stop'); }, ms); }); }
   function setStep(n){ for (var i=0;i<steps.length;i++) steps[i].classList.toggle('on', +steps[i].getAttribute('data-step') === n); }
-  function img(which){ iHome.classList.toggle('on', which==='home'); iCoach.classList.toggle('on', which==='coach'); iRp.classList.toggle('on', which==='rp'); document.getElementById('dp').classList.toggle('rp-on', which==='rp'); mFlash.classList.toggle('hide', which!=='home'); mTile.classList.toggle('hide', which!=='coach'); }
+  function img(which){ iHome.classList.toggle('on', which==='home'); iCoach.classList.toggle('on', which==='coach'); iRp.classList.toggle('on', which==='rp'); document.getElementById('dp').classList.toggle('rp-on', which==='rp'); if (which!=='coach') document.getElementById('dp').classList.remove('tile-live'); mFlash.classList.toggle('hide', which!=='home'); mTile.classList.toggle('hide', which!=='coach'); }
   function moveTo(target, fx, fy){
     var s = stage.getBoundingClientRect(), r = target.getBoundingClientRect();
     cur.classList.add('on');
@@ -1256,7 +1260,7 @@
     tQ.textContent = 'QCM (0)'; tR.textContent = 'Roleplay (0)'; tQ.classList.add('on'); tR.classList.remove('on');
     pub.classList.add('gone'); empty.style.display = ''; list.style.display = 'none'; list.innerHTML = ''; list.classList.remove('out');
     setMeta(129, 0);
-    qs.classList.remove('on'); fb.classList.remove('on'); img('home'); mFlash.classList.remove('off'); mTile.classList.remove('off');
+    document.getElementById('dp').classList.remove('tile-live'); qs.classList.remove('on'); fb.classList.remove('on'); img('home'); mFlash.classList.remove('off'); mTile.classList.remove('off');
     bar.style.width = '0';
   }
   async function type(str, t){
@@ -1341,7 +1345,7 @@
     list.style.display = 'none'; list.innerHTML = ''; empty.style.display = ''; tR.textContent = 'Roleplay (0)'; pub.classList.add('gone'); setMeta(135, 0);
     await sleep(900, t);
     setStep(4); cur.classList.remove('on');
-    mTile.classList.add('off'); await sleep(500, t); halo(hTile); await sleep(1100, t);
+    mTile.classList.add('off'); await sleep(500, t); halo(hTile); document.getElementById('dp').classList.add('tile-live'); await sleep(1100, t);
     moveTo(hTile, .5, .5); await sleep(1000, t); click();
     await sleep(350, t); img('rp'); mTile.classList.add('off'); await sleep(3500, t);
     cur.classList.remove('on');
