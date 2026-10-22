@@ -642,7 +642,7 @@
   .demo-head{ max-width: 720px; margin: 0 auto 40px; text-align: center; }
   .demo-head h2{ font-size: clamp(1.8rem, 2.8vw, 2.3rem); color: var(--navy); margin-top: 12px; }
   .demo-head p{ font-size: 1.15rem; color: var(--text-soft); margin-top: 12px; line-height: 1.6; }
-  .dm-stage{ position: relative; display: grid; grid-template-columns: minmax(0,1fr) 272px; gap: 40px; align-items: center; max-width: 1020px; margin: 0 auto; }
+  .dm-stage{ position: relative; display: grid; grid-template-columns: minmax(0,1fr) 272px; gap: 32px; align-items: center; max-width: 900px; margin: 0 auto; }
   .dm-win{ background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 30px 60px -30px rgba(0,38,58,.35); overflow: hidden; }
   .dm-bar{ display:flex; align-items:center; gap:7px; padding: 11px 16px; background: #EEF2F4; border-bottom: 1px solid var(--line); font-size:.78rem; font-weight:700; color: var(--text-soft); }
   .dm-bar i{ width: 10px; height: 10px; border-radius: 50%; background: #CBD5D9; display:block; }
@@ -1319,7 +1319,7 @@
   function sleep(ms, t){ return new Promise(function(res, rej){ setTimeout(function(){ t === tok ? res() : rej('stop'); }, ms); }); }
   function setStep(n){ for (var i=0;i<steps.length;i++) steps[i].classList.toggle('on', +steps[i].getAttribute('data-step') === n); }
   function img(which){ iHome.classList.toggle('on', which==='home'); iCoach.classList.toggle('on', which==='coach'); iRp.classList.toggle('on', which==='rp'); dp.classList.toggle('rp-on', which==='rp'); mFlash.classList.toggle('hide', which!=='home'); mTile.classList.toggle('hide', which!=='coach'); }
-  function fit(){ W = window.innerWidth<=860 ? 520 : 660; HV = window.innerWidth<=860 ? 760 : 710; k = view.clientWidth / W; sc.style.width = W+'px'; sc.style.height = HV+'px'; sc.style.transform = 'scale('+k+')'; view.style.height = (HV*k)+'px'; }
+  function fit(){ W = window.innerWidth<=860 ? 520 : 660; HV = window.innerWidth<=860 ? 760 : 680; k = view.clientWidth / W; sc.style.width = W+'px'; sc.style.height = HV+'px'; sc.style.transform = 'scale('+k+')'; view.style.height = (HV*k)+'px'; }
   function moveTo(target, fx, fy){
     var s = stage.getBoundingClientRect(), r = target.getBoundingClientRect();
     cur.classList.add('on');
