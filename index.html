@@ -587,6 +587,21 @@
     .tile-dashboard{ grid-template-columns: 1fr; padding: 24px; }
   }
 
+  /* ---------- POUR QUI ---------- */
+  .whofor{ padding: 88px 0; background:#fff; }
+  .whofor-head{ max-width:720px; margin:0 auto 40px; text-align:center; }
+  .whofor-head h2{ font-size: clamp(1.8rem, 2.8vw, 2.3rem); color: var(--navy); margin-top:12px; }
+  .whofor-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; max-width:1020px; margin:0 auto; }
+  .who{ background: var(--bg-soft); border:1px solid var(--line); border-radius:20px; padding:28px 26px; border-top:4px solid var(--orange); }
+  .who:nth-child(2){ border-top-color: var(--turquoise, #55bbab); }
+  .who:nth-child(3){ border-top-color: var(--navy); }
+  .who small{ font-size:.72rem; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:#7C909A; }
+  .who h3{ font-size:1.2rem; color: var(--navy); margin:8px 0 12px; line-height:1.25; }
+  .who ul{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+  .who li{ position:relative; padding-left:20px; color: var(--text-soft); line-height:1.5; font-size:.98rem; }
+  .who li::before{ content:""; position:absolute; left:0; top:.55em; width:8px; height:8px; border-radius:50%; background: var(--orange); }
+  @media (max-width: 860px){ .whofor{ padding:64px 0; } .whofor-grid{ grid-template-columns:1fr; } }
+
   /* ---------- DEMO : DOCUMENT -> ENTRAINEMENT ---------- */
   .demo{ padding: 96px 0; background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .demo-head{ max-width: 720px; margin: 0 auto 40px; text-align: center; }
@@ -878,6 +893,44 @@
       <div class="dm-step" data-step="4"><b>4 · S'entraîne</b>Le commercial les retrouve dans l'app</div>
     </div>
     <p class="demo-note">Démonstration animée, avec des données d'exemple.</p>
+  </div>
+</section>
+
+<section class="whofor" id="pour-qui">
+  <div class="wrap">
+    <div class="whofor-head">
+      <span class="badge">Pour qui ?</span>
+      <h2>Un outil pour chaque rôle de l'équipe commerciale</h2>
+    </div>
+    <div class="whofor-grid">
+      <div class="who">
+        <small>Directeurs commerciaux</small>
+        <h3>Pilotez l'entraînement sans courir après vos équipes</h3>
+        <ul>
+          <li>Vous voyez qui s'entraîne et qui est à relancer</li>
+          <li>Vous repérez le point faible de l'équipe</li>
+          <li>Vous publiez vos propres contenus, rien ne sort sans votre validation</li>
+        </ul>
+      </div>
+      <div class="who">
+        <small>Commerciaux</small>
+        <h3>Progressez en quelques minutes par jour</h3>
+        <ul>
+          <li>Questions flash tirées de vos documents</li>
+          <li>Roleplays à la voix, avec un verdict du coach</li>
+          <li>Préparation de rendez-vous et débrief dans la foulée</li>
+        </ul>
+      </div>
+      <div class="who">
+        <small>CSM et profils éleveurs</small>
+        <h3>Préparez et débriefez chaque rendez-vous client</h3>
+        <ul>
+          <li>Une préparation avant le rendez-vous</li>
+          <li>Un débrief juste après, lié au compte</li>
+          <li>Profils Chasseur et Éleveur distingués dans l'équipe</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
