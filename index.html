@@ -597,7 +597,9 @@
   .dd-toast{ position:absolute; left:0; right:0; top:18px; display:flex; justify-content:center; opacity:0; transform: translateY(-8px); transition: all .3s; pointer-events:none; }
   .dd-inner.modal .dd-ov{ opacity:1; } .dd-inner.modal .dd-modal{ opacity:1; transform:none; }
   .dd-inner.toast .dd-toast{ opacity:1; transform:none; }
-  .dd-notif{ text-align:center; margin:22px auto 0; max-width:520px; font-weight:800; color:var(--navy); font-size:1rem; opacity:0; transform:translateY(6px); transition: all .4s; }
+  .dd-notif{ text-align:center; margin:22px auto 0; max-width:420px; opacity:0; transform:translateY(-14px); transition: all .5s cubic-bezier(.2,.8,.2,1); }
+  .dd-notif img{ width:100%; height:auto; display:block; }
+  .dd-notif p{ margin:10px 0 0; font-weight:800; color:var(--navy); font-size:.95rem; }
   .dd-notif.show{ opacity:1; transform:none; }
   .press{ transform: scale(.94); }
   @media (max-width: 860px){ .ddemo{ padding:64px 0; } }
@@ -949,7 +951,7 @@
       </div>
       <svg class="dm-cursor" id="ddCursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9.5-6.5 1.6L9.6 20z" fill="#fff" stroke="#12242F" stroke-width="1.6" stroke-linejoin="round"/></svg>
     </div>
-    <p class="dd-notif" id="ddNotif">Le commercial reçoit le message par notification dans l'app, s'il les a activées.</p>
+    <div class="dd-notif" id="ddNotif"><img src="notif-push.png" alt="Notification reçue par le commercial : Ton manager pense à toi, 5 minutes d'entraînement aujourd'hui ?" width="824" height="231"><p>Côté commercial : il reçoit le message en notification dans l'app, s'il les a activées.</p></div>
     <p class="demo-note">Démonstration animée, avec des données d'exemple.</p>
   </div>
 </section>
