@@ -592,100 +592,132 @@
   .demo-head{ max-width: 720px; margin: 0 auto 40px; text-align: center; }
   .demo-head h2{ font-size: clamp(1.8rem, 2.8vw, 2.3rem); color: var(--navy); margin-top: 12px; }
   .demo-head p{ font-size: 1.15rem; color: var(--text-soft); margin-top: 12px; line-height: 1.6; }
-  .dm-stage{ position: relative; display: grid; grid-template-columns: minmax(0,1fr) 272px; gap: 44px; align-items: center; max-width: 1020px; margin: 0 auto; }
-  .dm-win{ background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 50px -24px rgba(0,58,84,.35); overflow: hidden; }
-  .dm-bar{ display:flex; align-items:center; gap:7px; padding: 12px 16px; background: #EEF2F4; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 600; color: var(--text-soft); }
+  .dm-stage{ position: relative; display: grid; grid-template-columns: minmax(0,1fr) 272px; gap: 40px; align-items: center; max-width: 1020px; margin: 0 auto; }
+  .dm-win{ background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 30px 60px -30px rgba(0,38,58,.35); overflow: hidden; }
+  .dm-bar{ display:flex; align-items:center; gap:7px; padding: 11px 16px; background: #EEF2F4; border-bottom: 1px solid var(--line); font-size:.78rem; font-weight:700; color: var(--text-soft); }
   .dm-bar i{ width: 10px; height: 10px; border-radius: 50%; background: #CBD5D9; display:block; }
   .dm-bar span{ margin-left: 8px; }
-  .dm-body{ padding: 22px 24px 24px; display:flex; flex-direction:column; gap: 14px; min-height: 430px; }
-  .dm-title{ font-weight: 800; color: var(--navy); font-size: 1.05rem; }
-  .dm-label{ font-size: .72rem; font-weight: 700; color: var(--text-soft); margin-bottom: 5px; }
-  .dm-drop{ position: relative; border: 2px dashed #B9C8CE; border-radius: 12px; height: 74px; display:flex; align-items:center; justify-content:center; color: var(--text-soft); font-size: .85rem; font-weight: 600; transition: border-color .3s, background .3s; }
-  .dm-drop.has{ border-style: solid; border-color: var(--navy-light); background: #F1F7FA; }
-  .dm-drop-hint{ transition: opacity .25s; display:flex; align-items:center; gap:8px; }
-  .dm-drop.has .dm-drop-hint{ opacity: 0; }
-  .dm-file{ position:absolute; left:50%; top:50%; display:flex; align-items:center; gap:8px; padding: 8px 14px; border-radius: 10px; background:#fff; border:1px solid var(--line); box-shadow: 0 8px 18px -10px rgba(0,58,84,.5); font-size:.85rem; font-weight:700; color: var(--navy); white-space:nowrap; opacity:0; transform: translate(-50%, -260%); transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .35s; }
-  .dm-file.in{ opacity:1; transform: translate(-50%, -50%); }
-  .dm-file svg{ width:16px; height:16px; flex:none; }
-  .dm-input{ min-height: 38px; border: 1px solid var(--line); background: #F4F7F8; border-radius: 10px; padding: 9px 12px; font-size: .9rem; font-weight: 600; color: var(--navy); display:flex; align-items:center; }
+  .dm-body{ background:#F4F6F8; padding: 16px 18px 18px; display:flex; flex-direction:column; gap: 12px; height: 612px; }
+  .dm-meta{ font-size:.72rem; color:#7C909A; font-weight:500; }
+  .dm-h{ font-size: 1.5rem; font-weight: 900; color: var(--navy); line-height:1.1; margin-top:2px; }
+  .dm-card{ background:#fff; border-radius: 18px; padding: 14px 16px; }
+  .dm-card h5{ font-size:.95rem; font-weight:800; color: var(--navy); }
+  .dm-card h5 + p{ font-size:.66rem; color:#7C909A; font-weight:600; margin: 2px 0 8px; }
+  .dm-label{ font-size: .66rem; font-weight: 800; color: var(--navy); margin: 6px 0 4px; }
+  .dm-input{ min-height: 32px; border: 1px solid #D5DEE2; background: #F4F6F8; border-radius: 999px; padding: 6px 14px; font-size:.8rem; font-weight:700; color: var(--navy); display:flex; align-items:center; }
   .dm-input .ph{ color: #94A7B0; font-weight: 500; }
   .dm-caret{ display:inline-block; width:2px; height:1em; background: var(--navy); margin-left:1px; animation: dmBlink 1s steps(1) infinite; }
   @keyframes dmBlink{ 50%{ opacity:0; } }
-  .dm-opts{ display:flex; flex-wrap:wrap; gap: 14px 22px; align-items:flex-end; }
-  .dm-pills{ display:flex; background:#EEF2F4; border-radius: 999px; padding: 3px; gap:2px; }
-  .dm-pill{ padding: 6px 14px; border-radius: 999px; font-size:.8rem; font-weight:700; color: var(--text-soft); transition: background .3s, color .3s; }
+  .dm-drop{ position: relative; border: 1.5px dashed #B9C8CE; border-radius: 12px; height: 40px; display:flex; align-items:center; justify-content:center; font-size:.72rem; font-weight:700; color: var(--text-soft); gap:7px; transition: all .3s; margin-top:8px; }
+  .dm-drop.has{ border: 0; background:#F4F6F8; height: 42px; justify-content:space-between; padding: 0 12px; }
+  .dm-drop .hint{ display:flex; align-items:center; gap:7px; }
+  .dm-drop.has .hint{ display:none; }
+  .dm-drop .fileinfo{ display:none; align-items:center; gap:9px; width:100%; }
+  .dm-drop.has .fileinfo{ display:flex; animation: dmIn .4s both; }
+  .dm-fi{ width:24px; height:24px; border-radius:8px; background:#fff; display:flex; align-items:center; justify-content:center; flex:none; }
+  .dm-fn{ font-size:.74rem; font-weight:800; color: var(--navy); line-height:1.15; }
+  .dm-fn small{ display:block; font-size:.6rem; color:#94A7B0; font-weight:600; }
+  .dm-ret{ margin-left:auto; font-size:.66rem; font-weight:800; color: var(--text-soft); background:#fff; padding:5px 10px; border-radius:999px; }
+  @keyframes dmIn{ from{ opacity:0; transform: translateY(6px); } to{ opacity:1; transform:none; } }
+  .dm-opts{ display:flex; gap: 12px; align-items:flex-end; flex-wrap:wrap; margin-top:4px; }
+  .dm-opts .dm-label{ margin-top:4px; }
+  .dm-pills{ display:flex; background:#EEF2F4; border-radius: 999px; padding: 3px; gap:1px; }
+  .dm-pill{ padding: 6px 11px; border-radius: 999px; font-size:.7rem; font-weight:800; color:#7C909A; transition: all .25s; }
   .dm-pill.on{ background: var(--navy); color:#fff; }
-  .dm-chip{ padding: 8px 14px; border-radius: 999px; background:#EEF2F4; font-size:.8rem; font-weight:700; color: var(--navy); }
-  .dm-gen{ align-self:flex-end; margin-left:auto; border:0; font: inherit; font-weight: 800; font-size: .9rem; padding: 11px 24px; border-radius: 999px; background:#E2E8EA; color:#94A7B0; transition: background .3s, color .3s, transform .15s, box-shadow .3s; cursor: default; }
-  .dm-gen.ready{ background: var(--orange); color:#fff; box-shadow: 0 10px 20px -10px rgba(241,135,0,.8); }
-  .dm-gen.press{ transform: scale(.94); }
-  .dm-queue{ border-top: 1px solid var(--line); padding-top: 14px; min-height: 136px; }
-  .dm-qhead{ display:flex; align-items:center; justify-content:space-between; gap:10px; font-weight:800; font-size:.9rem; color: var(--navy); min-height: 30px; }
-  .dm-validate{ border:0; font: inherit; font-weight:800; font-size:.8rem; padding: 7px 16px; border-radius: 999px; background: var(--navy); color:#fff; transition: transform .15s, opacity .3s; cursor: default; }
-  .dm-validate.press{ transform: scale(.92); }
-  .dm-validate.gone{ opacity:0; pointer-events:none; }
-  .dm-items{ margin-top: 10px; display:flex; flex-direction:column; gap:8px; }
-  .dm-item{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 9px 12px; background:#F4F7F8; border-radius: 10px; font-size:.82rem; color: var(--text); font-weight:600; opacity:0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
-  .dm-item.show{ opacity:1; transform:none; }
-  .dm-tag{ flex:none; font-size:.7rem; font-weight:800; padding: 3px 10px; border-radius: 999px; background:#FFE9CC; color:#A35A00; transition: background .3s, color .3s; }
-  .dm-tag.ok{ background:#55bbab; color:#fff; }
-  .dm-aud{ margin-top: 10px; font-size:.78rem; font-weight:700; color: var(--text-soft); opacity:0; transition: opacity .4s; }
-  .dm-aud.show{ opacity:1; }
-  .dm-spin{ width:16px; height:16px; border-radius:50%; border:2px solid #CBD5D9; border-top-color: var(--orange); animation: dmSpin .8s linear infinite; display:none; }
-  .dm-spin.on{ display:inline-block; }
+  .dm-chip{ display:inline-block; padding: 7px 12px; border-radius: 999px; background:#EEF2F4; font-size:.7rem; font-weight:800; color: var(--navy); }
+  .dm-gen{ margin-left:auto; border:0; font: inherit; font-weight: 800; font-size:.8rem; padding: 9px 22px; border-radius: 999px; background:#E3E8EB; color:#94A7B0; transition: all .3s; display:inline-flex; align-items:center; gap:8px; }
+  .dm-gen.ready{ background: var(--orange); color:#fff; box-shadow: 0 10px 20px -10px rgba(241,135,0,.9); }
+  .dm-gen.busy{ background:#E3E8EB; color:#7C909A; box-shadow:none; }
+  .dm-gen.press, .dm-pub.press{ transform: scale(.94); }
+  .dm-spin{ width:13px; height:13px; border-radius:50%; border:2px solid #CBD5D9; border-top-color: var(--navy); animation: dmSpin .8s linear infinite; display:none; }
+  .dm-gen.busy .dm-spin{ display:inline-block; }
   @keyframes dmSpin{ to{ transform: rotate(360deg); } }
-  .dm-cursor{ position:absolute; left:0; top:0; width: 22px; height: 22px; pointer-events:none; z-index: 5; opacity:0; transition: transform .8s cubic-bezier(.45,.05,.25,1), opacity .3s; filter: drop-shadow(0 3px 4px rgba(0,0,0,.35)); }
+  .dm-q{ flex:1; min-height:0; overflow:hidden; position:relative; }
+  .dm-qhead{ display:flex; align-items:center; gap:8px; }
+  .dm-tabs{ display:flex; background:#F1F4F6; border-radius:999px; padding:3px; }
+  .dm-tab{ padding:5px 11px; border-radius:999px; font-size:.68rem; font-weight:800; color:#7C909A; transition: all .25s; }
+  .dm-tab.on{ background: var(--navy); color:#fff; }
+  .dm-qhead .sp{ flex:1; }
+  .dm-pub{ border:0; font: inherit; font-weight:800; font-size:.72rem; background: var(--orange); color:#fff; padding: 8px 16px; border-radius:999px; box-shadow: 0 10px 18px -10px rgba(241,135,0,.9); transition: opacity .3s, transform .15s; }
+  .dm-pub.gone{ opacity:0; pointer-events:none; }
+  .dm-empty{ margin-top:10px; background:#F4F6F8; border-radius:14px; padding:14px 16px; font-size:.72rem; font-weight:700; color: var(--navy); }
+  .dm-list{ margin-top:10px; display:flex; flex-direction:column; gap:8px; max-height: 190px; overflow:hidden; -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); transition: opacity .35s; }
+  .dm-list.out{ opacity:0; }
+  .dm-qc{ background:#F4F6F8; border-radius:16px; padding: 11px 13px; opacity:0; transform: translateY(8px); transition: all .4s; }
+  .dm-qc.show{ opacity:1; transform:none; }
+  .dm-qc .qt{ display:flex; justify-content:space-between; gap:10px; font-size:.72rem; font-weight:800; color: var(--navy); line-height:1.35; }
+  .dm-fam{ flex:none; font-size:.6rem; font-weight:800; padding:3px 8px; border-radius:999px; background:#fff; color: var(--navy); height:fit-content; }
+  .dm-fam::before{ content:""; display:inline-block; width:6px; height:6px; border-radius:50%; background:#EA5297; margin-right:5px; }
+  .dm-fam.c::before{ background: var(--orange); }
+  .dm-ans{ display:grid; grid-template-columns: 1fr 1fr; gap:5px; margin-top:8px; }
+  .dm-an{ background:#fff; border-radius:10px; padding:5px 8px; font-size:.62rem; font-weight:600; color: var(--navy); display:flex; align-items:center; gap:6px; }
+  .dm-an i{ flex:none; width:11px; height:11px; border-radius:50%; border:1.5px solid #B9C8CE; }
+  .dm-an.ok{ box-shadow: inset 0 0 0 1.5px #55bbab; font-weight:800; }
+  .dm-an.ok i{ background:#55bbab; border-color:#55bbab; }
+  .dm-an.ok em{ margin-left:auto; font-style:normal; font-size:.52rem; color:#7C909A; font-weight:700; }
+  .dm-qc.rp .rt{ font-size:.62rem; font-weight:600; color:#6B8593; margin-top:4px; }
+  .dm-acts{ display:flex; justify-content:flex-end; gap:6px; margin-top:8px; }
+  .dm-acts span{ font-size:.6rem; font-weight:800; padding:5px 10px; border-radius:999px; background:#fff; color: var(--navy); }
+  .dm-acts span.p{ background: var(--navy); color:#fff; }
+  .dm-cursor{ position:absolute; left:0; top:0; width: 22px; height: 22px; pointer-events:none; z-index:6; opacity:0; transition: transform .9s cubic-bezier(.4,.1,.2,1), opacity .3s; filter: drop-shadow(0 3px 4px rgba(0,0,0,.25)); }
   .dm-cursor.on{ opacity:1; }
   .dm-cursor.click{ animation: dmClick .35s; }
   @keyframes dmClick{ 50%{ scale: .82; } }
-  .dp-wrap{ display:flex; flex-direction:column; align-items:center; gap: 14px; }
-  .dp-phone{ position: relative; width: 252px; height: 520px; border-radius: 36px; background:#fff; border: 7px solid #14232C; box-shadow: 0 30px 60px -22px rgba(0,38,58,.6); overflow:hidden; }
-  .dp-status{ position:absolute; top:0; left:0; right:0; height: 26px; z-index:3; display:flex; align-items:center; justify-content:space-between; padding: 0 18px; font-size:.62rem; font-weight:700; color:#fff; }
-  .dp-screen{ position:absolute; inset:0 0 54px 0; opacity:0; transition: opacity .5s; }
-  .dp-screen.on{ opacity:1; }
-  .dp-home-top{ background:#00658E; color:#fff; padding: 34px 16px 22px; border-radius: 0 0 26px 26px; text-align:center; }
-  .dp-home-top small{ display:block; font-size:.66rem; opacity:.85; font-weight:600; }
-  .dp-big{ font-size: 3rem; font-weight: 900; line-height:1.05; margin: 8px 0 6px; }
-  .dp-big sup{ font-size: 1.1rem; font-weight:800; vertical-align: top; margin-left:2px; }
-  .dp-pill{ display:inline-block; padding: 4px 12px; border-radius:999px; background: rgba(255,255,255,.18); font-size:.64rem; font-weight:700; }
-  .dp-cta{ margin: -14px 14px 0; position:relative; background: var(--orange); color: var(--navy); text-align:center; font-weight:800; font-size:.74rem; padding: 12px 8px; border-radius: 999px; box-shadow: 0 8px 14px -8px rgba(241,135,0,.9); }
-  .dp-card{ margin: 12px 14px 0; position:relative; background:#fff; border:1px solid var(--line); border-radius: 18px; padding: 12px 14px; box-shadow: 0 6px 14px -10px rgba(0,58,84,.4); transition: box-shadow .4s, border-color .4s; }
-  .dp-card b{ display:flex; justify-content:space-between; font-size:.76rem; color: var(--navy); }
-  .dp-card b em{ font-style:normal; font-size:.66rem; color: var(--text-soft); font-weight:700; }
-  .dp-card span.sub{ display:block; margin-top:4px; font-size:.64rem; color: var(--text-soft); font-weight:600; }
-  .dp-card .dot{ position:absolute; right:-3px; top:-3px; width:11px; height:11px; border-radius:50%; background: var(--orange); }
-  .dp-card.pulse{ border-color: var(--orange); box-shadow: 0 0 0 5px rgba(241,135,0,.18), 0 6px 14px -10px rgba(0,58,84,.4); }
-  .dp-q{ padding: 36px 16px 0; }
-  .dp-q .top{ font-size:.62rem; font-weight:700; color: var(--text-soft); letter-spacing:.02em; }
-  .dp-q h4{ font-size: .86rem; color: var(--navy); margin: 10px 0 14px; line-height: 1.35; font-weight: 800; }
-  .dp-opt{ border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; margin-bottom: 8px; font-size:.7rem; font-weight:600; color: var(--text); transition: background .3s, border-color .3s, color .3s; }
-  .dp-opt.good{ background:#E3F4F1; border-color:#55bbab; color:#0F5E52; }
-  .dp-fb{ margin-top: 10px; font-size:.68rem; font-weight:700; color:#0F5E52; line-height:1.4; opacity:0; transition: opacity .4s; }
-  .dp-fb.show{ opacity:1; }
-  .dp-coach{ padding: 36px 16px 0; }
-  .dp-coach h4{ font-size: 1rem; color: var(--navy); font-weight:800; }
-  .dp-coach p.s{ font-size:.64rem; color: var(--text-soft); margin: 2px 0 14px; font-weight:600; }
-  .dp-rp{ position:relative; border:1px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; background:#fff; transition: box-shadow .4s, border-color .4s, opacity .5s, transform .5s; }
-  .dp-rp b{ display:block; font-size:.74rem; color: var(--navy); }
-  .dp-rp span{ display:block; margin-top:4px; font-size:.64rem; color: var(--text-soft); line-height:1.4; font-weight:600; }
-  .dp-rp i{ display:inline-block; margin-top:8px; font-style:normal; font-size:.6rem; font-weight:800; padding: 3px 9px; border-radius:999px; background:#FFE0EE; color:#B0155C; }
-  .dp-rp.new{ opacity:0; transform: translateY(10px); }
-  .dp-rp.new.show{ opacity:1; transform:none; border-color: var(--orange); box-shadow: 0 0 0 5px rgba(241,135,0,.16); }
-  .dp-tabs{ position:absolute; left:0; right:0; bottom:0; height:54px; background:#fff; border-top: 1px solid var(--line); display:flex; align-items:center; justify-content:space-around; z-index:3; }
-  .dp-tabs span{ font-size:.58rem; font-weight:700; color:#94A7B0; text-align:center; position:relative; padding-top:9px; }
-  .dp-tabs span::before{ content:""; position:absolute; top:0; left:50%; width:16px; height:3px; border-radius:2px; background:#D5DEE2; transform: translateX(-50%); }
-  .dp-tabs span.on{ color: var(--navy); }
-  .dp-tabs span.on::before{ background: var(--navy); }
+  /* phone : vraies captures de l'app + panneaux de reponse reconstitues */
+  .dp-wrap{ display:flex; justify-content:center; }
+  .dp{ position:relative; width:272px; aspect-ratio: 824 / 1784; filter: drop-shadow(0 30px 40px rgba(0,38,58,.28)); }
+  .dp > img{ position:absolute; inset:0; width:100%; height:100%; opacity:0; transition: opacity .45s; }
+  .dp > img.on{ opacity:1; }
+  .dp-mask{ position:absolute; background:#F4F6F8; opacity:1; transition: opacity .5s; left:5%; right:4.5%; top:63%; height:11.2%; }
+  .dp-mask.teal{ background:#55BBAB; left:9.6%; right:52%; top:32.3%; height:2.6%; }
+  .dp-mask.off{ opacity:0; }
+  .dp-mask.hide{ display:none; }
+  .dp-halo{ position:absolute; border-radius: 22px; border: 2px solid var(--orange); box-shadow: 0 0 0 6px rgba(241,135,0,.2); opacity:0; pointer-events:none; }
+  .dp-halo.go{ animation: dmHalo 1.4s ease-out; }
+  @keyframes dmHalo{ 0%{ opacity:0; } 20%{ opacity:1; } 100%{ opacity:0; } }
+  #hFlash{ left:5.5%; right:4.5%; top:63.5%; height:6.4%; }
+  #hTile{ left:5.5%; right:51%; top:15.5%; height:21.2%; border-radius:30px; }
+  .dp-qs{ position:absolute; left:2%; right:2%; top:.9%; bottom:2.2%; background:#F4F6F8; border-radius: 28px; overflow:hidden; opacity:0; pointer-events:none; transition: opacity .4s; font-family:'Archivo',sans-serif; color: var(--navy); }
+  .dp-qs.on{ opacity:1; }
+  .dp-st{ height: 5.4%; min-height:26px; display:flex; align-items:flex-end; padding: 0 14px 4px; font-size:9px; font-weight:700; }
+  .dp-pr{ display:flex; align-items:center; gap:8px; padding: 12px 12px 0; }
+  .dp-x{ width:24px; height:24px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; flex:none; box-shadow:0 2px 6px rgba(0,38,58,.08); }
+  .dp-bar{ flex:1; height:5px; border-radius:9px; background:#DCE3E7; overflow:hidden; }
+  .dp-bar b{ display:block; height:100%; width:0; background:#00658E; border-radius:9px; transition: width .5s; }
+  .dp-n{ font-size:10px; font-weight:800; }
+  .dp-qt{ font-size:13.5px; font-weight:800; line-height:1.3; padding: 14px 14px 10px; }
+  .dp-o{ margin: 0 12px 6px; background:#fff; border-radius:14px; padding: 9px 11px; font-size:10.5px; font-weight:600; line-height:1.3; display:flex; align-items:center; gap:8px; box-shadow:0 2px 6px rgba(0,38,58,.06); transition: all .35s; }
+  .dp-o span{ flex:1; }
+  .dp-o em{ flex:none; width:17px; height:17px; border-radius:50%; display:none; align-items:center; justify-content:center; font-style:normal; font-size:9px; font-weight:900; }
+  .dp-o.dim{ opacity:.5; }
+  .dp-o.good{ background:#55BBAB; color: var(--navy); font-weight:800; }
+  .dp-o.good em{ display:flex; background: var(--navy); color:#fff; }
+  .dp-o.bad{ background:#BE1C33; color:#fff; font-weight:800; }
+  .dp-o.bad em{ display:flex; background:#fff; color:#BE1C33; }
+  .dp-fbk{ position:absolute; left:0; right:0; bottom:0; border-radius: 22px 22px 0 0; padding: 12px 12px 14px; transform: translateY(105%); transition: transform .45s cubic-bezier(.3,.8,.3,1); }
+  .dp-fbk.on{ transform:none; }
+  .dp-fbk.ok{ background:#55BBAB; color: var(--navy); }
+  .dp-fbk.ko{ background:#BE1C33; color:#fff; }
+  .dp-fbk .t{ display:flex; justify-content:space-between; align-items:baseline; font-size:15px; font-weight:800; }
+  .dp-fbk .t small{ font-size:10px; font-weight:800; }
+  .dp-fbk .w{ margin-top:8px; background:#fff; color: var(--navy); border-radius:14px; padding: 8px 11px; font-size:10px; font-weight:700; line-height:1.35; }
+  .dp-fbk .c{ margin-top:8px; background:#003A54; color:#fff; text-align:center; border-radius:999px; padding:9px; font-size:11px; font-weight:800; }
   .dm-caption{ max-width: 1020px; margin: 30px auto 0; display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-  .dm-step{ border-top: 3px solid var(--line); padding-top: 10px; font-size: .9rem; color: #7C909A; font-weight: 700; line-height: 1.4; transition: color .3s, border-color .3s; }
+  .dm-step{ border-top: 3px solid var(--line); padding-top: 10px; font-size: .9rem; color: #7C909A; font-weight: 700; transition: all .3s; }
   .dm-step b{ display:block; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px; }
   .dm-step.on{ color: var(--navy); border-color: var(--orange); }
   .demo-note{ text-align:center; margin-top: 18px; font-size: .8rem; color: #7C909A; }
   @media (max-width: 860px){
     .demo{ padding: 64px 0; }
     .dm-stage{ grid-template-columns: 1fr; gap: 28px; }
-    .dm-body{ padding: 16px; min-height: 0; }
+    .dm-body{ height: auto; min-height: 560px; padding: 14px; }
+    .dm-ans{ grid-template-columns: 1fr; }
+    .dm-qhead{ flex-wrap:wrap; }
+    .dm-tab{ white-space:nowrap; padding:5px 9px; }
+    .dm-qhead .sp{ display:none; }
+    .dm-pub{ margin-left:auto; }
     .dm-caption{ grid-template-columns: repeat(2, 1fr); }
+    .dm-cursor{ display:none; }
   }
   @media (prefers-reduced-motion: reduce){
     .dm-cursor{ display:none; }
@@ -772,62 +804,56 @@
       <p>Le manager dépose un document. L'IA génère les questions et les mises en situation, il valide, et chaque commercial les retrouve dans l'app.</p>
     </div>
 
-    <div class="dm-stage" id="dmStage" role="img" aria-label="Démonstration animée : un manager dépose un document dans la Bibliothèque, l'IA génère des QCM et un roleplay, le manager les valide, et le commercial les retrouve dans l'application.">
+    <div class="dm-stage" id="dmStage" role="img" aria-label="Démonstration animée : un manager dépose un document dans la Bibliothèque, l'IA génère des QCM, il les valide, et le commercial les retrouve dans l'application. Même chose pour un roleplay, qui arrive dans l'onglet Coach.">
       <div class="dm-win" aria-hidden="true">
         <div class="dm-bar"><i></i><i></i><i></i><span>Espace manager · Bibliothèque</span></div>
         <div class="dm-body">
-          <div class="dm-title">Générer du contenu</div>
-          <div>
-            <div class="dm-label">Document source</div>
-            <div class="dm-drop" id="dmDrop">
-              <span class="dm-drop-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Glisse un PDF ou un Word</span>
-              <div class="dm-file" id="dmFile"><svg viewBox="0 0 24 24" fill="none" stroke="#F18700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Offre commerciale.pdf</div>
-            </div>
-          </div>
-          <div>
+          <div><div class="dm-meta" id="dmMeta">129 contenus publiés · 0 en attente</div><div class="dm-h">Bibliothèque</div></div>
+          <div class="dm-card">
+            <h5>Générer du contenu</h5>
+            <p>À partir d'arguments ou d'une fiche produit importée. Rien n'est publié sans que tu l'aies validé.</p>
             <div class="dm-label">Titre du contenu</div>
             <div class="dm-input" id="dmTitle"><span class="ph">Ex. Objection prix</span></div>
+            <div class="dm-drop" id="dmDrop">
+              <span class="hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Glisse un PDF ou un Word, ou clique pour choisir</span>
+              <span class="fileinfo"><span class="dm-fi"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#003A54" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg></span><span class="dm-fn">Offre commerciale.pdf<small>2,4 Mo</small></span><span class="dm-ret">Retirer</span></span>
+            </div>
+            <div class="dm-opts">
+              <div><div class="dm-label">Type de contenu</div><div class="dm-pills"><span class="dm-pill on" id="pQcm">QCM</span><span class="dm-pill" id="pRp">Roleplay</span><span class="dm-pill">Les deux</span></div></div>
+              <div><div class="dm-label">Famille visée</div><span class="dm-chip">Automatique</span></div>
+              <div><div class="dm-label" id="dmNbL">Nombre de QCM</div><span class="dm-chip" id="dmNb">5</span></div>
+              <button class="dm-gen" id="dmGen" type="button" tabindex="-1"><span class="dm-spin"></span><span id="dmGenT">Générer</span></button>
+            </div>
           </div>
-          <div class="dm-opts">
-            <div><div class="dm-label">Type de contenu</div><div class="dm-pills"><span class="dm-pill on" id="pQcm">QCM</span><span class="dm-pill" id="pRp">Roleplay</span></div></div>
-            <div><div class="dm-label">Famille visée</div><span class="dm-chip">Automatique</span></div>
-            <button class="dm-gen" id="dmGen" type="button" tabindex="-1">Générer</button>
-          </div>
-          <div class="dm-queue">
-            <div class="dm-qhead"><span><span class="dm-spin" id="dmSpin"></span> <span id="dmQtext"></span></span><button class="dm-validate gone" id="dmVal" type="button" tabindex="-1">Valider</button></div>
-            <div class="dm-items" id="dmItems"></div>
-            <div class="dm-aud" id="dmAud">Visible par toute l'équipe</div>
+          <div class="dm-card dm-q">
+            <div class="dm-qhead">
+              <div class="dm-tabs"><span class="dm-tab on" id="tQ">QCM (0)</span><span class="dm-tab" id="tR">Roleplay (0)</span></div>
+              <div class="dm-tabs"><span class="dm-tab on">En attente</span><span class="dm-tab">Publié</span></div>
+              <span class="sp"></span>
+              <button class="dm-pub gone" id="dmPub" type="button" tabindex="-1">Tout publier</button>
+            </div>
+            <div class="dm-empty" id="dmEmpty">Aucun contenu en attente. Génère-en depuis le formulaire ci-dessus.</div>
+            <div class="dm-list" id="dmList" style="display:none"></div>
           </div>
         </div>
       </div>
 
       <div class="dp-wrap" aria-hidden="true">
-        <div class="dp-phone">
-          <div class="dp-status"><span>9:30</span><span></span></div>
-          <div class="dp-screen on" id="dpHome">
-            <div class="dp-home-top"><small>Ta maîtrise</small><div class="dp-big">42<sup>%</sup></div><span class="dp-pill">+6 points en 30 jours</span></div>
-            <div class="dp-cta">Lancer l'entraînement du jour</div>
-            <div class="dp-card" id="dpCard"><span class="dot"></span><b>Questions flash <em id="dpCnt">3 sur 5</em></b><span class="sub" id="dpSub">12 min · Prospection</span></div>
+        <div class="dp" id="dp">
+          <img class="on" id="iHome" src="screenshot-accueil.png" alt="" loading="lazy">
+          <img id="iCoach" src="screenshot-coach.png" alt="" loading="lazy">
+          <img id="iRp" src="screenshot-roleplay.png" alt="" loading="lazy">
+          <div class="dp-mask" id="mFlash"></div>
+          <div class="dp-mask teal" id="mTile"></div>
+          <div class="dp-halo" id="hFlash"></div>
+          <div class="dp-halo" id="hTile"></div>
+          <div class="dp-qs" id="dpQ">
+            <div class="dp-st">9:30</div>
+            <div class="dp-pr"><span class="dp-x">✕</span><span class="dp-bar"><b id="dpBar"></b></span><span class="dp-n" id="dpN">1 / 5</span></div>
+            <div class="dp-qt" id="dpQt"></div>
+            <div id="dpOpts"></div>
+            <div class="dp-fbk" id="dpFb"><div class="t"><span id="dpFt"></span><small id="dpFp"></small></div><div class="w" id="dpFw"></div><div class="c">Continuer</div></div>
           </div>
-          <div class="dp-screen" id="dpQ">
-            <div class="dp-q">
-              <div class="top">QUESTION FLASH · 1 sur 3 · Objection prix</div>
-              <h4>Le client juge l'offre trop chère. Que faites-vous en premier ?</h4>
-              <div class="dp-opt">Proposer une remise tout de suite</div>
-              <div class="dp-opt" id="dpGood">Lui demander ce qu'il compare</div>
-              <div class="dp-opt">Justifier le prix point par point</div>
-              <div class="dp-fb" id="dpFb">Bonne réponse. Comprends sa référence avant de parler prix.</div>
-            </div>
-          </div>
-          <div class="dp-screen" id="dpCoach">
-            <div class="dp-coach">
-              <h4>Coach</h4>
-              <p class="s">Roleplays</p>
-              <div class="dp-rp new" id="dpRp"><b>C'est trop cher pour ce que c'est</b><span>Un acheteur trouve ton offre chère et compare avec un devis concurrent.</span><i>Objections · Normal</i></div>
-              <div class="dp-rp"><b>Où sont hébergées nos données ?</b><span>Le DSI veut savoir où sont stockées ses données avant d'aller plus loin.</span><i>Objections · Entraînement</i></div>
-            </div>
-          </div>
-          <div class="dp-tabs"><span class="on" id="t0">Accueil</span><span id="t1">Compétences</span><span id="t2">Coach</span><span id="t3">Profil</span></div>
         </div>
       </div>
 
@@ -1118,117 +1144,149 @@
   var stage = document.getElementById('dmStage');
   if (!stage) return;
   var $ = function(id){ return document.getElementById(id); };
-  var drop=$('dmDrop'), file=$('dmFile'), title=$('dmTitle'), pQcm=$('pQcm'), pRp=$('pRp'), gen=$('dmGen'), spin=$('dmSpin'),
-      qtext=$('dmQtext'), val=$('dmVal'), items=$('dmItems'), aud=$('dmAud'), cur=$('dmCursor'),
-      home=$('dpHome'), qs=$('dpQ'), coach=$('dpCoach'), card=$('dpCard'), sub=$('dpSub'), cnt=$('dpCnt'),
-      good=$('dpGood'), fb=$('dpFb'), rp=$('dpRp'), steps=document.querySelectorAll('#dmCaption .dm-step');
-  var QCM = ["Le client juge l'offre trop chère : que faites-vous en premier ?",
-             "Il compare avec un devis concurrent : que lui demandez-vous ?",
-             "Le budget est bouclé : quelle porte laissez-vous ouverte ?"];
-  var RP  = ["Roleplay · C'est trop cher pour ce que c'est"];
-  var tok = 0;
-  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var meta=$('dmMeta'), title=$('dmTitle'), drop=$('dmDrop'), pQcm=$('pQcm'), pRp=$('pRp'), nbL=$('dmNbL'), nb=$('dmNb'),
+      gen=$('dmGen'), genT=$('dmGenT'), tQ=$('tQ'), tR=$('tR'), pub=$('dmPub'), empty=$('dmEmpty'), list=$('dmList'), cur=$('dmCursor'),
+      iHome=$('iHome'), iCoach=$('iCoach'), iRp=$('iRp'), mFlash=$('mFlash'), mTile=$('mTile'), hFlash=$('hFlash'), hTile=$('hTile'),
+      qs=$('dpQ'), bar=$('dpBar'), nEl=$('dpN'), qt=$('dpQt'), opts=$('dpOpts'), fb=$('dpFb'), ft=$('dpFt'), fp=$('dpFp'), fw=$('dpFw'),
+      steps=document.querySelectorAll('#dmCaption .dm-step');
+  var QCM = [
+    {q:"Le prospect dit : « C'est trop cher. » Quelle est la meilleure première réponse ?", f:"Objections", a:["Proposer une remise de 10 %","Demander : « Trop cher par rapport à quoi ? »","Rappeler la qualité du produit","Proposer de rappeler plus tard"], g:1, w:1,
+     ko:"Tu défends le prix avant de savoir sur quoi porte l'écart. Fais-le d'abord préciser.", ok:"Tu fais préciser l'objection avant d'y répondre."},
+    {q:"Avant de présenter le prix, que dois-tu avoir obtenu ?", f:"Closing", a:["Le budget exact du client","La validation de la valeur pour le client","L'accord de sa direction","Une date de signature"], g:1,
+     ok:"Tu valides la valeur avant de parler prix. C'est ce qui rend le prix défendable."}
+  ];
+  var tok = 0, reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function sleep(ms, t){ return new Promise(function(res, rej){ setTimeout(function(){ t === tok ? res() : rej('stop'); }, ms); }); }
   function setStep(n){ for (var i=0;i<steps.length;i++) steps[i].classList.toggle('on', +steps[i].getAttribute('data-step') === n); }
-  function screen(name){
-    home.classList.toggle('on', name==='home'); qs.classList.toggle('on', name==='q'); coach.classList.toggle('on', name==='coach');
-    $('t0').classList.toggle('on', name!=='coach'); $('t2').classList.toggle('on', name==='coach');
-  }
+  function img(which){ iHome.classList.toggle('on', which==='home'); iCoach.classList.toggle('on', which==='coach'); iRp.classList.toggle('on', which==='rp'); mFlash.classList.toggle('hide', which!=='home'); mTile.classList.toggle('hide', which!=='coach'); }
   function moveTo(target, fx, fy){
     var s = stage.getBoundingClientRect(), r = target.getBoundingClientRect();
     cur.classList.add('on');
-    cur.style.transform = 'translate(' + (r.left - s.left + r.width*(fx||0.5)) + 'px,' + (r.top - s.top + r.height*(fy||0.6)) + 'px)';
+    cur.style.transform = 'translate(' + (r.left - s.left + r.width*(fx==null?0.5:fx)) + 'px,' + (r.top - s.top + r.height*(fy==null?0.6:fy)) + 'px)';
   }
   function click(btn){
     cur.classList.remove('click'); void cur.offsetWidth; cur.classList.add('click');
     if (btn){ btn.classList.add('press'); setTimeout(function(){ btn.classList.remove('press'); }, 220); }
   }
-  function buildItems(list){
-    items.innerHTML = '';
-    list.forEach(function(txt){
-      var d = document.createElement('div'); d.className = 'dm-item';
-      var s = document.createElement('span'); s.textContent = txt;
-      var g = document.createElement('span'); g.className = 'dm-tag'; g.textContent = 'À valider';
-      d.appendChild(s); d.appendChild(g); items.appendChild(d);
-    });
+  function halo(h){ h.classList.remove('go'); void h.offsetWidth; h.classList.add('go'); }
+  function setMeta(pub_, pend){ meta.textContent = pub_ + ' contenus publiés · ' + pend + ' en attente'; }
+  function card(kind, d){
+    var el = document.createElement('div'); el.className = 'dm-qc' + (kind==='rp' ? ' rp' : '');
+    if (kind==='rp'){
+      el.innerHTML = '<div class="qt"><span>Défense de l\'offre</span><span class="dm-fam">Objections</span></div><div class="rt">Roleplay · Une acheteuse trouve ton offre chère et compare avec un concurrent.</div><div class="dm-acts"><span>Modifier</span><span>Supprimer</span><span class="p">Publier</span></div>';
+    } else {
+      el.innerHTML = '<div class="qt"><span>' + d.q + '</span><span class="dm-fam' + (d.f==='Closing' ? ' c' : '') + '">' + d.f + '</span></div><div class="dm-ans">' +
+        d.a.map(function(x,i){ return '<div class="dm-an' + (i===d.g ? ' ok' : '') + '"><i></i>' + x + (i===d.g ? '<em>Bonne réponse</em>' : '') + '</div>'; }).join('') +
+        '</div><div class="dm-acts"><span>Modifier</span><span>Supprimer</span><span class="p">Publier</span></div>';
+    }
+    return el;
   }
-  function publish(label){
-    var tg = items.querySelectorAll('.dm-tag');
-    for (var i=0;i<tg.length;i++){ tg[i].textContent = 'Publié'; tg[i].classList.add('ok'); }
-    qtext.textContent = label; val.classList.add('gone'); aud.classList.add('show');
+  function resetAll(){
+    title.innerHTML = '<span class="ph">Ex. Objection prix</span>'; drop.classList.remove('has');
+    pQcm.classList.add('on'); pRp.classList.remove('on'); nbL.textContent = 'Nombre de QCM'; nb.textContent = '5';
+    gen.className = 'dm-gen'; genT.textContent = 'Générer';
+    tQ.textContent = 'QCM (0)'; tR.textContent = 'Roleplay (0)'; tQ.classList.add('on'); tR.classList.remove('on');
+    pub.classList.add('gone'); empty.style.display = ''; list.style.display = 'none'; list.innerHTML = ''; list.classList.remove('out');
+    setMeta(129, 0);
+    qs.classList.remove('on'); fb.classList.remove('on'); img('home'); mFlash.classList.remove('off'); mTile.classList.remove('off');
+    bar.style.width = '0';
   }
-  function resetDash(){
-    drop.classList.remove('has'); file.classList.remove('in');
-    title.innerHTML = '<span class="ph">Ex. Objection prix</span>';
-    pQcm.classList.add('on'); pRp.classList.remove('on');
-    gen.classList.remove('ready'); spin.classList.remove('on'); qtext.textContent = '';
-    val.classList.add('gone'); items.innerHTML = ''; aud.classList.remove('show');
-  }
-  function resetPhone(){
-    screen('home'); card.classList.remove('pulse'); sub.textContent = '12 min · Prospection'; cnt.textContent = '3 sur 5';
-    good.classList.remove('good'); fb.classList.remove('show'); rp.classList.remove('show');
-  }
-  function placeCursor(){ cur.classList.remove('on'); cur.style.transform = 'translate(' + Math.round(stage.clientWidth*0.45) + 'px,40px)'; }
   async function type(str, t){
-    var span = document.createElement('span'); title.innerHTML = ''; title.appendChild(span);
-    var c = document.createElement('i'); c.className = 'dm-caret'; title.appendChild(c);
-    for (var i=1;i<=str.length;i++){ span.textContent = str.slice(0,i); await sleep(48, t); }
+    title.innerHTML = '<span class="dm-txt"></span><span class="dm-caret"></span>';
+    var sp = title.firstChild;
+    for (var i=1;i<=str.length;i++){ sp.textContent = str.slice(0,i); await sleep(55, t); }
+    title.innerHTML = '<span>' + str + '</span>';
   }
-  async function generate(list, label, t){
-    setStep(2); moveTo(gen); await sleep(900, t);
-    gen.classList.add('ready'); await sleep(250, t); click(gen); await sleep(250, t);
-    spin.classList.add('on'); qtext.textContent = 'Génération en cours'; await sleep(1100, t);
-    spin.classList.remove('on'); qtext.textContent = label; buildItems(list); val.classList.remove('gone');
-    var it = items.querySelectorAll('.dm-item');
-    for (var i=0;i<it.length;i++){ it[i].classList.add('show'); await sleep(260, t); }
+  function showQuestion(i, idx){
+    var d = QCM[idx];
+    qt.textContent = d.q; nEl.textContent = (i+1) + ' / 5'; bar.style.width = (i*20) + '%';
+    opts.innerHTML = d.a.map(function(x){ return '<div class="dp-o"><span>' + x + '</span><em></em></div>'; }).join('');
+    fb.classList.remove('on');
   }
-  async function validate(label, t){
-    setStep(3); await sleep(500, t); moveTo(val); await sleep(900, t); click(val); await sleep(350, t);
-    publish(label); await sleep(1100, t);
-  }
-  async function act1(t){
-    resetDash(); resetPhone(); setStep(1);
-    moveTo(drop); await sleep(900, t);
-    file.classList.add('in'); drop.classList.add('has'); await sleep(1000, t);
-    moveTo(title); await sleep(700, t); await type('Objection prix', t); await sleep(300, t);
-    await generate(QCM, '3 QCM en attente de validation', t);
-    await validate('3 QCM publiés', t);
-    setStep(4); cur.classList.remove('on'); await sleep(400, t);
-    card.classList.add('pulse'); sub.textContent = '12 min · Objection prix'; cnt.textContent = '0 sur 3'; await sleep(1500, t);
-    screen('q'); await sleep(1600, t);
-    good.classList.add('good'); await sleep(700, t); fb.classList.add('show'); await sleep(2400, t);
-  }
-  async function act2(t){
-    resetDash(); screen('home'); card.classList.remove('pulse'); setStep(1);
-    file.classList.add('in'); drop.classList.add('has');
-    moveTo(pRp); await sleep(900, t); click(); pQcm.classList.remove('on'); pRp.classList.add('on'); await sleep(500, t);
-    moveTo(title); await sleep(700, t); await type("C'est trop cher pour ce que c'est", t); await sleep(300, t);
-    await generate(RP, '1 roleplay en attente de validation', t);
-    await validate('1 roleplay publié', t);
-    setStep(4); cur.classList.remove('on'); await sleep(400, t);
-    screen('coach'); await sleep(700, t); rp.classList.add('show'); await sleep(3200, t);
-  }
-  async function loop(t){
-    try { while (true){ await act1(t); await act2(t); await sleep(600, t); } }
-    catch(e){ /* arrêt : la démo est sortie de l'écran */ }
+  async function answer(idx, pick, t){
+    var d = QCM[idx], os = opts.children;
+    await sleep(900, t);
+    var tgt = os[pick]; moveTo(tgt, .7, .5); await sleep(1000, t); click();
+    for (var k=0;k<os.length;k++){ os[k].classList.add('dim'); }
+    tgt.classList.remove('dim');
+    if (pick === d.g){ tgt.classList.add('good'); }
+    else { tgt.classList.add('bad'); tgt.querySelector('em').textContent = '✕'; os[d.g].classList.remove('dim'); os[d.g].classList.add('good'); }
+    for (var j=0;j<os.length;j++){ if (os[j].classList.contains('good')) os[j].querySelector('em').textContent = '✓'; }
+    await sleep(700, t);
+    var okk = pick === d.g;
+    fb.className = 'dp-fbk ' + (okk ? 'ok' : 'ko');
+    ft.textContent = okk ? 'Bien joué' : 'Pas tout à fait'; fp.textContent = okk ? '+20 pts' : '';
+    fw.textContent = okk ? d.ok : d.ko;
+    void fb.offsetWidth; fb.classList.add('on');
+    await sleep(2800, t);
   }
   function staticState(){
-    drop.classList.add('has'); file.classList.add('in'); title.textContent = 'Objection prix';
-    buildItems(QCM); var it = items.querySelectorAll('.dm-item'); for (var i=0;i<it.length;i++) it[i].classList.add('show');
-    publish('3 QCM publiés'); setStep(4);
-    sub.textContent = '12 min · Objection prix'; cnt.textContent = '0 sur 3';
-    screen('q'); good.classList.add('good'); fb.classList.add('show');
+    resetAll(); title.innerHTML = '<span>Objection prix</span>'; drop.classList.add('has');
+    tQ.textContent = 'QCM (5)'; pub.classList.remove('gone'); empty.style.display = 'none'; list.style.display = '';
+    QCM.forEach(function(d){ var c = card('q', d); c.classList.add('show'); list.appendChild(c); }); setMeta(129, 5);
+    mFlash.classList.add('off'); setStep(4);
   }
 
-  if (reduceMotion || !('IntersectionObserver' in window)) { staticState(); return; }
-  placeCursor();
-  new IntersectionObserver(function(entries){
-    entries.forEach(function(e){
-      if (e.isIntersecting){ tok++; loop(tok); }
-      else { tok++; }
-    });
-  }, { threshold: 0.35 }).observe(stage);
+  async function act1(t){
+    resetAll(); setStep(1); cur.classList.remove('on'); await sleep(900, t);
+    moveTo(drop, .5, .5); await sleep(1100, t); click(); drop.classList.add('has');
+    await sleep(900, t);
+    moveTo(title, .35, .5); await sleep(1000, t); click(); await type('Objection prix', t);
+    gen.classList.add('ready'); await sleep(700, t);
+    moveTo(gen, .5, .5); await sleep(1000, t); click(gen);
+    setStep(2); gen.classList.remove('ready'); gen.classList.add('busy'); genT.textContent = 'Génération en cours…';
+    await sleep(1700, t);
+    gen.className = 'dm-gen'; genT.textContent = 'Générer';
+    empty.style.display = 'none'; list.style.display = ''; tQ.textContent = 'QCM (5)'; setMeta(129, 5); pub.classList.remove('gone');
+    QCM.forEach(function(d){ var c = card('q', d); list.appendChild(c); });
+    await sleep(60, t); Array.prototype.forEach.call(list.children, function(c,i){ setTimeout(function(){ c.classList.add('show'); }, i*260); });
+    await sleep(1800, t);
+    setStep(3); moveTo(pub, .5, .5); await sleep(1100, t); click(pub);
+    await sleep(350, t); list.classList.add('out'); await sleep(450, t);
+    list.style.display = 'none'; list.innerHTML = ''; empty.style.display = ''; tQ.textContent = 'QCM (0)'; pub.classList.add('gone'); setMeta(134, 0);
+    await sleep(900, t);
+    setStep(4); cur.classList.remove('on');
+    mFlash.classList.add('off'); await sleep(500, t); halo(hFlash); await sleep(1100, t);
+    moveTo(hFlash, .5, .5); await sleep(1000, t); click();
+    await sleep(350, t); qs.classList.add('on'); showQuestion(0, 0);
+    await answer(0, 0, t);
+    showQuestion(1, 1); await answer(1, 1, t);
+    qs.classList.remove('on'); fb.classList.remove('on'); cur.classList.remove('on'); await sleep(900, t);
+  }
+  async function act2(t){
+    resetAll(); setStep(1); cur.classList.remove('on'); img('coach'); mFlash.classList.add('off'); await sleep(900, t);
+    drop.classList.add('has'); moveTo(pRp, .5, .5); await sleep(1100, t); click();
+    pQcm.classList.remove('on'); pRp.classList.add('on'); nbL.textContent = 'Nombre de roleplays'; nb.textContent = '1';
+    await sleep(700, t);
+    moveTo(title, .35, .5); await sleep(1000, t); click(); await type("Défense de l'offre", t);
+    gen.classList.add('ready'); await sleep(700, t);
+    moveTo(gen, .5, .5); await sleep(1000, t); click(gen);
+    setStep(2); gen.classList.remove('ready'); gen.classList.add('busy'); genT.textContent = 'Génération en cours…';
+    await sleep(1700, t);
+    gen.className = 'dm-gen'; genT.textContent = 'Générer';
+    empty.style.display = 'none'; list.style.display = ''; tQ.classList.remove('on'); tR.classList.add('on'); tR.textContent = 'Roleplay (1)'; setMeta(134, 1); pub.classList.remove('gone');
+    var c = card('rp'); list.appendChild(c); await sleep(60, t); c.classList.add('show'); await sleep(1800, t);
+    setStep(3); moveTo(pub, .5, .5); await sleep(1100, t); click(pub);
+    await sleep(350, t); list.classList.add('out'); await sleep(450, t);
+    list.style.display = 'none'; list.innerHTML = ''; empty.style.display = ''; tR.textContent = 'Roleplay (0)'; pub.classList.add('gone'); setMeta(135, 0);
+    await sleep(900, t);
+    setStep(4); cur.classList.remove('on');
+    mTile.classList.add('off'); await sleep(500, t); halo(hTile); await sleep(1100, t);
+    moveTo(hTile, .5, .5); await sleep(1000, t); click();
+    await sleep(350, t); img('rp'); mTile.classList.add('off'); await sleep(3500, t);
+    cur.classList.remove('on');
+  }
+  async function loop(){
+    var t = ++tok;
+    try { while (true){ await act1(t); await act2(t); } } catch(e){ /* stop */ }
+  }
+  function stop(){ tok++; }
+
+  if (reduce){ staticState(); return; }
+  resetAll();
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) loop(); else { stop(); } }); }, { threshold: 0.35 });
+  io.observe(stage);
 })();
 </script>
 
