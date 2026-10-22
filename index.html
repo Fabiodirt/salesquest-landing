@@ -586,6 +586,110 @@
     .mic-wrap{ width: 140px; }
     .tile-dashboard{ grid-template-columns: 1fr; padding: 24px; }
   }
+
+  /* ---------- DEMO : DOCUMENT -> ENTRAINEMENT ---------- */
+  .demo{ padding: 96px 0; background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .demo-head{ max-width: 720px; margin: 0 auto 40px; text-align: center; }
+  .demo-head h2{ font-size: clamp(1.8rem, 2.8vw, 2.3rem); color: var(--navy); margin-top: 12px; }
+  .demo-head p{ font-size: 1.15rem; color: var(--text-soft); margin-top: 12px; line-height: 1.6; }
+  .dm-stage{ position: relative; display: grid; grid-template-columns: minmax(0,1fr) 272px; gap: 44px; align-items: center; max-width: 1020px; margin: 0 auto; }
+  .dm-win{ background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: 0 24px 50px -24px rgba(0,58,84,.35); overflow: hidden; }
+  .dm-bar{ display:flex; align-items:center; gap:7px; padding: 12px 16px; background: #EEF2F4; border-bottom: 1px solid var(--line); font-size: .78rem; font-weight: 600; color: var(--text-soft); }
+  .dm-bar i{ width: 10px; height: 10px; border-radius: 50%; background: #CBD5D9; display:block; }
+  .dm-bar span{ margin-left: 8px; }
+  .dm-body{ padding: 22px 24px 24px; display:flex; flex-direction:column; gap: 14px; min-height: 430px; }
+  .dm-title{ font-weight: 800; color: var(--navy); font-size: 1.05rem; }
+  .dm-label{ font-size: .72rem; font-weight: 700; color: var(--text-soft); margin-bottom: 5px; }
+  .dm-drop{ position: relative; border: 2px dashed #B9C8CE; border-radius: 12px; height: 74px; display:flex; align-items:center; justify-content:center; color: var(--text-soft); font-size: .85rem; font-weight: 600; transition: border-color .3s, background .3s; }
+  .dm-drop.has{ border-style: solid; border-color: var(--navy-light); background: #F1F7FA; }
+  .dm-drop-hint{ transition: opacity .25s; display:flex; align-items:center; gap:8px; }
+  .dm-drop.has .dm-drop-hint{ opacity: 0; }
+  .dm-file{ position:absolute; left:50%; top:50%; display:flex; align-items:center; gap:8px; padding: 8px 14px; border-radius: 10px; background:#fff; border:1px solid var(--line); box-shadow: 0 8px 18px -10px rgba(0,58,84,.5); font-size:.85rem; font-weight:700; color: var(--navy); white-space:nowrap; opacity:0; transform: translate(-50%, -260%); transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .35s; }
+  .dm-file.in{ opacity:1; transform: translate(-50%, -50%); }
+  .dm-file svg{ width:16px; height:16px; flex:none; }
+  .dm-input{ min-height: 38px; border: 1px solid var(--line); background: #F4F7F8; border-radius: 10px; padding: 9px 12px; font-size: .9rem; font-weight: 600; color: var(--navy); display:flex; align-items:center; }
+  .dm-input .ph{ color: #94A7B0; font-weight: 500; }
+  .dm-caret{ display:inline-block; width:2px; height:1em; background: var(--navy); margin-left:1px; animation: dmBlink 1s steps(1) infinite; }
+  @keyframes dmBlink{ 50%{ opacity:0; } }
+  .dm-opts{ display:flex; flex-wrap:wrap; gap: 14px 22px; align-items:flex-end; }
+  .dm-pills{ display:flex; background:#EEF2F4; border-radius: 999px; padding: 3px; gap:2px; }
+  .dm-pill{ padding: 6px 14px; border-radius: 999px; font-size:.8rem; font-weight:700; color: var(--text-soft); transition: background .3s, color .3s; }
+  .dm-pill.on{ background: var(--navy); color:#fff; }
+  .dm-chip{ padding: 8px 14px; border-radius: 999px; background:#EEF2F4; font-size:.8rem; font-weight:700; color: var(--navy); }
+  .dm-gen{ align-self:flex-end; margin-left:auto; border:0; font: inherit; font-weight: 800; font-size: .9rem; padding: 11px 24px; border-radius: 999px; background:#E2E8EA; color:#94A7B0; transition: background .3s, color .3s, transform .15s, box-shadow .3s; cursor: default; }
+  .dm-gen.ready{ background: var(--orange); color:#fff; box-shadow: 0 10px 20px -10px rgba(241,135,0,.8); }
+  .dm-gen.press{ transform: scale(.94); }
+  .dm-queue{ border-top: 1px solid var(--line); padding-top: 14px; min-height: 136px; }
+  .dm-qhead{ display:flex; align-items:center; justify-content:space-between; gap:10px; font-weight:800; font-size:.9rem; color: var(--navy); min-height: 30px; }
+  .dm-validate{ border:0; font: inherit; font-weight:800; font-size:.8rem; padding: 7px 16px; border-radius: 999px; background: var(--navy); color:#fff; transition: transform .15s, opacity .3s; cursor: default; }
+  .dm-validate.press{ transform: scale(.92); }
+  .dm-validate.gone{ opacity:0; pointer-events:none; }
+  .dm-items{ margin-top: 10px; display:flex; flex-direction:column; gap:8px; }
+  .dm-item{ display:flex; align-items:center; justify-content:space-between; gap:12px; padding: 9px 12px; background:#F4F7F8; border-radius: 10px; font-size:.82rem; color: var(--text); font-weight:600; opacity:0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+  .dm-item.show{ opacity:1; transform:none; }
+  .dm-tag{ flex:none; font-size:.7rem; font-weight:800; padding: 3px 10px; border-radius: 999px; background:#FFE9CC; color:#A35A00; transition: background .3s, color .3s; }
+  .dm-tag.ok{ background:#55bbab; color:#fff; }
+  .dm-aud{ margin-top: 10px; font-size:.78rem; font-weight:700; color: var(--text-soft); opacity:0; transition: opacity .4s; }
+  .dm-aud.show{ opacity:1; }
+  .dm-spin{ width:16px; height:16px; border-radius:50%; border:2px solid #CBD5D9; border-top-color: var(--orange); animation: dmSpin .8s linear infinite; display:none; }
+  .dm-spin.on{ display:inline-block; }
+  @keyframes dmSpin{ to{ transform: rotate(360deg); } }
+  .dm-cursor{ position:absolute; left:0; top:0; width: 22px; height: 22px; pointer-events:none; z-index: 5; opacity:0; transition: transform .8s cubic-bezier(.45,.05,.25,1), opacity .3s; filter: drop-shadow(0 3px 4px rgba(0,0,0,.35)); }
+  .dm-cursor.on{ opacity:1; }
+  .dm-cursor.click{ animation: dmClick .35s; }
+  @keyframes dmClick{ 50%{ scale: .82; } }
+  .dp-wrap{ display:flex; flex-direction:column; align-items:center; gap: 14px; }
+  .dp-phone{ position: relative; width: 252px; height: 520px; border-radius: 36px; background:#fff; border: 7px solid #14232C; box-shadow: 0 30px 60px -22px rgba(0,38,58,.6); overflow:hidden; }
+  .dp-status{ position:absolute; top:0; left:0; right:0; height: 26px; z-index:3; display:flex; align-items:center; justify-content:space-between; padding: 0 18px; font-size:.62rem; font-weight:700; color:#fff; }
+  .dp-screen{ position:absolute; inset:0 0 54px 0; opacity:0; transition: opacity .5s; }
+  .dp-screen.on{ opacity:1; }
+  .dp-home-top{ background:#00658E; color:#fff; padding: 34px 16px 22px; border-radius: 0 0 26px 26px; text-align:center; }
+  .dp-home-top small{ display:block; font-size:.66rem; opacity:.85; font-weight:600; }
+  .dp-big{ font-size: 3rem; font-weight: 900; line-height:1.05; margin: 8px 0 6px; }
+  .dp-big sup{ font-size: 1.1rem; font-weight:800; vertical-align: top; margin-left:2px; }
+  .dp-pill{ display:inline-block; padding: 4px 12px; border-radius:999px; background: rgba(255,255,255,.18); font-size:.64rem; font-weight:700; }
+  .dp-cta{ margin: -14px 14px 0; position:relative; background: var(--orange); color: var(--navy); text-align:center; font-weight:800; font-size:.74rem; padding: 12px 8px; border-radius: 999px; box-shadow: 0 8px 14px -8px rgba(241,135,0,.9); }
+  .dp-card{ margin: 12px 14px 0; position:relative; background:#fff; border:1px solid var(--line); border-radius: 18px; padding: 12px 14px; box-shadow: 0 6px 14px -10px rgba(0,58,84,.4); transition: box-shadow .4s, border-color .4s; }
+  .dp-card b{ display:flex; justify-content:space-between; font-size:.76rem; color: var(--navy); }
+  .dp-card b em{ font-style:normal; font-size:.66rem; color: var(--text-soft); font-weight:700; }
+  .dp-card span.sub{ display:block; margin-top:4px; font-size:.64rem; color: var(--text-soft); font-weight:600; }
+  .dp-card .dot{ position:absolute; right:-3px; top:-3px; width:11px; height:11px; border-radius:50%; background: var(--orange); }
+  .dp-card.pulse{ border-color: var(--orange); box-shadow: 0 0 0 5px rgba(241,135,0,.18), 0 6px 14px -10px rgba(0,58,84,.4); }
+  .dp-q{ padding: 36px 16px 0; }
+  .dp-q .top{ font-size:.62rem; font-weight:700; color: var(--text-soft); letter-spacing:.02em; }
+  .dp-q h4{ font-size: .86rem; color: var(--navy); margin: 10px 0 14px; line-height: 1.35; font-weight: 800; }
+  .dp-opt{ border: 1.5px solid var(--line); border-radius: 14px; padding: 10px 12px; margin-bottom: 8px; font-size:.7rem; font-weight:600; color: var(--text); transition: background .3s, border-color .3s, color .3s; }
+  .dp-opt.good{ background:#E3F4F1; border-color:#55bbab; color:#0F5E52; }
+  .dp-fb{ margin-top: 10px; font-size:.68rem; font-weight:700; color:#0F5E52; line-height:1.4; opacity:0; transition: opacity .4s; }
+  .dp-fb.show{ opacity:1; }
+  .dp-coach{ padding: 36px 16px 0; }
+  .dp-coach h4{ font-size: 1rem; color: var(--navy); font-weight:800; }
+  .dp-coach p.s{ font-size:.64rem; color: var(--text-soft); margin: 2px 0 14px; font-weight:600; }
+  .dp-rp{ position:relative; border:1px solid var(--line); border-radius: 18px; padding: 12px 14px; margin-bottom: 10px; background:#fff; transition: box-shadow .4s, border-color .4s, opacity .5s, transform .5s; }
+  .dp-rp b{ display:block; font-size:.74rem; color: var(--navy); }
+  .dp-rp span{ display:block; margin-top:4px; font-size:.64rem; color: var(--text-soft); line-height:1.4; font-weight:600; }
+  .dp-rp i{ display:inline-block; margin-top:8px; font-style:normal; font-size:.6rem; font-weight:800; padding: 3px 9px; border-radius:999px; background:#FFE0EE; color:#B0155C; }
+  .dp-rp.new{ opacity:0; transform: translateY(10px); }
+  .dp-rp.new.show{ opacity:1; transform:none; border-color: var(--orange); box-shadow: 0 0 0 5px rgba(241,135,0,.16); }
+  .dp-tabs{ position:absolute; left:0; right:0; bottom:0; height:54px; background:#fff; border-top: 1px solid var(--line); display:flex; align-items:center; justify-content:space-around; z-index:3; }
+  .dp-tabs span{ font-size:.58rem; font-weight:700; color:#94A7B0; text-align:center; position:relative; padding-top:9px; }
+  .dp-tabs span::before{ content:""; position:absolute; top:0; left:50%; width:16px; height:3px; border-radius:2px; background:#D5DEE2; transform: translateX(-50%); }
+  .dp-tabs span.on{ color: var(--navy); }
+  .dp-tabs span.on::before{ background: var(--navy); }
+  .dm-caption{ max-width: 1020px; margin: 30px auto 0; display:grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .dm-step{ border-top: 3px solid var(--line); padding-top: 10px; font-size: .9rem; color: #7C909A; font-weight: 700; line-height: 1.4; transition: color .3s, border-color .3s; }
+  .dm-step b{ display:block; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase; margin-bottom:3px; }
+  .dm-step.on{ color: var(--navy); border-color: var(--orange); }
+  .demo-note{ text-align:center; margin-top: 18px; font-size: .8rem; color: #7C909A; }
+  @media (max-width: 860px){
+    .demo{ padding: 64px 0; }
+    .dm-stage{ grid-template-columns: 1fr; gap: 28px; }
+    .dm-body{ padding: 16px; min-height: 0; }
+    .dm-caption{ grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .dm-cursor{ display:none; }
+  }
 </style>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "38daef0cb43b4c9bb6628ada4a8409b8"}'></script><!-- End Cloudflare Web Analytics -->
 <link rel="icon" type="image/png" href="favicon.png?v=5"><link rel="shortcut icon" href="favicon.ico?v=3">
@@ -657,6 +761,86 @@
       </div>
     </div>
     <p style="text-align:center; margin-top:28px; font-size:0.85rem; color:#9FB6C1;">Corrélations observées sur des échantillons d'entreprises, pas des résultats garantis.</p>
+  </div>
+</section>
+
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="demo-head">
+      <span class="badge">Voyez-le en action</span>
+      <h2>De votre document à l'entraînement de vos commerciaux</h2>
+      <p>Le manager dépose un document. L'IA génère les questions et les mises en situation, il valide, et chaque commercial les retrouve dans l'app.</p>
+    </div>
+
+    <div class="dm-stage" id="dmStage" role="img" aria-label="Démonstration animée : un manager dépose un document dans la Bibliothèque, l'IA génère des QCM et un roleplay, le manager les valide, et le commercial les retrouve dans l'application.">
+      <div class="dm-win" aria-hidden="true">
+        <div class="dm-bar"><i></i><i></i><i></i><span>Espace manager · Bibliothèque</span></div>
+        <div class="dm-body">
+          <div class="dm-title">Générer du contenu</div>
+          <div>
+            <div class="dm-label">Document source</div>
+            <div class="dm-drop" id="dmDrop">
+              <span class="dm-drop-hint"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5M4 20h16"/></svg>Glisse un PDF ou un Word</span>
+              <div class="dm-file" id="dmFile"><svg viewBox="0 0 24 24" fill="none" stroke="#F18700" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>Offre commerciale.pdf</div>
+            </div>
+          </div>
+          <div>
+            <div class="dm-label">Titre du contenu</div>
+            <div class="dm-input" id="dmTitle"><span class="ph">Ex. Objection prix</span></div>
+          </div>
+          <div class="dm-opts">
+            <div><div class="dm-label">Type de contenu</div><div class="dm-pills"><span class="dm-pill on" id="pQcm">QCM</span><span class="dm-pill" id="pRp">Roleplay</span></div></div>
+            <div><div class="dm-label">Famille visée</div><span class="dm-chip">Automatique</span></div>
+            <button class="dm-gen" id="dmGen" type="button" tabindex="-1">Générer</button>
+          </div>
+          <div class="dm-queue">
+            <div class="dm-qhead"><span><span class="dm-spin" id="dmSpin"></span> <span id="dmQtext"></span></span><button class="dm-validate gone" id="dmVal" type="button" tabindex="-1">Valider</button></div>
+            <div class="dm-items" id="dmItems"></div>
+            <div class="dm-aud" id="dmAud">Visible par toute l'équipe</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dp-wrap" aria-hidden="true">
+        <div class="dp-phone">
+          <div class="dp-status"><span>9:30</span><span></span></div>
+          <div class="dp-screen on" id="dpHome">
+            <div class="dp-home-top"><small>Ta maîtrise</small><div class="dp-big">42<sup>%</sup></div><span class="dp-pill">+6 points en 30 jours</span></div>
+            <div class="dp-cta">Lancer l'entraînement du jour</div>
+            <div class="dp-card" id="dpCard"><span class="dot"></span><b>Questions flash <em id="dpCnt">3 sur 5</em></b><span class="sub" id="dpSub">12 min · Prospection</span></div>
+          </div>
+          <div class="dp-screen" id="dpQ">
+            <div class="dp-q">
+              <div class="top">QUESTION FLASH · 1 sur 3 · Objection prix</div>
+              <h4>Le client juge l'offre trop chère. Que faites-vous en premier ?</h4>
+              <div class="dp-opt">Proposer une remise tout de suite</div>
+              <div class="dp-opt" id="dpGood">Lui demander ce qu'il compare</div>
+              <div class="dp-opt">Justifier le prix point par point</div>
+              <div class="dp-fb" id="dpFb">Bonne réponse. Comprends sa référence avant de parler prix.</div>
+            </div>
+          </div>
+          <div class="dp-screen" id="dpCoach">
+            <div class="dp-coach">
+              <h4>Coach</h4>
+              <p class="s">Roleplays</p>
+              <div class="dp-rp new" id="dpRp"><b>C'est trop cher pour ce que c'est</b><span>Un acheteur trouve ton offre chère et compare avec un devis concurrent.</span><i>Objections · Normal</i></div>
+              <div class="dp-rp"><b>Où sont hébergées nos données ?</b><span>Le DSI veut savoir où sont stockées ses données avant d'aller plus loin.</span><i>Objections · Entraînement</i></div>
+            </div>
+          </div>
+          <div class="dp-tabs"><span class="on" id="t0">Accueil</span><span id="t1">Compétences</span><span id="t2">Coach</span><span id="t3">Profil</span></div>
+        </div>
+      </div>
+
+      <svg class="dm-cursor" id="dmCursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9.5-6.5 1.6L9.6 20z" fill="#fff" stroke="#12242F" stroke-width="1.6" stroke-linejoin="round"/></svg>
+    </div>
+
+    <div class="dm-caption" id="dmCaption">
+      <div class="dm-step on" data-step="1"><b>1 · Dépose</b>Le manager ajoute un PDF ou un Word</div>
+      <div class="dm-step" data-step="2"><b>2 · Génère</b>L'IA crée QCM et roleplays</div>
+      <div class="dm-step" data-step="3"><b>3 · Valide</b>Rien n'est publié sans son accord</div>
+      <div class="dm-step" data-step="4"><b>4 · S'entraîne</b>Le commercial les retrouve dans l'app</div>
+    </div>
+    <p class="demo-note">Démonstration animée, avec des données d'exemple.</p>
   </div>
 </section>
 
@@ -929,5 +1113,124 @@
   }, { threshold: 0, rootMargin: '0px 0px -30% 0px' }).observe(finalCta);
 })();
 </script>
+<script>
+(function(){
+  var stage = document.getElementById('dmStage');
+  if (!stage) return;
+  var $ = function(id){ return document.getElementById(id); };
+  var drop=$('dmDrop'), file=$('dmFile'), title=$('dmTitle'), pQcm=$('pQcm'), pRp=$('pRp'), gen=$('dmGen'), spin=$('dmSpin'),
+      qtext=$('dmQtext'), val=$('dmVal'), items=$('dmItems'), aud=$('dmAud'), cur=$('dmCursor'),
+      home=$('dpHome'), qs=$('dpQ'), coach=$('dpCoach'), card=$('dpCard'), sub=$('dpSub'), cnt=$('dpCnt'),
+      good=$('dpGood'), fb=$('dpFb'), rp=$('dpRp'), steps=document.querySelectorAll('#dmCaption .dm-step');
+  var QCM = ["Le client juge l'offre trop chère : que faites-vous en premier ?",
+             "Il compare avec un devis concurrent : que lui demandez-vous ?",
+             "Le budget est bouclé : quelle porte laissez-vous ouverte ?"];
+  var RP  = ["Roleplay · C'est trop cher pour ce que c'est"];
+  var tok = 0;
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function sleep(ms, t){ return new Promise(function(res, rej){ setTimeout(function(){ t === tok ? res() : rej('stop'); }, ms); }); }
+  function setStep(n){ for (var i=0;i<steps.length;i++) steps[i].classList.toggle('on', +steps[i].getAttribute('data-step') === n); }
+  function screen(name){
+    home.classList.toggle('on', name==='home'); qs.classList.toggle('on', name==='q'); coach.classList.toggle('on', name==='coach');
+    $('t0').classList.toggle('on', name!=='coach'); $('t2').classList.toggle('on', name==='coach');
+  }
+  function moveTo(target, fx, fy){
+    var s = stage.getBoundingClientRect(), r = target.getBoundingClientRect();
+    cur.classList.add('on');
+    cur.style.transform = 'translate(' + (r.left - s.left + r.width*(fx||0.5)) + 'px,' + (r.top - s.top + r.height*(fy||0.6)) + 'px)';
+  }
+  function click(btn){
+    cur.classList.remove('click'); void cur.offsetWidth; cur.classList.add('click');
+    if (btn){ btn.classList.add('press'); setTimeout(function(){ btn.classList.remove('press'); }, 220); }
+  }
+  function buildItems(list){
+    items.innerHTML = '';
+    list.forEach(function(txt){
+      var d = document.createElement('div'); d.className = 'dm-item';
+      var s = document.createElement('span'); s.textContent = txt;
+      var g = document.createElement('span'); g.className = 'dm-tag'; g.textContent = 'À valider';
+      d.appendChild(s); d.appendChild(g); items.appendChild(d);
+    });
+  }
+  function publish(label){
+    var tg = items.querySelectorAll('.dm-tag');
+    for (var i=0;i<tg.length;i++){ tg[i].textContent = 'Publié'; tg[i].classList.add('ok'); }
+    qtext.textContent = label; val.classList.add('gone'); aud.classList.add('show');
+  }
+  function resetDash(){
+    drop.classList.remove('has'); file.classList.remove('in');
+    title.innerHTML = '<span class="ph">Ex. Objection prix</span>';
+    pQcm.classList.add('on'); pRp.classList.remove('on');
+    gen.classList.remove('ready'); spin.classList.remove('on'); qtext.textContent = '';
+    val.classList.add('gone'); items.innerHTML = ''; aud.classList.remove('show');
+  }
+  function resetPhone(){
+    screen('home'); card.classList.remove('pulse'); sub.textContent = '12 min · Prospection'; cnt.textContent = '3 sur 5';
+    good.classList.remove('good'); fb.classList.remove('show'); rp.classList.remove('show');
+  }
+  function placeCursor(){ cur.classList.remove('on'); cur.style.transform = 'translate(' + Math.round(stage.clientWidth*0.45) + 'px,40px)'; }
+  async function type(str, t){
+    var span = document.createElement('span'); title.innerHTML = ''; title.appendChild(span);
+    var c = document.createElement('i'); c.className = 'dm-caret'; title.appendChild(c);
+    for (var i=1;i<=str.length;i++){ span.textContent = str.slice(0,i); await sleep(48, t); }
+  }
+  async function generate(list, label, t){
+    setStep(2); moveTo(gen); await sleep(900, t);
+    gen.classList.add('ready'); await sleep(250, t); click(gen); await sleep(250, t);
+    spin.classList.add('on'); qtext.textContent = 'Génération en cours'; await sleep(1100, t);
+    spin.classList.remove('on'); qtext.textContent = label; buildItems(list); val.classList.remove('gone');
+    var it = items.querySelectorAll('.dm-item');
+    for (var i=0;i<it.length;i++){ it[i].classList.add('show'); await sleep(260, t); }
+  }
+  async function validate(label, t){
+    setStep(3); await sleep(500, t); moveTo(val); await sleep(900, t); click(val); await sleep(350, t);
+    publish(label); await sleep(1100, t);
+  }
+  async function act1(t){
+    resetDash(); resetPhone(); setStep(1);
+    moveTo(drop); await sleep(900, t);
+    file.classList.add('in'); drop.classList.add('has'); await sleep(1000, t);
+    moveTo(title); await sleep(700, t); await type('Objection prix', t); await sleep(300, t);
+    await generate(QCM, '3 QCM en attente de validation', t);
+    await validate('3 QCM publiés', t);
+    setStep(4); cur.classList.remove('on'); await sleep(400, t);
+    card.classList.add('pulse'); sub.textContent = '12 min · Objection prix'; cnt.textContent = '0 sur 3'; await sleep(1500, t);
+    screen('q'); await sleep(1600, t);
+    good.classList.add('good'); await sleep(700, t); fb.classList.add('show'); await sleep(2400, t);
+  }
+  async function act2(t){
+    resetDash(); screen('home'); card.classList.remove('pulse'); setStep(1);
+    file.classList.add('in'); drop.classList.add('has');
+    moveTo(pRp); await sleep(900, t); click(); pQcm.classList.remove('on'); pRp.classList.add('on'); await sleep(500, t);
+    moveTo(title); await sleep(700, t); await type("C'est trop cher pour ce que c'est", t); await sleep(300, t);
+    await generate(RP, '1 roleplay en attente de validation', t);
+    await validate('1 roleplay publié', t);
+    setStep(4); cur.classList.remove('on'); await sleep(400, t);
+    screen('coach'); await sleep(700, t); rp.classList.add('show'); await sleep(3200, t);
+  }
+  async function loop(t){
+    try { while (true){ await act1(t); await act2(t); await sleep(600, t); } }
+    catch(e){ /* arrêt : la démo est sortie de l'écran */ }
+  }
+  function staticState(){
+    drop.classList.add('has'); file.classList.add('in'); title.textContent = 'Objection prix';
+    buildItems(QCM); var it = items.querySelectorAll('.dm-item'); for (var i=0;i<it.length;i++) it[i].classList.add('show');
+    publish('3 QCM publiés'); setStep(4);
+    sub.textContent = '12 min · Objection prix'; cnt.textContent = '0 sur 3';
+    screen('q'); good.classList.add('good'); fb.classList.add('show');
+  }
+
+  if (reduceMotion || !('IntersectionObserver' in window)) { staticState(); return; }
+  placeCursor();
+  new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting){ tok++; loop(tok); }
+      else { tok++; }
+    });
+  }, { threshold: 0.35 }).observe(stage);
+})();
+</script>
+
 </body>
 </html>
