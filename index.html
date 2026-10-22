@@ -598,14 +598,7 @@
   .dd-inner.modal .dd-ov{ opacity:1; } .dd-inner.modal .dd-modal{ opacity:1; transform:none; }
   .dd-inner.toast .dd-toast{ opacity:1; transform:none; }
   .dd-notif{ text-align:center; margin:22px auto 0; max-width:420px; opacity:0; transform:translateY(-14px); transition: all .5s cubic-bezier(.2,.8,.2,1); }
-  .dd-phone{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .5s; }
-  .dd-phone .dp{ width:236px; }
-  .dd-phone .dp > img:first-child{ position:absolute; inset:0; width:100%; height:100%; }
-  .dd-phone .dp > img.dd-banner{ inset:auto; left:4%; top:3.2%; width:92%; height:auto; opacity:0; transform:translateY(-30px); transition: all .6s cubic-bezier(.2,.8,.2,1); filter:none; }
-  .dd-stage.phone-on .dd-phone{ opacity:1; }
-  .dd-stage.phone-on .dm-win{ opacity:0; }
-  .dd-stage.notif-in .dp > img.dd-banner{ opacity:1; transform:none; }
-  .dd-stage .dm-win{ transition:opacity .5s; }
+  .dd-notif img{ width:100%; height:auto; display:block; }
   .dd-notif p{ margin:10px 0 0; font-weight:800; color:var(--navy); font-size:.95rem; }
   .dd-notif.show{ opacity:1; transform:none; }
   .press{ transform: scale(.94); }
@@ -956,10 +949,9 @@
           <div class="dd-toast" id="ddToast"><div style="height:52px;padding:0 20px 0 10px;border-radius:26px;background:#fff;color:#003A54;display:flex;align-items:center;gap:10px;font:700 15px Archivo;white-space:nowrap;box-shadow:0 14px 30px -14px rgba(0,26,38,.5),0 0 0 1px rgba(0,58,84,.06)"><div style="width:32px;height:32px;border-radius:16px;background:#55BBAB;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="11" viewBox="0 0 12 10"><path d="M1.5 5.2L4.6 8.2L10.5 1.8" fill="none" stroke="#003A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>Rappel envoyé à Hugo</div></div>
         </div></div>
       </div>
-      <div class="dd-phone" id="ddPhone" aria-hidden="true"><div class="dp"><img class="on" src="screenshot-accueil.png" alt=""><img class="dd-banner" id="ddBanner" src="notif-push.png" alt=""></div></div>
       <svg class="dm-cursor" id="ddCursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9.5-6.5 1.6L9.6 20z" fill="#fff" stroke="#12242F" stroke-width="1.6" stroke-linejoin="round"/></svg>
     </div>
-    <div class="dd-notif" id="ddNotif"><p>Côté commercial : il reçoit le message en notification dans l'app, s'il les a activées.</p></div>
+    <div class="dd-notif" id="ddNotif"><img src="notif-push.png" alt="Notification reçue par le commercial : Ton manager pense à toi, 5 minutes d'entraînement aujourd'hui ?" width="824" height="231"><p>Côté commercial : il reçoit le message en notification dans l'app, s'il les a activées.</p></div>
     <p class="demo-note">Démonstration animée, avec des données d'exemple.</p>
   </div>
 </section>
@@ -1488,18 +1480,17 @@
   function sleep(ms,t){ return new Promise(function(res,rej){ setTimeout(function(){ t===tok?res():rej('stop'); },ms); }); }
   function moveTo(el,fx,fy){ var s=stage.getBoundingClientRect(), r=el.getBoundingClientRect(); cur.classList.add('on'); cur.style.transform='translate('+(r.left-s.left+r.width*fx)+'px,'+(r.top-s.top+r.height*fy)+'px)'; }
   function click(b){ cur.classList.remove('click'); void cur.offsetWidth; cur.classList.add('click'); if(b){ b.classList.add('press'); setTimeout(function(){ b.classList.remove('press'); },220); } }
-  function reset(){ stage.classList.remove('phone-on','notif-in'); $('ddNotif').classList.remove('show'); slot.innerHTML=ACTIVE; inner.classList.remove('modal','toast'); cur.classList.remove('on'); }
+  function reset(){ $('ddNotif').classList.remove('show'); slot.innerHTML=ACTIVE; inner.classList.remove('modal','toast'); cur.classList.remove('on'); }
   async function run(t){
     reset(); await sleep(1200,t);
     var b=$('ddBtn'); moveTo(b,.5,.5); await sleep(1100,t); click(b);
     await sleep(300,t); inner.classList.add('modal'); await sleep(2000,t);
     var sd=$('ddSend'); moveTo(sd,.5,.5); await sleep(1100,t); click(sd);
-    await sleep(300,t); inner.classList.remove('modal'); slot.innerHTML=SENT; inner.classList.add('toast'); cur.classList.remove('on');
-    await sleep(2400,t); stage.classList.add('phone-on'); await sleep(900,t); stage.classList.add('notif-in'); $('ddNotif').classList.add('show');
-    await sleep(4200,t); stage.classList.remove('notif-in'); $('ddNotif').classList.remove('show'); await sleep(500,t); stage.classList.remove('phone-on'); inner.classList.remove('toast'); await sleep(1500,t);
+    await sleep(300,t); inner.classList.remove('modal'); slot.innerHTML=SENT; inner.classList.add('toast'); cur.classList.remove('on'); $('ddNotif').classList.add('show');
+    await sleep(2600,t); inner.classList.remove('toast'); await sleep(2200,t);
   }
   async function loop(){ var t=++tok; try{ while(true){ await run(t); } }catch(e){} }
-  if (reduce){ slot.innerHTML=SENT; stage.classList.add('phone-on','notif-in'); $('ddNotif').classList.add('show'); return; }
+  if (reduce){ slot.innerHTML=SENT; $('ddNotif').classList.add('show'); return; }
   new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) loop(); else tok++; }); },{threshold:.35}).observe(stage);
 })();
 </script>
