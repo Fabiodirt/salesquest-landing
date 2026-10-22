@@ -601,7 +601,8 @@
   .dd-phone{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; pointer-events:none; transition:opacity .5s; }
   .dd-phone .dp{ width:236px; }
   .dd-phone .dp > img:first-child{ position:absolute; inset:0; width:100%; height:100%; }
-  .dd-phone .dp > img.dd-banner{ inset:auto; left:4%; top:3.2%; width:92%; height:auto; opacity:0; transform:translateY(-30px); transition: all .6s cubic-bezier(.2,.8,.2,1); filter:none; }
+  .dd-phone .dp > img.dd-banner{ inset:auto; left:4%; top:9%; width:92%; height:auto; opacity:0; transform:translateY(-30px); transition: all .6s cubic-bezier(.2,.8,.2,1); filter:none; }
+  .dd-off{ position:absolute; left:1.4%; right:1.4%; top:.6%; bottom:1.2%; background:#0a0c0f; border-radius:22px; }
   .dd-stage.phone-on .dd-phone{ opacity:1; }
   .dd-stage.phone-on .dm-win{ opacity:0; }
   .dd-stage.notif-in .dp > img.dd-banner{ opacity:1; transform:none; }
@@ -956,7 +957,7 @@
           <div class="dd-toast" id="ddToast"><div style="height:52px;padding:0 20px 0 10px;border-radius:26px;background:#fff;color:#003A54;display:flex;align-items:center;gap:10px;font:700 15px Archivo;white-space:nowrap;box-shadow:0 14px 30px -14px rgba(0,26,38,.5),0 0 0 1px rgba(0,58,84,.06)"><div style="width:32px;height:32px;border-radius:16px;background:#55BBAB;display:flex;align-items:center;justify-content:center;flex:none"><svg width="13" height="11" viewBox="0 0 12 10"><path d="M1.5 5.2L4.6 8.2L10.5 1.8" fill="none" stroke="#003A54" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path></svg></div>Rappel envoyé à Hugo</div></div>
         </div></div>
       </div>
-      <div class="dd-phone" id="ddPhone" aria-hidden="true"><div class="dp"><img class="on" src="screenshot-accueil.png" alt=""><img class="dd-banner" id="ddBanner" src="notif-push.png" alt=""></div></div>
+      <div class="dd-phone" id="ddPhone" aria-hidden="true"><div class="dp"><img class="on" src="screenshot-accueil.png" alt=""><div class="dd-off"></div><img class="dd-banner" id="ddBanner" src="notif-push-dark.png" alt=""></div></div>
       <svg class="dm-cursor" id="ddCursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9.5-6.5 1.6L9.6 20z" fill="#fff" stroke="#12242F" stroke-width="1.6" stroke-linejoin="round"/></svg>
     </div>
     <div class="dd-notif" id="ddNotif"><p>Côté commercial : il reçoit le message en notification dans l'app, s'il les a activées.</p></div>
