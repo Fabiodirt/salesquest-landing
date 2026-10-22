@@ -600,6 +600,23 @@
   .press{ transform: scale(.94); }
   @media (max-width: 860px){ .ddemo{ padding:64px 0; } }
 
+  /* ---------- DEMO TERRAIN (app) ---------- */
+  .tdemo{ padding: 96px 0; background:#fff; }
+  .td-grid{ display:grid; grid-template-columns: 1fr 272px; gap:56px; align-items:center; max-width:900px; margin:0 auto; }
+  .td-tabs{ display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap; }
+  .td-tab{ border:1px solid var(--line); background:#fff; font: inherit; font-weight:800; font-size:.92rem; color: var(--text-soft); padding:10px 18px; border-radius:999px; cursor:pointer; transition: all .2s; }
+  .td-tab.on{ background: var(--navy); border-color: var(--navy); color:#fff; }
+  .td-steps{ list-style:none; padding:0; margin:0; display:grid; gap:12px; }
+  .td-steps li{ display:flex; gap:14px; align-items:flex-start; font-size:1.05rem; line-height:1.45; color:#7C909A; font-weight:700; transition: color .3s; }
+  .td-steps li b{ flex:none; width:30px; height:30px; border-radius:50%; background: var(--bg-soft); border:1px solid var(--line); color:#7C909A; display:flex; align-items:center; justify-content:center; font-size:.8rem; transition: all .3s; }
+  .td-steps li.on{ color: var(--navy); }
+  .td-steps li.on b{ background: var(--orange); border-color: var(--orange); color:#fff; }
+  .td-who{ margin-top:22px; color: var(--text-soft); font-size:.95rem; line-height:1.5; max-width:420px; }
+  .tp-tap{ position:absolute; width:14%; aspect-ratio:1; border-radius:50%; border:3px solid var(--orange); background: rgba(241,135,0,.25); transform: translate(-50%,-50%) scale(.6); opacity:0; pointer-events:none; }
+  .tp-tap.go{ animation: tpTap .9s ease-out; }
+  @keyframes tpTap{ 0%{ opacity:0; transform: translate(-50%,-50%) scale(.6); } 30%{ opacity:1; } 100%{ opacity:0; transform: translate(-50%,-50%) scale(1.5); } }
+  @media (max-width: 860px){ .tdemo{ padding:64px 0; } .td-grid{ grid-template-columns:1fr; gap:32px; justify-items:center; } .td-copy{ width:100%; } }
+
   /* ---------- POUR QUI ---------- */
   .whofor{ padding: 88px 0; background:#fff; }
   .whofor-head{ max-width:720px; margin:0 auto 40px; text-align:center; }
@@ -948,6 +965,38 @@
       <svg class="dm-cursor" id="ddCursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l15 9.5-6.5 1.6L9.6 20z" fill="#fff" stroke="#12242F" stroke-width="1.6" stroke-linejoin="round"/></svg>
     </div>
     <p class="demo-note">Démonstration animée, avec des données d'exemple.</p>
+  </div>
+</section>
+
+<section class="tdemo" id="terrain">
+  <div class="wrap">
+    <div class="demo-head">
+      <span class="badge">Côté terrain</span>
+      <h2>Un entraînement qui tient dans la poche</h2>
+      <p>Commerciaux et CSM s'entraînent et préparent leurs rendez-vous depuis l'app, en quelques minutes.</p>
+    </div>
+    <div class="td-grid" id="tdStage">
+      <div class="td-copy">
+        <div class="td-tabs" role="tablist">
+          <button class="td-tab on" type="button" id="tabCom">Commercial</button>
+          <button class="td-tab" type="button" id="tabCsm">CSM éleveur</button>
+        </div>
+        <ol class="td-steps" id="tdSteps"></ol>
+        <p class="td-who" id="tdWho"></p>
+      </div>
+      <div class="dp-wrap" aria-hidden="true">
+        <div class="dp" id="tpPhone">
+          <img class="on" id="tAcc" src="screenshot-accueil.png" alt="" loading="lazy">
+          <img id="tCoach" src="screenshot-coach.png" alt="" loading="lazy">
+          <img id="tRp" src="screenshot-roleplay.png" alt="" loading="lazy">
+          <img id="tVer" src="screenshot-verdict.png" alt="" loading="lazy">
+          <img id="tPrep" src="screenshot-prep-rdv.png" alt="" loading="lazy">
+          <span class="mic-ripple dp-mic" aria-hidden="true"></span>
+          <span class="tp-tap" id="tpTap"></span>
+        </div>
+      </div>
+    </div>
+    <p class="demo-note">Démonstration animée avec les écrans de l'application.</p>
   </div>
 </section>
 
@@ -1435,6 +1484,32 @@
   async function loop(){ var t=++tok; try{ while(true){ await run(t); } }catch(e){} }
   if (reduce){ slot.innerHTML=SENT; return; }
   new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) loop(); else tok++; }); },{threshold:.35}).observe(stage);
+})();
+</script>
+<script>
+(function(){
+  var stage=document.getElementById('tdStage'); if(!stage) return;
+  var $=function(id){return document.getElementById(id);};
+  var ph=$('tpPhone'), imgs={acc:$('tAcc'),coach:$('tCoach'),rp:$('tRp'),ver:$('tVer'),prep:$('tPrep')}, tap=$('tpTap'), stepsEl=$('tdSteps'), who=$('tdWho');
+  var SC={
+    com:{ who:"Questions flash du jour, roleplays à la voix, verdict du coach : quelques minutes suffisent.", steps:["Il ouvre l'app et retrouve son entraînement du jour","Il passe dans l'onglet Coach","Il s'entraîne à la voix face à une acheteuse","Il reçoit le verdict du coach, avec les points à travailler"] },
+    csm:{ who:"Avant chaque rendez-vous client, le coach aide à fixer l'objectif et à construire la préparation.", steps:["Il ouvre l'onglet Coach","Il choisit Prép RDV","Il indique le compte, son objectif et ce qui l'inquiète, puis lance la préparation"] }
+  };
+  var cur='com', tok=0, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function sleep(ms,t){ return new Promise(function(res,rej){ setTimeout(function(){ t===tok?res():rej('stop'); },ms); }); }
+  function show(n){ for(var k in imgs) imgs[k].classList.toggle('on',k===n); ph.classList.toggle('rp-on', n==='rp'); }
+  function steps(name,i){ var lis=stepsEl.children; for(var j=0;j<lis.length;j++) lis[j].classList.toggle('on', j===i); }
+  function tapAt(x,y){ tap.style.left=x+'%'; tap.style.top=y+'%'; tap.classList.remove('go'); void tap.offsetWidth; tap.classList.add('go'); }
+  function build(name){ cur=name; stepsEl.innerHTML=SC[name].steps.map(function(x,i){return '<li><b>'+(i+1)+'</b><span>'+x+'</span></li>';}).join(''); who.textContent=SC[name].who; $('tabCom').classList.toggle('on',name==='com'); $('tabCsm').classList.toggle('on',name==='csm'); }
+  async function com(t){ build('com'); show('acc'); steps('com',0); await sleep(2600,t); tapAt(63,91.5); await sleep(900,t); show('coach'); steps('com',1); await sleep(2200,t); tapAt(27,26); await sleep(900,t); show('rp'); steps('com',2); await sleep(6500,t); show('ver'); steps('com',3); await sleep(5000,t); }
+  async function csm(t){ build('csm'); show('coach'); steps('csm',0); await sleep(2400,t); tapAt(72.8,26); await sleep(900,t); show('prep'); steps('csm',1); await sleep(2600,t); steps('csm',2); await sleep(5500,t); }
+  async function loop(start){ var t=++tok, n=start||cur; try{ while(true){ if(n==='com'){ await com(t); n='csm'; } else { await csm(t); n='com'; } } }catch(e){} }
+  function staticState(){ build('com'); show('ver'); steps('com',3); }
+  $('tabCom').addEventListener('click',function(){ loop('com'); });
+  $('tabCsm').addEventListener('click',function(){ loop('csm'); });
+  build('com'); steps('com',0);
+  if(reduce){ staticState(); $('tabCom').onclick=staticState; return; }
+  new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting) loop(cur); else tok++; }); },{threshold:.35}).observe(stage);
 })();
 </script>
 </body>
