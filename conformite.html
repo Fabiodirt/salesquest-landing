@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sécurité et conformité - SalesQuest</title>
+<meta name="description" content="Hébergement, sous-traitants, ce que voit le responsable, voix, sécurité et accord de traitement des données : la synthèse de SalesQuest pour les directions commerciales, DPO et CSE.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #003A54;
+    --navy-deep: #00263A;
+    --orange: #F18700;
+    --orange-dark: #D97600;
+    --bg: #FFFFFF;
+    --bg-soft: #F3F6F7;
+    --text: #12242F;
+    --text-soft: #4E6672;
+    --line: #E2E8EA;
+    --white: #FFFFFF;
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  body{
+    font-family: 'Archivo', sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: var(--orange); text-decoration: underline; }
+  .wrap{ max-width: 760px; margin: 0 auto; padding: 0 32px; }
+  .nav{ background: var(--navy); padding: 20px 0; }
+  .nav .wrap{ max-width: 1160px; display:flex; align-items:center; justify-content: space-between; }
+  .logo{ font-weight: 900; font-size: 1.25rem; color: var(--white); letter-spacing: -0.02em; text-decoration: none; }
+  .logo span{ color: var(--orange); }
+  .back{ color: #C7D8DF; font-size: 0.92rem; text-decoration: none; }
+  .back:hover{ color: var(--white); }
+  main{ padding: 64px 0 96px; }
+  h1{ font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
+  .updated{ margin-top: 8px; color: var(--text-soft); font-size: 0.92rem; font-style: italic; }
+  .lead{ margin-top: 20px; font-size: 1.08rem; color: var(--text); }
+  h2{ margin-top: 44px; margin-bottom: 14px; font-size: 1.2rem; font-weight: 700; color: var(--navy); }
+  p, li{ font-size: 1rem; color: var(--text-soft); margin-bottom: 14px; }
+  ul{ padding-left: 22px; margin-bottom: 14px; }
+  table{ width:100%; border-collapse: collapse; margin: 18px 0; font-size: 0.94rem; }
+  th, td{ text-align: left; padding: 10px 12px; border: 1px solid var(--line); color: var(--text-soft); vertical-align: top; }
+  th{ background: var(--bg-soft); color: var(--navy); font-weight: 700; }
+  .table-scroll{ overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .box{ background: var(--bg-soft); border-left: 4px solid var(--orange); padding: 16px 20px; margin: 22px 0; border-radius: 4px; }
+  .box p:last-child{ margin-bottom: 0; }
+  footer{ background: var(--navy-deep); color: #8FA6B0; padding: 28px 0; font-size: 0.86rem; text-align:center; }
+  @media (max-width: 560px){ .wrap{ padding: 0 20px; } main{ padding: 40px 0 72px; } }
+</style>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "38daef0cb43b4c9bb6628ada4a8409b8"}'></script><!-- End Cloudflare Web Analytics -->
+<link rel="icon" type="image/png" href="favicon.png?v=5"><link rel="shortcut icon" href="favicon.ico?v=3">
+</head>
+<body>
+<header class="nav">
+  <div class="wrap">
+    <a class="logo" href="index.html">Sales<span>Quest</span></a>
+    <a class="back" href="index.html">&larr; Retour au site</a>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <h1>Sécurité et conformité</h1>
+    <p class="updated">Dernière mise à jour : 5 novembre 2026</p>
+    <p class="lead">Cette page résume, pour les directions commerciales, les DPO et les CSE, comment SalesQuest traite les données. Le détail complet figure dans la <a href="privacy.html">politique de confidentialité</a>, qui fait foi.</p>
+
+    <h2>1. Hébergement</h2>
+    <p>La base de données de SalesQuest est hébergée en Europe (région européenne de Firebase). Certains prestataires (Firebase/Google, Anthropic, Stripe, Microsoft, HubSpot) sont susceptibles de traiter des données en dehors de l'Union européenne, notamment aux États-Unis, avec les garanties prévues par le RGPD (clauses contractuelles types ou mécanismes équivalents propres à chaque prestataire).</p>
+
+    <h2>2. Ce que voit le responsable d'équipe</h2>
+    <p>Pour chaque commercial de son organisation : sa dernière activité, ses entraînements par jour, son statut, sa maîtrise par famille de compétences et, pour chaque séance de Roleplay, le score, le verdict et un résumé de deux phrases sans citation.</p>
+    <div class="box">
+      <p><strong>Ce que le responsable ne voit jamais :</strong> la conversation intégrale d'une séance de Roleplay, les échanges avec le Coach IA, les préparations de rendez-vous et les débriefs.</p>
+    </div>
+    <p>Chaque commercial en est informé dans l'application, à son arrivée puis à l'issue de chaque séance de Roleplay.</p>
+
+    <h2>3. La voix</h2>
+    <p>Lorsqu'un commercial dicte, la transcription est assurée par le service de son téléphone (Apple sur iPhone, Google sur Android). SalesQuest ne reçoit et ne conserve que le texte transcrit, jamais l'enregistrement audio.</p>
+
+    <h2>4. Sécurité</h2>
+    <ul>
+      <li>L'accès à la base de données est restreint par des règles de sécurité : chaque utilisateur accède à ses propres données, et le responsable à celles de son équipe.</li>
+      <li>Les données sont chiffrées en transit (HTTPS).</li>
+      <li>Les jetons d'accès aux connecteurs (agenda, CRM) sont chiffrés et stockés côté serveur, jamais dans l'application.</li>
+      <li>Les connecteurs sont facultatifs, en lecture seule, et l'accès peut être retiré à tout moment.</li>
+    </ul>
+
+    <h2>5. Sous-traitants</h2>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Prestataire</th><th>Rôle</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Firebase (Google)</strong></td><td>Authentification, base de données, hébergement, notifications</td></tr>
+        <tr><td><strong>Anthropic</strong></td><td>Fonctionnalités d'intelligence artificielle (Coach, Prép RDV, Débrief, génération de contenus)</td></tr>
+        <tr><td><strong>Cloudflare</strong></td><td>Acheminement sécurisé des requêtes vers l'IA, mesure d'audience du site sans cookie</td></tr>
+        <tr><td><strong>Stripe</strong></td><td>Paiement et facturation de l'abonnement</td></tr>
+        <tr><td><strong>Brevo</strong></td><td>E-mails transactionnels (invitations, rappels, récapitulatif hebdomadaire)</td></tr>
+        <tr><td><strong>Microsoft, HubSpot, Google</strong></td><td>Connecteurs agenda et CRM, activés volontairement</td></tr>
+        <tr><td><strong>Cloudinary</strong></td><td>Hébergement des images (aucune donnée personnelle a priori)</td></tr>
+        <tr><td><strong>OVHcloud</strong></td><td>Nom de domaine et messagerie de contact</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h2>6. Accord de traitement des données et documents pour votre organisation</h2>
+    <p>Pour les données qu'une organisation traite afin de piloter l'entraînement de ses équipes, l'organisation est responsable de traitement et SalesQuest agit en tant que sous-traitant. À ce titre, un accord de traitement des données (article 28 du RGPD) est disponible sur demande.</p>
+    <p>Une organisation qui déploie SalesQuest doit informer ses salariés et, lorsque la réglementation l'exige, consulter son comité social et économique (CSE). SalesQuest met à disposition, sur demande, les informations et des documents types pour cette démarche : modèle d'analyse d'impact (AIPD), texte d'information des salariés et note d'information du CSE, que chaque organisation adapte à sa situation.</p>
+    <p>Pour les demander : <a href="mailto:contact@salesquest.fr">contact@salesquest.fr</a>.</p>
+
+    <h2>7. Durées de conservation et suppression</h2>
+    <p>Les données d'une organisation sont conservées pendant la durée du contrat, puis restent disponibles à l'export pendant 30 jours après la résiliation avant d'être supprimées. Un utilisateur peut supprimer son compte depuis l'application ; la page <a href="suppression-compte.html">Suppression de compte</a> détaille la procédure.</p>
+
+    <h2>8. Vos droits et contact</h2>
+    <p>Accès, rectification, suppression, limitation, opposition et portabilité : contactez-nous à contact@salesquest.fr. Vous pouvez aussi introduire une réclamation auprès de la CNIL (www.cnil.fr).</p>
+    <p>SalesQuest, 21 rue du Clocher, 78910 Orgerus.</p>
+  </div>
+</main>
+<footer>
+  <div class="wrap" style="display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;">
+    <a href="index.html" style="color:#8FA6B0;">SalesQuest</a>
+    <a href="mentions-legales.html" style="color:#8FA6B0;">Mentions légales</a>
+    <a href="privacy.html" style="color:#8FA6B0;">Politique de confidentialité</a>
+    <a href="conformite.html" style="color:#8FA6B0;">Sécurité et conformité</a>
+    <a href="cgv.html" style="color:#8FA6B0;">CGV</a>
+    <a href="cgu.html" style="color:#8FA6B0;">CGU</a>
+    <a href="suppression-compte.html" style="color:#8FA6B0;">Suppression de compte</a>
+    <a href="mailto:contact@salesquest.fr" style="color:#8FA6B0;">contact@salesquest.fr</a>
+  </div>
+</footer>
+</body>
+</html>
